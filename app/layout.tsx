@@ -1,11 +1,52 @@
 import type { Metadata } from "next";
+import { getContent } from "@/lib/content";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Zaman Bayezid - Lead Product Designer",
-  description:
-    "Lead Product Designer bridging design and development with deep user empathy and technical logic. Specializing in AI-powered workflows that accelerate innovation.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getContent();
+  const seo = content.seo;
+
+  return {
+    metadataBase: new URL(seo.siteUrl || "https://www.zamandesigns.com"),
+    title: {
+      default: seo.title,
+      template: `%s | ${content.hero.name}`,
+    },
+    description: seo.description,
+    keywords: seo.keywords.split(",").map((k) => k.trim()),
+    authors: [{ name: content.hero.name }],
+    creator: content.hero.name,
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: seo.siteUrl,
+      siteName: content.hero.name,
+      title: seo.title,
+      description: seo.description,
+      images: seo.ogImage
+        ? [{ url: seo.ogImage, width: 1200, height: 630, alt: seo.title }]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      ...(seo.twitterHandle ? { creator: seo.twitterHandle } : {}),
+      images: seo.ogImage ? [seo.ogImage] : [],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
+    ...(seo.googleVerification
+      ? { verification: { google: seo.googleVerification } }
+      : {}),
+    alternates: {
+      canonical: seo.siteUrl,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

@@ -81,6 +81,17 @@ export type FooterContent = {
   copyright: string;
 };
 
+export type SEOContent = {
+  siteUrl: string;
+  title: string;
+  description: string;
+  keywords: string;
+  ogImage: string;
+  twitterHandle: string;
+  linkedinUrl: string;
+  googleVerification: string;
+};
+
 export type SiteContent = {
   hero: HeroContent;
   skills: Skill[];
@@ -88,6 +99,7 @@ export type SiteContent = {
   projects: Project[];
   contact: ContactContent;
   footer: FooterContent;
+  seo: SEOContent;
 };
 
 const DATA_PATH = path.join(process.cwd(), "data", "content.json");
@@ -101,6 +113,24 @@ function writeLocalContent(content: SiteContent): void {
   fs.writeFileSync(DATA_PATH, JSON.stringify(content, null, 2), "utf-8");
 }
 
+const DEFAULT_SEO: SEOContent = {
+  siteUrl: "https://www.zamandesigns.com",
+  title: "Zaman Bayezid — Lead Product Designer",
+  description: "Lead Product Designer specializing in design systems, UX research, and AI-powered workflows.",
+  keywords: "product designer, UX designer, UI designer, design systems, portfolio, Zaman Bayezid",
+  ogImage: "",
+  twitterHandle: "",
+  linkedinUrl: "",
+  googleVerification: "",
+};
+
+function ensureSeo(content: SiteContent): SiteContent {
+  if (!content.seo) {
+    return { ...content, seo: DEFAULT_SEO };
+  }
+  return { ...content, seo: { ...DEFAULT_SEO, ...content.seo } };
+}
+
 export async function getContent(): Promise<SiteContent> {
   const supabase = getSupabase();
   if (supabase) {
@@ -112,13 +142,13 @@ export async function getContent(): Promise<SiteContent> {
         .single();
 
       if (!error && data?.data) {
-        return data.data as SiteContent;
+        return ensureSeo(data.data as SiteContent);
       }
     } catch {
       // fall through to local
     }
   }
-  return getLocalContent();
+  return ensureSeo(getLocalContent());
 }
 
 export async function updateContent(content: SiteContent): Promise<void> {

@@ -280,5 +280,15 @@
   "footer": {
     "tagline": "Lead Product Designer bridging design and development with AI-powered workflows",
     "copyright": "2026 Zaman Bayezid. All rights reserved."
+  },
+  "seo": {
+    "siteUrl": "https://www.zamandesigns.com",
+    "title": "Zaman Bayezid — Lead Product Designer",
+    "description": "Lead Product Designer specializing in design systems, UX research, and AI-powered workflows. View case studies for EmCan, VeeHive.ai, and more.",
+    "keywords": "product designer, UX designer, UI designer, design systems, user research, portfolio, Zaman Bayezid",
+    "ogImage": "https://ebook-walnut-50035687.figma.site/_assets/v11/98ad905cd43d6843af17c7ea8a82850856b374ba.png",
+    "twitterHandle": "",
+    "linkedinUrl": "https://linkedin.com",
+    "googleVerification": ""
   }
 }

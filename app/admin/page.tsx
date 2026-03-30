@@ -19,7 +19,7 @@ import {
 import type { SiteContent } from "@/lib/content";
 import ImageField from "@/components/ImageField";
 
-type Tab = "hero" | "skills" | "caseStudies" | "projects" | "contact" | "footer";
+type Tab = "hero" | "skills" | "caseStudies" | "projects" | "contact" | "footer" | "seo";
 
 const IDLE_LOGOUT_MS = 10 * 60 * 1000;
 const MOUSEMOVE_THROTTLE_MS = 15_000;
@@ -31,6 +31,7 @@ const tabs: { id: Tab; label: string }[] = [
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
   { id: "footer", label: "Footer" },
+  { id: "seo", label: "SEO" },
 ];
 
 /* ---------- Login Screen ---------- */
@@ -416,6 +417,9 @@ export default function AdminPage() {
           )}
           {activeTab === "footer" && (
             <FooterEditor content={content} updateField={updateField} />
+          )}
+          {activeTab === "seo" && (
+            <SEOEditor content={content} updateField={updateField} />
           )}
         </main>
       </div>
@@ -1082,6 +1086,104 @@ function FooterEditor({
         value={content.footer.copyright}
         onChange={(v) => updateField("footer.copyright", v)}
       />
+    </div>
+  );
+}
+
+function SEOEditor({
+  content,
+  updateField,
+}: {
+  content: SiteContent;
+  updateField: (path: string, value: unknown) => void;
+}) {
+  const seo = content.seo ?? {
+    siteUrl: "",
+    title: "",
+    description: "",
+    keywords: "",
+    ogImage: "",
+    twitterHandle: "",
+    linkedinUrl: "",
+    googleVerification: "",
+  };
+
+  return (
+    <div className="max-w-2xl">
+      <SectionHeader
+        title="SEO & Meta Tags"
+        description="Search engine optimization, social sharing, and site verification"
+      />
+
+      <div className="mb-6 rounded-xl border border-border-subtle bg-bg-card/30 p-6">
+        <p className="mb-4 text-xs font-medium uppercase tracking-wider text-accent">
+          General
+        </p>
+        <Field
+          label="Site URL"
+          value={seo.siteUrl}
+          onChange={(v) => updateField("seo.siteUrl", v)}
+          placeholder="https://www.zamandesigns.com"
+        />
+        <Field
+          label="Default Page Title"
+          value={seo.title}
+          onChange={(v) => updateField("seo.title", v)}
+          placeholder="Zaman Bayezid — Lead Product Designer"
+        />
+        <Field
+          label="Meta Description"
+          value={seo.description}
+          onChange={(v) => updateField("seo.description", v)}
+          multiline
+          placeholder="A concise description of your portfolio (150–160 characters ideal)"
+        />
+        <Field
+          label="Keywords (comma-separated)"
+          value={seo.keywords}
+          onChange={(v) => updateField("seo.keywords", v)}
+          multiline
+          placeholder="product designer, UX, UI, portfolio"
+        />
+      </div>
+
+      <div className="mb-6 rounded-xl border border-border-subtle bg-bg-card/30 p-6">
+        <p className="mb-4 text-xs font-medium uppercase tracking-wider text-accent">
+          Social Sharing (Open Graph)
+        </p>
+        <ImageField
+          label="OG Image (1200×630 recommended)"
+          value={seo.ogImage}
+          onChange={(v) => updateField("seo.ogImage", v)}
+        />
+        <Field
+          label="Twitter Handle"
+          value={seo.twitterHandle}
+          onChange={(v) => updateField("seo.twitterHandle", v)}
+          placeholder="@yourhandle"
+        />
+        <Field
+          label="LinkedIn URL"
+          value={seo.linkedinUrl}
+          onChange={(v) => updateField("seo.linkedinUrl", v)}
+          placeholder="https://linkedin.com/in/yourprofile"
+        />
+      </div>
+
+      <div className="rounded-xl border border-border-subtle bg-bg-card/30 p-6">
+        <p className="mb-4 text-xs font-medium uppercase tracking-wider text-accent">
+          Verification
+        </p>
+        <Field
+          label="Google Search Console Verification Code"
+          value={seo.googleVerification}
+          onChange={(v) => updateField("seo.googleVerification", v)}
+          placeholder="Paste the content value from Google Search Console"
+        />
+        <p className="mt-2 text-xs text-text-muted">
+          Auto-generated: sitemap.xml, robots.txt, JSON-LD structured data
+        </p>
+      </div>
     </div>
   );
 }
