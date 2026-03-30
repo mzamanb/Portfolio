@@ -8,7 +8,13 @@ const quickLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Footer({ data }: { data: FooterContent }) {
+export default function Footer({
+  data,
+  social,
+}: {
+  data: FooterContent;
+  social: Record<string, string>;
+}) {
   return (
     <footer className="border-t border-border-subtle px-6 py-12">
       <div className="mx-auto max-w-6xl">
@@ -44,11 +50,13 @@ export default function Footer({ data }: { data: FooterContent }) {
               Connect
             </p>
             <div className="flex flex-col gap-2">
-              {["LinkedIn", "Dribbble", "Behance", "GitHub"].map((name) => (
+              {Object.entries(social).map(([name, url]) => (
                 <a
                   key={name}
-                  href="#"
-                  className="text-sm text-text-secondary transition-colors hover:text-text"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm capitalize text-text-secondary transition-colors hover:text-text"
                 >
                   {name}
                 </a>

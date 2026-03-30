@@ -25,7 +25,7 @@ export default function Home() {
           resumeUrl={content.hero.resumeUrl}
         />
       </main>
-      <Footer data={content.footer} />
+      <Footer data={content.footer} social={content.contact.social} />
     </>
   );
 }
