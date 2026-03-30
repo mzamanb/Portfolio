@@ -44,6 +44,7 @@ function LoginScreen({ onSuccess }: { onSuccess: () => void }) {
     try {
       const res = await fetch("/api/auth", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ password }),
       });
@@ -119,7 +120,7 @@ export default function AdminPage() {
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    fetch("/api/auth")
+    fetch("/api/auth", { credentials: "include" })
       .then((r) => r.json())
       .then((data) => setAuthed(data.authenticated))
       .catch(() => setAuthed(false));
@@ -127,9 +128,17 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (!authed) return;
-    fetch("/api/content")
-      .then((r) => r.json())
-      .then(setContent)
+    fetch("/api/content", { credentials: "include" })
+      .then((r) => {
+        if (r.status === 401) {
+          setAuthed(false);
+          return null;
+        }
+        return r.json();
+      })
+      .then((data) => {
+        if (data) setContent(data);
+      })
       .catch(() => setError("Failed to load content"));
   }, [authed]);
 
@@ -140,6 +149,7 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/content", {
         method: "PUT",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(content),
       });
@@ -161,7 +171,7 @@ export default function AdminPage() {
     setSaving(true);
     setError(null);
     try {
-      const res = await fetch("/api/seed", { method: "POST" });
+      const res = await fetch("/api/seed", { method: "POST", credentials: "include" });
       if (res.status === 401) {
         setAuthed(false);
         return;
@@ -180,7 +190,7 @@ export default function AdminPage() {
   }, []);
 
   const logout = useCallback(async () => {
-    await fetch("/api/auth", { method: "DELETE" });
+    await fetch("/api/auth", { method: "DELETE", credentials: "include" });
     setAuthed(false);
     setContent(null);
   }, []);

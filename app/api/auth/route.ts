@@ -35,6 +35,7 @@ export async function POST(request: Request) {
   jar.set(TOKEN_NAME, token, {
     httpOnly: true,
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
     maxAge: TOKEN_MAX_AGE,
     path: "/",
   });

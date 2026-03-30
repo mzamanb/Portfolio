@@ -27,12 +27,20 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const isWriteApi =
-    (pathname.startsWith("/api/content") && request.method === "PUT") ||
-    pathname.startsWith("/api/upload") ||
-    pathname.startsWith("/api/seed");
+  const method = request.method;
+  if (method === "OPTIONS") {
+    return NextResponse.next();
+  }
 
-  if (isWriteApi && !(await isAuthenticated(request))) {
+  const isContentApi =
+    pathname === "/api/content" || pathname.startsWith("/api/content/");
+  const isUpload = pathname === "/api/upload";
+  const isSeed = pathname.startsWith("/api/seed");
+
+  const needsAuth =
+    isContentApi || isUpload || isSeed;
+
+  if (needsAuth && !(await isAuthenticated(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -40,5 +48,11 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/content/:path*", "/api/upload", "/api/auth", "/api/seed"],
+  matcher: [
+    "/api/content",
+    "/api/content/:path*",
+    "/api/upload",
+    "/api/auth",
+    "/api/seed",
+  ],
 };

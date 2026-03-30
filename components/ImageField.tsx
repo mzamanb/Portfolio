@@ -25,7 +25,11 @@ export default function ImageField({
       try {
         const form = new FormData();
         form.append("file", file);
-        const res = await fetch("/api/upload", { method: "POST", body: form });
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          credentials: "include",
+          body: form,
+        });
         if (!res.ok) throw new Error("Upload failed");
         const { url } = await res.json();
         onChange(url);
