@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="overlay" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" rx="0"/>
+  <rect width="1200" height="800" fill="url(#bg)" rx="0" filter="url(#noise)" opacity="0.05"/>
+  <circle cx="900" cy="200" r="300" fill="white" opacity="0.05"/>
+  <circle cx="300" cy="600" r="200" fill="white" opacity="0.03"/>
+  <rect x="100" y="100" width="400" height="6" rx="3" fill="white" opacity="0.15"/>
+  <rect x="100" y="130" width="250" height="4" rx="2" fill="white" opacity="0.1"/>
+  <rect x="100" y="200" width="300" height="200" rx="12" fill="white" opacity="0.08"/>
+  <rect x="440" y="200" width="300" height="200" rx="12" fill="white" opacity="0.06"/>
+  <rect x="780" y="200" width="300" height="200" rx="12" fill="white" opacity="0.04"/>
+  <rect x="100" y="450" width="1000" height="120" rx="12" fill="white" opacity="0.06"/>
+  <rect x="100" y="600" width="480" height="100" rx="12" fill="white" opacity="0.05"/>
+  <rect x="620" y="600" width="480" height="100" rx="12" fill="white" opacity="0.04"/>
+  <text x="600" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="white" text-anchor="middle" opacity="0.9">FitPulse</text>
+  <text x="600" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="400" fill="white" text-anchor="middle" opacity="0.6">Fitness Tracker</text>
+  <text x="600" y="460" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="middle" opacity="0.35">Upload screenshot via CMS admin panel</text>
+</svg>

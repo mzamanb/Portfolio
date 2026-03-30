@@ -34,7 +34,7 @@
       "subtitle": "Loyalty App",
       "tags": ["UI/UX Design", "Design Systems", "Scrum Management"],
       "description": "Redesigned a UAE fuel station loyalty app, introducing digital promotions, car wash packages, coffee stamp cards, and partner integrations that transformed user engagement.",
-      "image": "https://zamandesigns.com/_assets/v11/98ad905cd43d6843af17c7ea8a82850856b374ba.png",
+      "image": "/images/emcan-cover.svg",
       "slug": "emcan-case-study",
       "fullContent": {
         "intro": "EmCan is a mobile loyalty app for fuel stations across the UAE. Customers earn and redeem rewards on fuel, car washes, coffee, and partner offers. I joined as Lead Product Designer to tackle a core problem: users weren't engaging with the loyalty system. My job was to redesign key features — promotions, car wash packages, coffee stamp cards, and partner integrations — to make rewards intuitive and drive repeat usage.",
@@ -53,7 +53,7 @@
           "Tight release timeline tied to a marketing campaign launch"
         ],
         "showcaseImage": {
-          "url": "https://zamandesigns.com/_assets/v11/9f2c03af63714787e1729631773ac037942e5d37.png",
+          "url": "/images/emcan-showcase.svg",
           "caption": "EmCan loyalty app — key screens across promotions, car wash, coffee, and partnerships"
         },
         "solutions": [
@@ -68,7 +68,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/e4dfd32ddf5846cbdb96abe1ba0b18b5928ffafd.png",
+                "url": "/images/emcan-promotions.svg",
                 "caption": "Promotions surfaced contextually — personalized offers on the home feed and at checkout"
               }
             ]
@@ -83,7 +83,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/b7d2451ad2b3d9548eb90263ef957ff3c590aa11.png",
+                "url": "/images/emcan-carwash.svg",
                 "caption": "Digital car wash package — purchase tracking, redemption flow, and remaining wash count"
               }
             ]
@@ -98,7 +98,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/2234b97fd16f3587557bbf9fa8a88d90a2b2c042.png",
+                "url": "/images/emcan-coffee.svg",
                 "caption": "Digital coffee stamp card — visual progress tracking with milestone notifications"
               }
             ]
@@ -114,7 +114,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/9a23a20cf067c247dfe35208dea1cba701212fc8.png",
+                "url": "/images/emcan-partners.svg",
                 "caption": "Linked loyalty accounts — partner cards, combined balances, and connection management"
               }
             ]
@@ -138,7 +138,7 @@
       "subtitle": "Platform",
       "tags": ["Product Design", "User Research"],
       "description": "Led end-to-end design for a community-first creator platform — from research through PWA launch — focusing on content discovery, moderation efficiency, and creator monetization.",
-      "image": "https://zamandesigns.com/_assets/v11/82ef2c21715839e0248c902181e043c9858b23b1.png",
+      "image": "/images/veehive-cover.svg",
       "slug": "veehive-case-study",
       "fullContent": {
         "intro": "VeeHive.ai is a community-first media platform where creators build focused communities around their content. I led product and interaction design from discovery through PWA launch, tackling three interconnected problems: helping audiences find and consume content, giving creators tools to grow, and enabling moderators to keep quality high at scale.",
@@ -160,7 +160,7 @@
           "Building analytics and tooling for creators and moderators from scratch"
         ],
         "showcaseImage": {
-          "url": "https://zamandesigns.com/_assets/v11/8cc3e0797826cf49cf085e707502a2b3449b5a61.png",
+          "url": "/images/veehive-showcase.svg",
           "caption": "VeeHive.ai — mobile feed, creator dashboard, and moderation workflows"
         },
         "solutions": [
@@ -175,7 +175,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/9e6dca451a584854ab07f882b525cacbedf8c68b.png",
+                "url": "/images/veehive-feed.svg",
                 "caption": "Redesigned mobile feed — familiar swipe patterns, channel navigation, and progressive content loading"
               }
             ]
@@ -190,7 +190,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/3a969008e19a28824f52491b1b626f9746e4164c.png",
+                "url": "/images/veehive-creator.svg",
                 "caption": "Creator dashboard — onboarding flow, content analytics, and monetization setup"
               }
             ]
@@ -205,7 +205,7 @@
             ],
             "showcaseImages": [
               {
-                "url": "https://zamandesigns.com/_assets/v11/32c6bd4bcfd41a2592b68e8f53bb034e9e6afa22.png",
+                "url": "/images/veehive-moderator.svg",
                 "caption": "Moderator dashboard — prioritized review queue, batch actions, and role-based assignments"
               }
             ]
@@ -229,42 +229,42 @@
       "id": "finance-app",
       "title": "Finance Dashboard",
       "description": "A dark-themed finance management interface focused on clarity and data density. Designed to make complex financial data approachable.",
-      "image": "https://zamandesigns.com/_assets/v11/4a4d22e3100bad088ef8e323475a19414b3b9d60.png",
+      "image": "/images/project-finance.svg",
       "tags": ["UI Design", "Dark Mode"]
     },
     {
       "id": "fitness-app",
       "title": "Fitness App",
       "description": "A bold, high-energy fitness app concept with workout tracking, progress visualization, and social motivation features.",
-      "image": "https://zamandesigns.com/_assets/v11/1c8a88f2932f4abc620226c036084b325cfb5207.png",
+      "image": "/images/project-fitness.svg",
       "tags": ["UI Design", "Mobile"]
     },
     {
       "id": "traffic-ai",
       "title": "Traffic AI",
       "description": "Dashboard for an AI-powered traffic analysis system — real-time monitoring, accident prediction, and route optimization.",
-      "image": "https://zamandesigns.com/_assets/v11/6d37dc9f98d1d54015c21cd161a6c5b7f9ee3174.png",
+      "image": "/images/project-traffic.svg",
       "tags": ["AI/ML", "Dashboard"]
     },
     {
       "id": "fashion-app",
       "title": "Fashion E-commerce",
       "description": "A dual-themed shopping experience with light and dark modes. Designed for seamless browsing across categories with a focus on product imagery.",
-      "image": "https://zamandesigns.com/_assets/v11/dc6706aa4bf6e49b1dbc9114a01038dabf2109ef.png",
+      "image": "/images/project-fashion.svg",
       "tags": ["E-commerce", "UI Design"]
     },
     {
       "id": "crypto-wallet",
       "title": "Cryptoverse",
       "description": "A spatial UI concept for Vision Pro — an immersive crypto wallet that lets you view and manage your portfolio in 3D space.",
-      "image": "https://zamandesigns.com/_assets/v11/c7bb1f304e9638503e4e1ac8047df0bcb50bfa90.png",
+      "image": "/images/project-crypto.svg",
       "tags": ["Vision Pro", "Spatial UI"]
     },
     {
       "id": "health-ai",
       "title": "Health AI",
       "description": "An AI health guidance interface providing personalized recommendations, symptom analysis, and wellness tracking.",
-      "image": "https://zamandesigns.com/_assets/v11/cfbc78e844f4709fa6a5fd4a88e4ce6f896164ef.png",
+      "image": "/images/project-health.svg",
       "tags": ["AI/ML", "Healthcare"]
     }
   ],
