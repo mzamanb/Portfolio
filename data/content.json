@@ -1,0 +1,286 @@
+{
+  "hero": {
+    "name": "Zaman Bayezid",
+    "title": ["Lead Product", "Designer"],
+    "subtitle": "Bridging design and development with deep user empathy and technical logic. Specializing in AI-powered workflows that accelerate innovation.",
+    "resumeUrl": "https://drive.google.com/uc?export=download&id=1-dImHqOBRh19kJbyjFTs__rCNJv70LiW",
+    "badge": "CSPO Certified"
+  },
+  "skills": [
+    {
+      "id": "design-systems",
+      "title": "Design Systems",
+      "description": "I build atomic design systems that bridge Figma and code, keeping UI consistent across platforms while cutting engineering sprint cycles.",
+      "icon": "Layers"
+    },
+    {
+      "id": "ux-design",
+      "title": "UX Design",
+      "description": "I design with business outcomes in mind — rapid prototyping, stakeholder alignment, and user-validated flows before a single line of code is written.",
+      "icon": "Palette"
+    },
+    {
+      "id": "user-research",
+      "title": "User Research",
+      "description": "I uncover what users actually need through structured research — interviews, usability tests, and data analysis — so every design decision is grounded in evidence.",
+      "icon": "Users"
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "emcan",
+      "label": "case study",
+      "title": "EmCan",
+      "subtitle": "Loyalty App",
+      "tags": ["UI/UX Design", "Design Systems", "Scrum Management"],
+      "description": "Redesigned a UAE fuel station loyalty app, introducing digital promotions, car wash packages, coffee stamp cards, and partner integrations that transformed user engagement.",
+      "image": "https://zamandesigns.com/_assets/v11/98ad905cd43d6843af17c7ea8a82850856b374ba.png",
+      "slug": "emcan-case-study",
+      "fullContent": {
+        "intro": "EmCan is a mobile loyalty app for fuel stations across the UAE. Customers earn and redeem rewards on fuel, car washes, coffee, and partner offers. I joined as Lead Product Designer to tackle a core problem: users weren't engaging with the loyalty system. My job was to redesign key features — promotions, car wash packages, coffee stamp cards, and partner integrations — to make rewards intuitive and drive repeat usage.",
+        "impact": [
+          { "value": "+35%", "label": "Reward Redemption", "detail": "Increase after redesign" },
+          { "value": "30%", "label": "Faster Delivery", "detail": "Via design system" },
+          { "value": "4 Features", "label": "Shipped in 7 Months", "detail": "From discovery to launch" }
+        ],
+        "role": "Lead UI/UX Designer for the loyalty experience, working alongside a product manager, engineering team, marketing, and external partner teams.",
+        "timeline": "7 months from discovery to launch, with continuous iteration post-release.",
+        "tools": "Figma, JIRA, Confluence, Miro, Design systems",
+        "problem": "EmCan had a basic loyalty system, but users struggled to understand how to earn and redeem rewards. Car wash and coffee benefits were buried in the app, and partner offers were scattered across disconnected screens. The result: low redemption rates, confused users, and missed revenue from promotions.",
+        "challenges": [
+          "Working within an existing brand and design system with strict guidelines",
+          "Supporting multiple loyalty partners, each with different rules and point structures",
+          "Tight release timeline tied to a marketing campaign launch"
+        ],
+        "showcaseImage": {
+          "url": "https://zamandesigns.com/_assets/v11/9f2c03af63714787e1729631773ac037942e5d37.png",
+          "caption": "EmCan loyalty app — key screens across promotions, car wash, coffee, and partnerships"
+        },
+        "solutions": [
+          {
+            "title": "Retail Promotions",
+            "problem": "Users had no clear way to discover active promotions. Offers were hidden behind multiple taps, and there was no distinction between what was relevant to each user. Most customers didn't even know promotions existed.",
+            "process": [
+              "Audited the existing C-store offline promotion experience to understand the gap",
+              "Mapped the full user journey to identify where offers would have the most impact",
+              "Explored three IA approaches: home feed, dedicated offers tab, and in-context checkout placement",
+              "Validated the chosen approach through stakeholder reviews and quick usability tests"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/e4dfd32ddf5846cbdb96abe1ba0b18b5928ffafd.png",
+                "caption": "Promotions surfaced contextually — personalized offers on the home feed and at checkout"
+              }
+            ]
+          },
+          {
+            "title": "Car Wash Package",
+            "problem": "Buying car wash packages required a physical voucher presented at each visit. The business wanted to go digital, but needed the purchase flow to stay offline at convenience stores. The challenge was bridging the physical and digital experience.",
+            "process": [
+              "Defined the end-to-end flow: purchasing at the store, activating digitally, redeeming at the wash bay, and tracking remaining washes",
+              "Explored visualizations for remaining washes, expiry dates, and usage history",
+              "Designed clear states for active, used, and expired packages to prevent confusion"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/b7d2451ad2b3d9548eb90263ef957ff3c590aa11.png",
+                "caption": "Digital car wash package — purchase tracking, redemption flow, and remaining wash count"
+              }
+            ]
+          },
+          {
+            "title": "Coffee Stamp Card",
+            "problem": "Physical stamp cards were common at petrol station cafes, but customers constantly lost them or forgot to ask for stamps. Free coffee — a strong retention driver — was going unredeemed.",
+            "process": [
+              "Mapped the stamp collection journey: earning stamps per purchase, tracking progress, and redeeming the free coffee",
+              "Designed a visual stamp card that made progress feel tangible and rewarding",
+              "Added push notification triggers at key milestones (halfway, one stamp away) to drive repeat visits"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/2234b97fd16f3587557bbf9fa8a88d90a2b2c042.png",
+                "caption": "Digital coffee stamp card — visual progress tracking with milestone notifications"
+              }
+            ]
+          },
+          {
+            "title": "Partner Loyalty Integration",
+            "problem": "EmCan wanted to let users link external loyalty programs to earn cross-platform rewards. But each partner had different rules, point systems, and branding — and the design needed to scale without requiring developer effort for every new partner.",
+            "process": [
+              "Mapped user flows for linking accounts, viewing combined rewards, and redeeming across programs",
+              "Collaborated with developers and partner teams to define a flexible integration pattern",
+              "Designed partner-specific reward cards that respected each brand while fitting EmCan's design system",
+              "Built feedback states for sync errors, pending connections, and successful links"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/9a23a20cf067c247dfe35208dea1cba701212fc8.png",
+                "caption": "Linked loyalty accounts — partner cards, combined balances, and connection management"
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          "Promotions became discoverable — users could find and redeem relevant offers without hunting.",
+          "Car wash and coffee features drove repeat visits by digitizing previously lossy physical processes.",
+          "The partner integration pattern scaled to new loyalty programs without redesign work."
+        ],
+        "learnings": [
+          "Designing loyalty across categories (fuel, wash, coffee, partners) taught me to think in systems — each feature had to feel cohesive, not siloed.",
+          "Translating complex partner business rules into simple UI and microcopy was the hardest and most rewarding part of this project."
+        ]
+      }
+    },
+    {
+      "id": "veehive",
+      "label": "case study",
+      "title": "VeeHive.ai",
+      "subtitle": "Platform",
+      "tags": ["Product Design", "User Research"],
+      "description": "Led end-to-end design for a community-first creator platform — from research through PWA launch — focusing on content discovery, moderation efficiency, and creator monetization.",
+      "image": "https://zamandesigns.com/_assets/v11/82ef2c21715839e0248c902181e043c9858b23b1.png",
+      "slug": "veehive-case-study",
+      "fullContent": {
+        "intro": "VeeHive.ai is a community-first media platform where creators build focused communities around their content. I led product and interaction design from discovery through PWA launch, tackling three interconnected problems: helping audiences find and consume content, giving creators tools to grow, and enabling moderators to keep quality high at scale.",
+        "impact": [
+          { "value": "7 Months", "label": "Discovery to Launch", "detail": "Full PWA shipped" },
+          { "value": "73%", "label": "Faster Moderation", "detail": "Review time reduced" },
+          { "value": "30%", "label": "Faster Delivery", "detail": "Via design system reuse" },
+          { "value": "8+", "label": "Usability Tests", "detail": "Across key flows" }
+        ],
+        "role": "Lead UI/UX Designer, end-to-end: user research, interaction design, high-fidelity prototypes, design system, and design QA. Daily coordination with Product, Engineering, and CX.",
+        "timeline": "7 months from discovery to PWA launch, with continuous iteration and feature delivery post-launch.",
+        "tools": "Figma, JIRA, Design systems",
+        "problem": "Content creators who want to build focused communities don't have a reliable platform. Social networks like TikTok and Instagram drive passive consumption, but they don't foster community, enable knowledge sharing, or give creators real moderation and monetization tools. VeeHive needed to solve all three — for creators, audiences, and moderators.",
+        "challenges": [
+          "Designing for three distinct user types (creators, audience members, moderators) with different goals",
+          "Appealing to both video-heavy and text-heavy content consumption patterns",
+          "Mobile-first audience with varied network conditions — performance and offline behavior were priorities",
+          "Balancing content discoverability with personalization without overwhelming new users",
+          "Building analytics and tooling for creators and moderators from scratch"
+        ],
+        "showcaseImage": {
+          "url": "https://zamandesigns.com/_assets/v11/8cc3e0797826cf49cf085e707502a2b3449b5a61.png",
+          "caption": "VeeHive.ai — mobile feed, creator dashboard, and moderation workflows"
+        },
+        "solutions": [
+          {
+            "title": "Mobile-first Feed & Discovery",
+            "problem": "The existing mobile app was functional but confusing — unfamiliar UI patterns created a steep learning curve, and loading all channel images at once caused performance issues on slower connections.",
+            "process": [
+              "Benchmarked TikTok, Slack, Discord, and WhatsApp to identify familiar patterns audiences already understood",
+              "Adopted a TikTok-inspired vertical feed for video content and a Slack-inspired channel list for navigation",
+              "Designed progressive loading to prioritize visible content and defer heavy assets",
+              "Added topic chips and follow suggestions to help new users find relevant communities quickly"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/9e6dca451a584854ab07f882b525cacbedf8c68b.png",
+                "caption": "Redesigned mobile feed — familiar swipe patterns, channel navigation, and progressive content loading"
+              }
+            ]
+          },
+          {
+            "title": "Creator Tools & Onboarding",
+            "problem": "Creators had no visibility into how their content performed, and the monetization setup was confusing — leading to drop-offs during onboarding and low creator retention.",
+            "process": [
+              "Designed a step-by-step onboarding flow that guided creators through profile setup, channel creation, and monetization configuration",
+              "Built an analytics dashboard showing top-performing posts, engagement trends, and conversion metrics",
+              "Ran 8+ usability tests to refine the content upload flow and reduce friction points"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/3a969008e19a28824f52491b1b626f9746e4164c.png",
+                "caption": "Creator dashboard — onboarding flow, content analytics, and monetization setup"
+              }
+            ]
+          },
+          {
+            "title": "Moderator Dashboard & Workflows",
+            "problem": "Community quality depended on moderators manually reviewing every flagged post — a process that didn't scale. As communities grew, review backlogs piled up and response times suffered.",
+            "process": [
+              "Designed a prioritization queue combining automated flags with manual review to surface the most critical issues first",
+              "Built batch review actions — approve, reject, or escalate multiple items at once",
+              "Added assignment workflows so community owners could delegate moderation across channels"
+            ],
+            "showcaseImages": [
+              {
+                "url": "https://zamandesigns.com/_assets/v11/32c6bd4bcfd41a2592b68e8f53bb034e9e6afa22.png",
+                "caption": "Moderator dashboard — prioritized review queue, batch actions, and role-based assignments"
+              }
+            ]
+          }
+        ],
+        "outcomes": [
+          "Shipped a complete PWA in 7 months covering all three user types — audience, creators, and moderators.",
+          "Moderation review time dropped 73% through the prioritized queue and batch actions.",
+          "The design system enabled 30% faster feature delivery across subsequent sprints."
+        ],
+        "learnings": [
+          "Designing for three user types simultaneously forced me to build a shared component language — what worked for the feed had to carry through to the creator dashboard and moderation tools.",
+          "Borrowing interaction patterns from apps users already knew (TikTok, Slack, WhatsApp) dramatically reduced the learning curve — the best innovation was in combining familiar patterns, not inventing new ones.",
+          "Running usability tests every sprint — not just at milestones — caught issues early enough to fix them cheaply."
+        ]
+      }
+    }
+  ],
+  "projects": [
+    {
+      "id": "finance-app",
+      "title": "Finance Dashboard",
+      "description": "A dark-themed finance management interface focused on clarity and data density. Designed to make complex financial data approachable.",
+      "image": "https://zamandesigns.com/_assets/v11/4a4d22e3100bad088ef8e323475a19414b3b9d60.png",
+      "tags": ["UI Design", "Dark Mode"]
+    },
+    {
+      "id": "fitness-app",
+      "title": "Fitness App",
+      "description": "A bold, high-energy fitness app concept with workout tracking, progress visualization, and social motivation features.",
+      "image": "https://zamandesigns.com/_assets/v11/1c8a88f2932f4abc620226c036084b325cfb5207.png",
+      "tags": ["UI Design", "Mobile"]
+    },
+    {
+      "id": "traffic-ai",
+      "title": "Traffic AI",
+      "description": "Dashboard for an AI-powered traffic analysis system — real-time monitoring, accident prediction, and route optimization.",
+      "image": "https://zamandesigns.com/_assets/v11/6d37dc9f98d1d54015c21cd161a6c5b7f9ee3174.png",
+      "tags": ["AI/ML", "Dashboard"]
+    },
+    {
+      "id": "fashion-app",
+      "title": "Fashion E-commerce",
+      "description": "A dual-themed shopping experience with light and dark modes. Designed for seamless browsing across categories with a focus on product imagery.",
+      "image": "https://zamandesigns.com/_assets/v11/dc6706aa4bf6e49b1dbc9114a01038dabf2109ef.png",
+      "tags": ["E-commerce", "UI Design"]
+    },
+    {
+      "id": "crypto-wallet",
+      "title": "Cryptoverse",
+      "description": "A spatial UI concept for Vision Pro — an immersive crypto wallet that lets you view and manage your portfolio in 3D space.",
+      "image": "https://zamandesigns.com/_assets/v11/c7bb1f304e9638503e4e1ac8047df0bcb50bfa90.png",
+      "tags": ["Vision Pro", "Spatial UI"]
+    },
+    {
+      "id": "health-ai",
+      "title": "Health AI",
+      "description": "An AI health guidance interface providing personalized recommendations, symptom analysis, and wellness tracking.",
+      "image": "https://zamandesigns.com/_assets/v11/cfbc78e844f4709fa6a5fd4a88e4ce6f896164ef.png",
+      "tags": ["AI/ML", "Healthcare"]
+    }
+  ],
+  "contact": {
+    "heading": "Let's Work Together",
+    "description": "I'm always interested in new opportunities and collaborations. Let's discuss how we can create exceptional digital experiences.",
+    "email": "contact@zamandesigns.com",
+    "social": {
+      "linkedin": "https://linkedin.com",
+      "dribbble": "https://dribbble.com",
+      "behance": "https://behance.net",
+      "github": "https://github.com"
+    }
+  },
+  "footer": {
+    "tagline": "Lead Product Designer bridging design and development with AI-powered workflows",
+    "copyright": "2026 Zaman Bayezid. All rights reserved."
+  }
+}
