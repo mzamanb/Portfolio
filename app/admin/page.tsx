@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Save,
   ChevronDown,
@@ -20,6 +20,9 @@ import type { SiteContent } from "@/lib/content";
 import ImageField from "@/components/ImageField";
 
 type Tab = "hero" | "skills" | "caseStudies" | "projects" | "contact" | "footer";
+
+const IDLE_LOGOUT_MS = 10 * 60 * 1000;
+const MOUSEMOVE_THROTTLE_MS = 15_000;
 
 const tabs: { id: Tab; label: string }[] = [
   { id: "hero", label: "Hero" },
@@ -118,6 +121,7 @@ export default function AdminPage() {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     fetch("/api/auth", { credentials: "include" })
@@ -195,6 +199,52 @@ export default function AdminPage() {
     setContent(null);
   }, []);
 
+  const resetIdleTimer = useCallback(() => {
+    if (idleTimerRef.current !== null) {
+      clearTimeout(idleTimerRef.current);
+    }
+    idleTimerRef.current = setTimeout(() => {
+      idleTimerRef.current = null;
+      void logout();
+    }, IDLE_LOGOUT_MS);
+  }, [logout]);
+
+  useEffect(() => {
+    if (!authed) return;
+
+    const opts: AddEventListenerOptions = { capture: true, passive: true };
+    const onActivity = () => resetIdleTimer();
+    let lastMoveAt = 0;
+    const onMouseMove = () => {
+      const now = Date.now();
+      if (now - lastMoveAt < MOUSEMOVE_THROTTLE_MS) return;
+      lastMoveAt = now;
+      resetIdleTimer();
+    };
+
+    resetIdleTimer();
+
+    document.addEventListener("mousedown", onActivity, opts);
+    document.addEventListener("keydown", onActivity, opts);
+    document.addEventListener("scroll", onActivity, opts);
+    document.addEventListener("touchstart", onActivity, opts);
+    document.addEventListener("click", onActivity, opts);
+    document.addEventListener("mousemove", onMouseMove, opts);
+
+    return () => {
+      if (idleTimerRef.current !== null) {
+        clearTimeout(idleTimerRef.current);
+        idleTimerRef.current = null;
+      }
+      document.removeEventListener("mousedown", onActivity, opts);
+      document.removeEventListener("keydown", onActivity, opts);
+      document.removeEventListener("scroll", onActivity, opts);
+      document.removeEventListener("touchstart", onActivity, opts);
+      document.removeEventListener("click", onActivity, opts);
+      document.removeEventListener("mousemove", onMouseMove, opts);
+    };
+  }, [authed, resetIdleTimer]);
+
   const toggleExpand = (id: string) => {
     setExpandedItems((prev) => {
       const next = new Set(prev);
@@ -256,6 +306,9 @@ export default function AdminPage() {
             <h1 className="text-sm font-semibold">
               Content Manager<span className="text-accent">.</span>
             </h1>
+            <span className="hidden text-xs text-text-muted sm:inline">
+              Signs out after 10 min idle
+            </span>
           </div>
           <div className="flex items-center gap-3">
             {error && (
