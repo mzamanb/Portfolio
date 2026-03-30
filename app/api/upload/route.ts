@@ -14,8 +14,13 @@ export async function POST(request: Request) {
   try {
     const supabase = getSupabase();
     if (!supabase) {
+      const hasUrl = !!process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
       return NextResponse.json(
-        { error: "Storage not configured" },
+        {
+          error: "Storage not configured",
+          debug: { hasUrl, hasKey },
+        },
         { status: 503 }
       );
     }
