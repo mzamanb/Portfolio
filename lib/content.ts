@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { getSupabase, CONTENT_TABLE, CONTENT_ROW_ID } from "./supabase";
 
 export type HeroContent = {
   name: string;
@@ -91,16 +92,53 @@ export type SiteContent = {
 
 const DATA_PATH = path.join(process.cwd(), "data", "content.json");
 
-export function getContent(): SiteContent {
+function getLocalContent(): SiteContent {
   const raw = fs.readFileSync(DATA_PATH, "utf-8");
   return JSON.parse(raw);
 }
 
-export function updateContent(content: SiteContent): void {
+function writeLocalContent(content: SiteContent): void {
   fs.writeFileSync(DATA_PATH, JSON.stringify(content, null, 2), "utf-8");
 }
 
-export function getCaseStudy(slug: string): CaseStudy | undefined {
-  const content = getContent();
+export async function getContent(): Promise<SiteContent> {
+  const supabase = getSupabase();
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from(CONTENT_TABLE)
+        .select("data")
+        .eq("id", CONTENT_ROW_ID)
+        .single();
+
+      if (!error && data?.data) {
+        return data.data as SiteContent;
+      }
+    } catch {
+      // fall through to local
+    }
+  }
+  return getLocalContent();
+}
+
+export async function updateContent(content: SiteContent): Promise<void> {
+  const supabase = getSupabase();
+  if (supabase) {
+    const { error } = await supabase
+      .from(CONTENT_TABLE)
+      .upsert({ id: CONTENT_ROW_ID, data: content }, { onConflict: "id" });
+
+    if (error) {
+      throw new Error(`Failed to save content: ${error.message}`);
+    }
+    return;
+  }
+  writeLocalContent(content);
+}
+
+export async function getCaseStudy(
+  slug: string
+): Promise<CaseStudy | undefined> {
+  const content = await getContent();
   return content.caseStudies.find((cs) => cs.slug === slug);
 }

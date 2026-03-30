@@ -5,7 +5,7 @@ import CaseStudyPage from "./CaseStudyPage";
 export const dynamic = "force-dynamic";
 
 export async function generateStaticParams() {
-  const content = getContent();
+  const content = await getContent();
   return content.caseStudies.map((cs) => ({ slug: cs.slug }));
 }
 
@@ -15,7 +15,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
+  const study = await getCaseStudy(slug);
   if (!study) notFound();
 
   return <CaseStudyPage study={study} />;

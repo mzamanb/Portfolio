@@ -1,11 +1,25 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
+import { getSupabase, STORAGE_BUCKET } from "@/lib/supabase";
 
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
+const ALLOWED_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/webp",
+  "image/avif",
+  "image/svg+xml",
+];
 
 export async function POST(request: Request) {
   try {
+    const supabase = getSupabase();
+    if (!supabase) {
+      return NextResponse.json(
+        { error: "Storage not configured" },
+        { status: 503 }
+      );
+    }
+
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
 
@@ -13,15 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const allowed = [
-      "image/jpeg",
-      "image/png",
-      "image/gif",
-      "image/webp",
-      "image/avif",
-      "image/svg+xml",
-    ];
-    if (!allowed.includes(file.type)) {
+    if (!ALLOWED_TYPES.includes(file.type)) {
       return NextResponse.json(
         { error: "Unsupported file type" },
         { status: 400 }
@@ -31,13 +37,27 @@ export async function POST(request: Request) {
     const ext = file.name.split(".").pop() || "png";
     const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
-    await mkdir(UPLOAD_DIR, { recursive: true });
-
     const buffer = Buffer.from(await file.arrayBuffer());
-    const filePath = path.join(UPLOAD_DIR, safeName);
-    await writeFile(filePath, buffer);
 
-    return NextResponse.json({ url: `/uploads/${safeName}` });
+    const { error } = await supabase.storage
+      .from(STORAGE_BUCKET)
+      .upload(safeName, buffer, {
+        contentType: file.type,
+        upsert: false,
+      });
+
+    if (error) {
+      return NextResponse.json(
+        { error: `Upload failed: ${error.message}` },
+        { status: 500 }
+      );
+    }
+
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(safeName);
+
+    return NextResponse.json({ url: publicUrl });
   } catch {
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }

@@ -14,6 +14,7 @@ import {
   Loader2,
   Lock,
   LogOut,
+  Database,
 } from "lucide-react";
 import type { SiteContent } from "@/lib/content";
 import ImageField from "@/components/ImageField";
@@ -156,6 +157,28 @@ export default function AdminPage() {
     }
   }, [content]);
 
+  const seedToSupabase = useCallback(async () => {
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/seed", { method: "POST" });
+      if (res.status === 401) {
+        setAuthed(false);
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Seed failed");
+      }
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Seed failed");
+    } finally {
+      setSaving(false);
+    }
+  }, []);
+
   const logout = useCallback(async () => {
     await fetch("/api/auth", { method: "DELETE" });
     setAuthed(false);
@@ -243,6 +266,15 @@ export default function AdminPage() {
               <Eye size={14} />
               Preview
             </a>
+            <button
+              onClick={seedToSupabase}
+              disabled={saving}
+              className="inline-flex items-center gap-2 rounded-lg border border-border-subtle px-3 py-1.5 text-xs text-text-secondary hover:bg-bg-card"
+              title="Push local content to Supabase database"
+            >
+              <Database size={14} />
+              Seed DB
+            </button>
             <button
               onClick={save}
               disabled={saving}

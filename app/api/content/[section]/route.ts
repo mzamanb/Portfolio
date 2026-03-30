@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ section: string }> }
 ) {
   const { section } = await params;
-  const content = getContent();
+  const content = await getContent();
   const key = section as keyof SiteContent;
 
   if (!(key in content)) {
@@ -24,7 +24,7 @@ export async function PUT(
   const { section } = await params;
   try {
     const body = await request.json();
-    const content = getContent();
+    const content = await getContent();
     const key = section as keyof SiteContent;
 
     if (!(key in content)) {
@@ -35,9 +35,10 @@ export async function PUT(
     }
 
     (content as Record<string, unknown>)[key] = body;
-    updateContent(content);
+    await updateContent(content);
     return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: "Invalid data" }, { status: 400 });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Invalid data";
+    return NextResponse.json({ error: msg }, { status: 400 });
   }
 }

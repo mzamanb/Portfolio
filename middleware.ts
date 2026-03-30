@@ -29,7 +29,8 @@ export async function middleware(request: NextRequest) {
 
   const isWriteApi =
     (pathname.startsWith("/api/content") && request.method === "PUT") ||
-    pathname.startsWith("/api/upload");
+    pathname.startsWith("/api/upload") ||
+    pathname.startsWith("/api/seed");
 
   if (isWriteApi && !(await isAuthenticated(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -39,5 +40,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/content/:path*", "/api/upload", "/api/auth"],
+  matcher: ["/api/content/:path*", "/api/upload", "/api/auth", "/api/seed"],
 };
