@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/lib/content";
 import { isEmcanCaseStudy } from "@/lib/design-system/emcan";
-import { EmcanDesignSystemShowcase } from "@/components/emcan/EmcanDesignSystemShowcase";
 
 function FadeIn({
   children,
@@ -98,13 +97,6 @@ export default function CaseStudyPage({ study }: { study: CaseStudy }) {
             ))}
           </div>
         </FadeIn>
-
-        {/* EmCan design system showcase */}
-        {emcanDs && (
-          <FadeIn delay={0.05}>
-            <EmcanDesignSystemShowcase />
-          </FadeIn>
-        )}
 
         {/* Role / Timeline / Tools */}
         <FadeIn>
