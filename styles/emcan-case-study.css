@@ -1,0 +1,30 @@
+/**
+ * EmCan case study — scoped theme overrides.
+ * Aligns portfolio case-study UI with EmCan product language (indigo trust, cool surfaces, reward accent).
+ * Parent must set data-design-system="emcan" on the case-study root.
+ */
+
+[data-design-system="emcan"] {
+  /* Brand */
+  --color-accent: #5b61e5;
+  --color-accent-hover: #7b82f0;
+  --color-accent-dim: rgba(91, 97, 229, 0.14);
+
+  /* Surfaces — slight indigo bias vs neutral zinc */
+  --color-bg: #08080f;
+  --color-bg-card: #11111a;
+  --color-bg-elevated: #1a1a26;
+  --color-border: #2a2a3d;
+  --color-border-subtle: #1c1c2a;
+
+  /* Text */
+  --color-text: #f4f4f5;
+  --color-text-secondary: #b4b4c0;
+  --color-text-muted: #787893;
+
+  /* Semantic (loyalty / rewards — use sparingly in custom classes) */
+  --color-emcan-success: #22c55e;
+  --color-emcan-success-dim: rgba(34, 197, 94, 0.12);
+  --color-emcan-warning: #f59e0b;
+  --color-emcan-warning-dim: rgba(245, 158, 11, 0.12);
+}

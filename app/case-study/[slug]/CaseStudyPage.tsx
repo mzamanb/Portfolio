@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CaseStudy } from "@/lib/content";
+import { isEmcanCaseStudy } from "@/lib/design-system/emcan";
 
 function FadeIn({
   children,
@@ -30,9 +31,13 @@ function FadeIn({
 
 export default function CaseStudyPage({ study }: { study: CaseStudy }) {
   const { fullContent: content } = study;
+  const emcanDs = isEmcanCaseStudy(study.id);
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div
+      className="min-h-screen bg-bg"
+      {...(emcanDs ? { "data-design-system": "emcan" } : {})}
+    >
       {/* Top bar */}
       <div className="fixed top-0 left-0 right-0 z-50 border-b border-border-subtle bg-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
