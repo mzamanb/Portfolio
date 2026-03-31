@@ -42,3 +42,4 @@ Typography uses the site **Inter** stack; scale follows the case-study template 
 
 - `app/case-study/[slug]/CaseStudyPage.tsx` sets `data-design-system="emcan"` when `study.id === "emcan"`.
 - `app/globals.css` imports `styles/emcan-case-study.css`.
+- `components/emcan/EmcanDesignSystemShowcase.tsx` renders a **Design system** section on the EmCan case study (colors, type, spacing, radius, sample components). Data comes from `lib/design-system/emcan.ts`.
