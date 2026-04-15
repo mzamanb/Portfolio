@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Sun, Moon } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -57,15 +59,31 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
             <Download size={14} />
             Resume
           </a>
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-full p-2 text-text-secondary transition-colors hover:bg-bg-card hover:text-text"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
-        <button
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-full p-2 text-text-secondary transition-colors hover:text-text"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-text-secondary md:hidden"
+          className="text-text-secondary"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

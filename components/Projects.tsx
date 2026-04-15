@@ -6,14 +6,14 @@ import type { Project } from "@/lib/content";
 
 export default function Projects({ data }: { data: Project[] }) {
   return (
-    <section id="projects" className="relative px-6 py-32">
+    <section id="projects" className="relative px-6 py-20 md:py-32">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-16"
+          className="mb-10 md:mb-16"
         >
           <span className="mb-4 inline-block text-sm font-medium uppercase tracking-widest text-accent">
             Explorations

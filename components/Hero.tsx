@@ -12,8 +12,8 @@ export default function Hero({ data }: { data: HeroContent }) {
     >
       {/* Gradient orbs */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-[400px] w-[400px] rounded-full bg-purple-600/5 blur-[100px]" />
+        <div className="absolute left-1/4 top-1/4 h-[300px] w-[300px] rounded-full bg-accent/5 blur-[120px] sm:h-[500px] sm:w-[500px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-[200px] w-[200px] rounded-full bg-purple-600/5 blur-[100px] sm:h-[400px] sm:w-[400px]" />
       </div>
 
       {/* Grid pattern */}
@@ -41,7 +41,7 @@ export default function Hero({ data }: { data: HeroContent }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 text-5xl font-bold leading-tight tracking-tight md:text-7xl lg:text-8xl"
+          className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {data.title[0]}{" "}
           <span className="bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent">
