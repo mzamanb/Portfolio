@@ -55,6 +55,77 @@ Core principle: Everything that can be determined locally uses zero Claude API t
 
         <Hr />
 
+        <section className="mb-12" id="vision">
+          <SectionTitle>Vision</SectionTitle>
+          <p className="mb-4 text-sm leading-relaxed text-text-secondary">
+            Before JARVIS can create the &quot;New Element,&quot; he must find the
+            &quot;Palladium Poisoning&quot; in the product — the hidden failures
+            that undermine the experience. MENTOR pursues the same kind of system
+            diagnosis and long-term governance, expressed in two linked phases: Audit
+            and Maintenance.
+          </p>
+
+          <SubTitle>Phase 1: The Audit (The &quot;System Diagnosis&quot;)</SubTitle>
+          <p className="mb-3 text-sm text-text-secondary">
+            Heuristic evaluation and technical debt mapping, aimed at the real
+            product — not a slide deck.
+          </p>
+          <Block>
+            {`JARVIS’s Audit Capabilities (mapped to MENTOR’s product direction):
+
+Visual regression testing
+- Compare every screen against the source of truth: the Figma library.
+- Surfaces "Design Debt" — controls a few pixels off, inconsistent hex codes, non-standard font weights, and drift from agreed tokens or styles.
+
+Accessibility (A11y) deep-scan
+- Audits the DOM so screen reader flows are navigable, labels are meaningful, and contrast ratios meet legal standards (not "good enough" — compliant).
+
+Information Architecture (IA) stress test
+- Maps click-depth: how many taps to complete critical jobs. Example: if an Emirati family needs more than three taps to pool "Family Pot" points, that path is a UX failure point, not a minor friction.
+
+Content audit
+- Flags "System Speak" (e.g. "Error 404") and suggests "Human Speak" (e.g. "We couldn’t find that reward") so copy matches user mental models, not only engineering states.`}
+          </Block>
+
+          <SubTitle>Phase 2: Maintenance (The &quot;System Longevity&quot;)</SubTitle>
+          <p className="mb-3 text-sm text-text-secondary">
+            Maintenance is governance: the design system must not rot as the team
+            and product surface area grow.
+          </p>
+          <Block>
+            {`JARVIS’s Maintenance Capabilities:
+
+Design token synchronization
+- When a brand value changes in the library (e.g. "Gold Tier"), JARVIS can drive the handoff: automatic PRs so iOS, Android, and web stay in sync with the same semantic intent.
+
+Component health tracking
+- Tracks which components are used most. If a "Card" variant is rarely used, the system can suggest deprecating it so the library stays lean and trustworthy.
+
+Version control & documentation
+- A living "Changelog": for every change requested by a stakeholder (e.g. Hessa, Murad), JARVIS records the why, the who, and the when — so decisions survive turnover.
+
+Proactive refactoring
+- Like a self-healing layer: JARVIS spots UI code on its way to "legacy" and suggests an update before the experience breaks in production or in design/dev handoff.`}
+          </Block>
+
+          <SubTitle>The &quot;Audit to Maintenance&quot; Pipeline</SubTitle>
+          <Block>
+            {`In the "encyclopedia" of this JARVIS, Audit and Maintenance are connected by a Service Blueprint.
+
+- The Audit finds failure points. Example: the points-to-miles conversion is confusing, or a reward path is cognitively overloaded.
+- The Synthesis produces the fix — e.g. a real-time conversion calculator, or a reordered information hierarchy.
+- Maintenance keeps that fix stable: as new partners (e.g. Skywards) or rules are added, the logic, tokens, and documentation stay aligned and documented.`}
+          </Block>
+          <blockquote className="mt-6 border-l-2 border-accent pl-4 text-sm leading-relaxed italic text-text-secondary">
+            &ldquo;Sir, I&rsquo;ve completed the audit of the Loyalty Hub. I found
+            three instances of &lsquo;Z-Pattern&rsquo; breaking in the rewards
+            gallery. Shall I initiate the maintenance protocols to realign them
+            with our core design tokens?&rdquo;
+          </blockquote>
+        </section>
+
+        <Hr />
+
         <section className="mb-12" id="current-capabilities">
           <SectionTitle>Current Capabilities</SectionTitle>
 
