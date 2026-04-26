@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getContent } from "@/lib/content";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ChatWidget } from "@/components/ChatWidget";
+import { showChatWidget } from "@/lib/chat-config";
 import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -75,7 +77,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          {showChatWidget() ? <ChatWidget /> : null}
+        </ThemeProvider>
       </body>
     </html>
   );
