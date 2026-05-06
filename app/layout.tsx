@@ -62,7 +62,7 @@ export default function RootLayout({
         {/* Anti-flash: set theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t||'dark')}catch(e){}})()`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t||'light')}catch(e){document.documentElement.setAttribute('data-theme','light')}})()`,
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

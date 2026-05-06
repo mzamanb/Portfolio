@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getContent } from "@/lib/content";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import WhatsNext from "@/components/WhatsNext";
 import Skills from "@/components/Skills";
 import CaseStudies from "@/components/CaseStudies";
 import Projects from "@/components/Projects";
@@ -50,6 +51,7 @@ export default async function Home() {
       <Navbar resumeUrl={content.hero.resumeUrl} />
       <main>
         <Hero data={content.hero} />
+        <WhatsNext />
         <Skills data={content.skills} />
         <CaseStudies data={content.caseStudies} />
         <Projects data={content.projects} />

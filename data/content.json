@@ -30,7 +30,7 @@
     {
       "id": "emcan",
       "label": "case study",
-      "title": "EmCan",
+      "title": "Emarat",
       "subtitle": "Loyalty App",
       "tags": ["UI/UX Design", "Design Systems", "Scrum Management"],
       "description": "Redesigned a UAE fuel station loyalty app, introducing digital promotions, car wash packages, coffee stamp cards, and partner integrations that transformed user engagement.",
@@ -134,7 +134,7 @@
     {
       "id": "veehive",
       "label": "case study",
-      "title": "VeeHive.ai",
+      "title": "VeeHive",
       "subtitle": "Platform",
       "tags": ["Product Design", "User Research"],
       "description": "Led end-to-end design for a community-first creator platform — from research through PWA launch — focusing on content discovery, moderation efficiency, and creator monetization.",
@@ -234,7 +234,7 @@
     },
     {
       "id": "fitness-app",
-      "title": "Fitness App",
+      "title": "FEVAFIT",
       "description": "A bold, high-energy fitness app concept with workout tracking, progress visualization, and social motivation features.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/1c8a88f2932f4abc620226c036084b325cfb5207.png",
       "tags": ["UI Design", "Mobile"]
