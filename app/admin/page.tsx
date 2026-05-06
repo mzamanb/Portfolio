@@ -605,14 +605,19 @@ function HeroEditor({
           onChange={(v) => updateField("hero.name", v)}
         />
         <Field
-          label="Title line 1"
-          value={content.hero.title[0]}
+          label="Tagline 1"
+          value={content.hero.title[0] ?? ""}
           onChange={(v) => updateField("hero.title.0", v)}
         />
         <Field
-          label="Title line 2 (highlighted)"
-          value={content.hero.title[1]}
+          label="Tagline 2 (optional)"
+          value={content.hero.title[1] ?? ""}
           onChange={(v) => updateField("hero.title.1", v)}
+        />
+        <Field
+          label="Tagline 3 (Highlighted)"
+          value={content.hero.title[2] ?? ""}
+          onChange={(v) => updateField("hero.title.2", v)}
         />
         <Field
           label="Subtitle"

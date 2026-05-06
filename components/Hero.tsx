@@ -12,9 +12,7 @@ const META = [
 ];
 
 export default function Hero({ data }: { data: HeroContent }) {
-  const lines = data.title;
-  const accentLine = lines[0];
-  const bodyLines = lines.slice(1);
+  const [tagline1 = "", tagline2 = "", tagline3 = ""] = data.title;
 
   return (
     <section
@@ -70,12 +68,9 @@ export default function Hero({ data }: { data: HeroContent }) {
             fontWeight: 400,
           }}
         >
-          <span className="block text-accent">{accentLine}</span>
-          {bodyLines.map((line, i) => (
-            <span key={i} className="block text-text">
-              {line}
-            </span>
-          ))}
+          <span className="block text-text">{tagline1}</span>
+          {tagline2 && <span className="block text-text">{tagline2}</span>}
+          <span className="block text-accent">{tagline3}</span>
         </motion.h1>
 
         {/* Lead paragraph — max 580px, Inter 17/26, text-secondary */}
