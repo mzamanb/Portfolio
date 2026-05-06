@@ -2,19 +2,39 @@ import { MentorTopBar } from "./MentorTopBar";
 
 function Block({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-sm leading-relaxed text-text-secondary whitespace-pre-wrap">
+    <div className="whitespace-pre-wrap text-[14px] leading-relaxed text-text-secondary">
       {children}
     </div>
   );
 }
 
 function Hr() {
-  return <hr className="my-12 border-border-subtle" />;
+  return (
+    <div className="my-14 flex items-center gap-4">
+      <div
+        className="h-px flex-1"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--color-border), transparent)",
+        }}
+      />
+      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-muted">
+        ⌁
+      </span>
+      <div
+        className="h-px flex-1"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, var(--color-border), transparent)",
+        }}
+      />
+    </div>
+  );
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mb-6 text-2xl font-bold tracking-tight text-text md:text-3xl">
+    <h2 className="mb-6 text-2xl font-medium tracking-tight text-text md:text-[1.875rem] md:leading-[1.15]">
       {children}
     </h2>
   );
@@ -22,28 +42,43 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 
 function SubTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mb-3 mt-8 text-lg font-semibold text-text">{children}</h3>
+    <h3 className="mb-3 mt-8 text-[15px] font-semibold tracking-tight text-text">
+      {children}
+    </h3>
+  );
+}
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mb-3 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent">
+      <span className="h-px w-6 bg-accent/60" />
+      {children}
+    </p>
   );
 }
 
 export function MentorPresentation() {
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="relative min-h-screen overflow-hidden bg-bg">
+      <div className="pointer-events-none absolute inset-0 bg-architecture-grid opacity-25 [mask-image:radial-gradient(ellipse_at_top,black_15%,transparent_60%)]" />
       <MentorTopBar />
-      <article className="mx-auto max-w-4xl px-6 pt-28 pb-24">
+
+      <article className="relative mx-auto max-w-3xl px-6 pb-24 pt-32 md:pt-40">
         <header className="mb-12">
-          <p className="mb-2 text-xs font-medium uppercase tracking-widest text-accent">
-            Figma plugin
-          </p>
-          <h1 className="text-3xl font-bold tracking-tight text-text md:text-5xl md:leading-tight">
+          <Eyebrow>Figma plugin</Eyebrow>
+          <h1 className="text-3xl font-medium leading-[1.05] tracking-[-0.02em] text-text md:text-[2.75rem]">
             MENTOR — Current Capabilities &amp; Future Roadmap
           </h1>
+          <p className="mt-5 max-w-xl text-[14.5px] leading-relaxed text-text-secondary">
+            A long-form look at what the plugin does today, the system it
+            measures itself against, and where it&apos;s going next.
+          </p>
         </header>
 
         <Hr />
 
         <section className="mb-12" id="what-mentor-is">
-          <SectionTitle>What MENTOR Is</SectionTitle>
+          <SectionTitle>What MENTOR is</SectionTitle>
           <Block>
             {`A Figma plugin that acts as an autonomous design system maintainer. The designer focuses on creativity; MENTOR handles token binding, style organisation, naming enforcement, component architecture, and quality scoring — without the designer touching Variables, Styles, or the Assets panel manually.
 
@@ -57,16 +92,16 @@ Core principle: Everything that can be determined locally uses zero Claude API t
 
         <section className="mb-12" id="vision">
           <SectionTitle>Vision</SectionTitle>
-          <p className="mb-4 text-sm leading-relaxed text-text-secondary">
-            Before JARVIS can create the &quot;New Element,&quot; he must find the
-            &quot;Palladium Poisoning&quot; in the product — the hidden failures
-            that undermine the experience. MENTOR pursues the same kind of system
-            diagnosis and long-term governance, expressed in two linked phases: Audit
-            and Maintenance.
+          <p className="mb-4 text-[14px] leading-relaxed text-text-secondary">
+            Before JARVIS can create the &quot;New Element,&quot; he must find
+            the &quot;Palladium Poisoning&quot; in the product — the hidden
+            failures that undermine the experience. MENTOR pursues the same
+            kind of system diagnosis and long-term governance, expressed in
+            two linked phases: Audit and Maintenance.
           </p>
 
-          <SubTitle>Phase 1: The Audit (The &quot;System Diagnosis&quot;)</SubTitle>
-          <p className="mb-3 text-sm text-text-secondary">
+          <SubTitle>Phase 1: The Audit (the &quot;System Diagnosis&quot;)</SubTitle>
+          <p className="mb-3 text-[14px] leading-relaxed text-text-secondary">
             Heuristic evaluation and technical debt mapping, aimed at the real
             product — not a slide deck.
           </p>
@@ -87,10 +122,10 @@ Content audit
 - Flags "System Speak" (e.g. "Error 404") and suggests "Human Speak" (e.g. "We couldn’t find that reward") so copy matches user mental models, not only engineering states.`}
           </Block>
 
-          <SubTitle>Phase 2: Maintenance (The &quot;System Longevity&quot;)</SubTitle>
-          <p className="mb-3 text-sm text-text-secondary">
-            Maintenance is governance: the design system must not rot as the team
-            and product surface area grow.
+          <SubTitle>Phase 2: Maintenance (the &quot;System Longevity&quot;)</SubTitle>
+          <p className="mb-3 text-[14px] leading-relaxed text-text-secondary">
+            Maintenance is governance: the design system must not rot as the
+            team and product surface area grow.
           </p>
           <Block>
             {`JARVIS’s Maintenance Capabilities:
@@ -108,7 +143,7 @@ Proactive refactoring
 - Like a self-healing layer: JARVIS spots UI code on its way to "legacy" and suggests an update before the experience breaks in production or in design/dev handoff.`}
           </Block>
 
-          <SubTitle>The &quot;Audit to Maintenance&quot; Pipeline</SubTitle>
+          <SubTitle>The &quot;Audit to Maintenance&quot; pipeline</SubTitle>
           <Block>
             {`In the "encyclopedia" of this JARVIS, Audit and Maintenance are connected by a Service Blueprint.
 
@@ -116,20 +151,20 @@ Proactive refactoring
 - The Synthesis produces the fix — e.g. a real-time conversion calculator, or a reordered information hierarchy.
 - Maintenance keeps that fix stable: as new partners (e.g. Skywards) or rules are added, the logic, tokens, and documentation stay aligned and documented.`}
           </Block>
-          <blockquote className="mt-6 border-l-2 border-accent pl-4 text-sm leading-relaxed italic text-text-secondary">
-            &ldquo;Sir, I&rsquo;ve completed the audit of the Loyalty Hub. I found
-            three instances of &lsquo;Z-Pattern&rsquo; breaking in the rewards
-            gallery. Shall I initiate the maintenance protocols to realign them
-            with our core design tokens?&rdquo;
+          <blockquote className="mt-6 rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg-card)]/50 p-5 text-[13.5px] leading-relaxed italic text-text-secondary backdrop-blur md:p-6">
+            &ldquo;Sir, I&rsquo;ve completed the audit of the Loyalty Hub. I
+            found three instances of &lsquo;Z-Pattern&rsquo; breaking in the
+            rewards gallery. Shall I initiate the maintenance protocols to
+            realign them with our core design tokens?&rdquo;
           </blockquote>
         </section>
 
         <Hr />
 
         <section className="mb-12" id="current-capabilities">
-          <SectionTitle>Current Capabilities</SectionTitle>
+          <SectionTitle>Current capabilities</SectionTitle>
 
-          <SubTitle>1 — Design System Scanner (System Tab)</SubTitle>
+          <SubTitle>1 — Design system scanner (System tab)</SubTitle>
           <Block>
             {`Colors (scanColors)
 - Scans all fills: SOLID + gradient (GRADIENT_LINEAR/RADIAL/ANGULAR/DIAMOND)
@@ -166,42 +201,42 @@ Naming Convention Validation (validateTokenNames)
 - Deducts 2 pts per violation (capped 20 pts) from health score`}
           </Block>
 
-          <SubTitle>2 — System Health Score</SubTitle>
-          <p className="mb-4 text-sm text-text-secondary">
+          <SubTitle>2 — System health score</SubTitle>
+          <p className="mb-4 text-[14px] leading-relaxed text-text-secondary">
             Four-dimensional weighted grade displayed in the System tab:
           </p>
-          <div className="mb-4 overflow-x-auto rounded-xl border border-border-subtle">
+          <div className="mb-4 overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg-card)]/40 backdrop-blur">
             <table className="w-full min-w-[36rem] text-left text-sm">
               <thead>
-                <tr className="border-b border-border-subtle bg-bg-elevated">
-                  <th className="px-4 py-3 font-medium text-text">Dimension</th>
-                  <th className="w-20 px-4 py-3 font-medium text-text">Weight</th>
-                  <th className="px-4 py-3 font-medium text-text">Measures</th>
+                <tr className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)]/60 text-[11px] font-semibold uppercase tracking-[0.16em] text-text-muted">
+                  <th className="px-4 py-3">Dimension</th>
+                  <th className="w-20 px-4 py-3">Weight</th>
+                  <th className="px-4 py-3">Measures</th>
                 </tr>
               </thead>
-              <tbody className="text-text-secondary">
-                <tr className="border-b border-border-subtle">
+              <tbody className="text-[13.5px] text-text-secondary">
+                <tr className="border-b border-[var(--color-border-subtle)]">
                   <td className="px-4 py-3">Colors tokenized</td>
-                  <td className="px-4 py-3 text-accent">35%</td>
+                  <td className="px-4 py-3 font-mono text-accent">35%</td>
                   <td className="px-4 py-3">
                     % solid fills bound to variable or paint style
                   </td>
                 </tr>
-                <tr className="border-b border-border-subtle">
+                <tr className="border-b border-[var(--color-border-subtle)]">
                   <td className="px-4 py-3">Text styles linked</td>
-                  <td className="px-4 py-3 text-accent">35%</td>
+                  <td className="px-4 py-3 font-mono text-accent">35%</td>
                   <td className="px-4 py-3">% TEXT nodes with textStyleId</td>
                 </tr>
-                <tr className="border-b border-border-subtle">
+                <tr className="border-b border-[var(--color-border-subtle)]">
                   <td className="px-4 py-3">Effects styled</td>
-                  <td className="px-4 py-3 text-accent">15%</td>
+                  <td className="px-4 py-3 font-mono text-accent">15%</td>
                   <td className="px-4 py-3">
                     % nodes with effects bound to effectStyleId
                   </td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3">Spacing tokenized</td>
-                  <td className="px-4 py-3 text-accent">15%</td>
+                  <td className="px-4 py-3 font-mono text-accent">15%</td>
                   <td className="px-4 py-3">
                     % auto-layout spacing/radius with FLOAT variable
                   </td>
@@ -216,7 +251,7 @@ Naming Convention Validation (validateTokenNames)
 - Updates when any scanner runs; four progress bars with percentage labels`}
           </Block>
 
-          <SubTitle>3 — Token Creation</SubTitle>
+          <SubTitle>3 — Token creation</SubTitle>
           <Block>
             {`Color tokens (createToken)
 - Creates in Colors collection with Light + Dark modes
@@ -239,7 +274,7 @@ Spacing/radius tokens (createSpacingToken)
 - Covers: itemSpacing, paddingTop/Bottom/Left/Right, cornerRadius`}
           </Block>
 
-          <SubTitle>4 — Collection Architecture</SubTitle>
+          <SubTitle>4 — Collection architecture</SubTitle>
           <Block>
             {`"Organize System" (buildDSCollections)
 - Creates Colors collection with Light and Dark modes
@@ -250,7 +285,7 @@ Spacing/radius tokens (createSpacingToken)
 Going forward: createToken targets Colors directly — no more flat collection.`}
           </Block>
 
-          <SubTitle>5 — Watch Mode</SubTitle>
+          <SubTitle>5 — Watch mode</SubTitle>
           <Block>
             {`Semi-automatic token binding (processWatchChanges)
 - Listens to figma.on('documentchange') — filters CREATE + property changes
@@ -265,7 +300,7 @@ UI:
 - Review jumps to System tab and re-runs all 3 scanners`}
           </Block>
 
-          <SubTitle>6 — Component Builder</SubTitle>
+          <SubTitle>6 — Component builder</SubTitle>
           <Block>
             {`Type identification (identifyComponentType)
 - Name-based detection first (most reliable): 21 regex patterns
@@ -306,7 +341,7 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
 - elevate (DROP_SHADOW y:8 radius:16 for hover elevation)`}
           </Block>
 
-          <SubTitle>7 — Drift Check &amp; Review Tab</SubTitle>
+          <SubTitle>7 — Drift check &amp; Review tab</SubTitle>
           <Block>
             {`- Runs on selection, reports unbound fills, strokes, unlinked text, unnamed layers
 - Color context: groups issues by hex, shows usage roles and parent names
@@ -316,7 +351,7 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
 - Progress tracking: shows N/total as fixes apply`}
           </Block>
 
-          <SubTitle>8 — Accessibility Audit (Mentor Tab)</SubTitle>
+          <SubTitle>8 — Accessibility audit (Mentor tab)</SubTitle>
           <Block>
             {`- Checks WCAG AA/AAA contrast ratios (relative luminance formula)
 - Flags font sizes < 12px (error < 10px, warning 10–11px)
@@ -325,7 +360,7 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
 - One-click fix or batch fix all`}
           </Block>
 
-          <SubTitle>9 — AI Mentor Tab</SubTitle>
+          <SubTitle>9 — AI Mentor tab</SubTitle>
           <Block>
             {`- Voice input (SPACE key) via Web Speech API
 - Text input fallback
@@ -336,7 +371,7 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
 - extractJson() handles Claude responses wrapped in code fences`}
           </Block>
 
-          <SubTitle>10 — Tools Tab</SubTitle>
+          <SubTitle>10 — Tools tab</SubTitle>
           <Block>
             {`- Rename layers semantically (AI-powered)
 - Generate 3 layout variations of selection
@@ -349,8 +384,8 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
         <Hr />
 
         <section className="mb-12" id="file-structure">
-          <SectionTitle>File Structure</SectionTitle>
-          <pre className="overflow-x-auto rounded-xl border border-border-subtle bg-bg-elevated/80 p-4 font-mono text-xs leading-relaxed text-text-secondary">
+          <SectionTitle>File structure</SectionTitle>
+          <pre className="overflow-x-auto rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)]/70 p-5 font-mono text-xs leading-relaxed text-text-secondary backdrop-blur">
             {`mentor-plugin/
   code.js       Figma main thread — all API calls, scanning, creation, watch mode
   ui.html       Plugin UI — all rendering, state, message handling, click handlers
@@ -361,7 +396,7 @@ STATE_VISUALS — complete lookup table, all 21 types × N states, covering:
         <Hr />
 
         <section className="mb-12" id="future-roadmap">
-          <SectionTitle>Future Roadmap</SectionTitle>
+          <SectionTitle>Future roadmap</SectionTitle>
 
           <SubTitle>Near-term (next sessions)</SubTitle>
           <Block>
@@ -412,11 +447,11 @@ MT-5 — Cross-Component Pattern Detection
 - Suggest component sets: "These 4 cards could be one Card component"`}
           </Block>
 
-          <SubTitle>Long-term (The JARVIS Vision)</SubTitle>
-          <p className="mb-4 text-sm font-medium text-text">
-            The goal: MENTOR actively maintains the entire design system as the designer
-            creates. The designer makes creative decisions; MENTOR handles the system
-            infrastructure.
+          <SubTitle>Long-term (the JARVIS vision)</SubTitle>
+          <p className="mb-4 text-[14px] font-medium leading-relaxed text-text">
+            The goal: MENTOR actively maintains the entire design system as
+            the designer creates. The designer makes creative decisions;
+            MENTOR handles the system infrastructure.
           </p>
           <Block>
             {`LT-1 — Real-time Design System Awareness
@@ -463,77 +498,47 @@ LT-7 — The Full JARVIS Loop
         <Hr />
 
         <section className="mb-12" id="current-grade">
-          <SectionTitle>Current Grade</SectionTitle>
-          <p className="mb-4 text-sm text-text-secondary">
+          <SectionTitle>Current grade</SectionTitle>
+          <p className="mb-4 text-[14px] leading-relaxed text-text-secondary">
             Based on DesignCode UI reference standard:
           </p>
-          <div className="overflow-x-auto rounded-xl border border-border-subtle">
+          <div className="overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg-card)]/40 backdrop-blur">
             <table className="w-full min-w-[28rem] text-left text-sm">
               <thead>
-                <tr className="border-b border-border-subtle bg-bg-elevated">
-                  <th className="px-4 py-3 font-medium text-text">Category</th>
-                  <th className="w-36 px-4 py-3 font-medium text-text">Status</th>
+                <tr className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg-elevated)]/60 text-[11px] font-semibold uppercase tracking-[0.16em] text-text-muted">
+                  <th className="px-4 py-3">Category</th>
+                  <th className="w-36 px-4 py-3">Status</th>
                 </tr>
               </thead>
-              <tbody className="text-text-secondary">
+              <tbody className="text-[13.5px] text-text-secondary">
                 {[
-                  [
-                    "Color tokenization (scan + create + bind)",
-                    "✅ Full",
-                  ],
-                  [
-                    "Typography (scan + create + bind)",
-                    "✅ Full",
-                  ],
-                  [
-                    "Effect styles (scan + create + bind)",
-                    "✅ Full",
-                  ],
-                  [
-                    "Spacing/radius tokens (scan + create + bind)",
-                    "✅ Full",
-                  ],
+                  ["Color tokenization (scan + create + bind)", "✅ Full"],
+                  ["Typography (scan + create + bind)", "✅ Full"],
+                  ["Effect styles (scan + create + bind)", "✅ Full"],
+                  ["Spacing/radius tokens (scan + create + bind)", "✅ Full"],
                   ["Naming convention enforcement", "✅ Full"],
-                  [
-                    "Collection architecture (Light/Dark modes)",
-                    "✅ Full",
-                  ],
+                  ["Collection architecture (Light/Dark modes)", "✅ Full"],
                   ["Watch mode (auto-binding)", "✅ Full"],
-                  [
-                    "Component generation (21 types, all states)",
-                    "✅ Full",
-                  ],
+                  ["Component generation (21 types, all states)", "✅ Full"],
                   ["Boolean properties", "✅ Full"],
                   ["WCAG-correct text color", "✅ Full"],
-                  [
-                    "Three-scenario color intelligence",
-                    "✅ Full",
-                  ],
+                  ["Three-scenario color intelligence", "✅ Full"],
                   ["Gradient fill detection", "✅ Full"],
                   ["Drift check + batch fix", "✅ Full"],
                   ["Accessibility audit", "✅ Full"],
                   ["AI canvas editing (voice + text)", "✅ Full"],
                   ["Component naming via AI", "⬜ Planned (NR-3)"],
                   ["Multi-page scanning", "⬜ Planned (MT-1)"],
-                  [
-                    "Token export (DTCG format)",
-                    "⬜ Planned (MT-3)",
-                  ],
-                  [
-                    "Real-time system awareness",
-                    "⬜ Planned (LT-1)",
-                  ],
-                  [
-                    "Design system generation from brief",
-                    "⬜ Planned (LT-3)",
-                  ],
+                  ["Token export (DTCG format)", "⬜ Planned (MT-3)"],
+                  ["Real-time system awareness", "⬜ Planned (LT-1)"],
+                  ["Design system generation from brief", "⬜ Planned (LT-3)"],
                 ].map(([cat, st], i) => (
                   <tr
                     key={i}
-                    className="border-b border-border-subtle last:border-0"
+                    className="border-b border-[var(--color-border-subtle)] last:border-0"
                   >
                     <td className="px-4 py-2.5">{cat}</td>
-                    <td className="px-4 py-2.5 text-text">{st}</td>
+                    <td className="px-4 py-2.5 font-medium text-text">{st}</td>
                   </tr>
                 ))}
               </tbody>
@@ -541,7 +546,7 @@ LT-7 — The Full JARVIS Loop
           </div>
         </section>
 
-        <p className="text-center text-sm text-text-muted">
+        <p className="mt-16 text-center text-[13px] text-text-muted">
           <a
             href="/"
             className="text-accent transition-colors hover:text-accent-hover"

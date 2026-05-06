@@ -526,7 +526,7 @@ export function ChatWidget() {
           style={{
             background:
               "linear-gradient(135deg, var(--color-accent), var(--color-accent-hover))",
-            boxShadow: "0 10px 25px rgba(124, 58, 237, 0.35)",
+            boxShadow: "0 10px 25px rgba(16, 185, 129, 0.35)",
           }}
           aria-label={open ? "Close chat" : "Open chat"}
         >

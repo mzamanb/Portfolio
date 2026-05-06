@@ -16,7 +16,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    // Pick up whatever the anti-flash script already set
     const current =
       (document.documentElement.getAttribute("data-theme") as Theme) || "light";
     setTheme(current);

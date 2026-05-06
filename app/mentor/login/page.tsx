@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Lock, Loader2, Moon, Sun } from "lucide-react";
+import { ArrowLeft, Lock, Loader2, Moon, Sun, ShieldCheck } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 export default function MentorLoginPage() {
@@ -39,61 +39,109 @@ export default function MentorLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-bg">
-      <div className="border-b border-border-subtle bg-bg/80 px-6 py-4 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-lg items-center justify-between">
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-bg">
+      <div className="pointer-events-none absolute inset-0 bg-architecture-grid opacity-30 [mask-image:radial-gradient(ellipse_at_top,black_15%,transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-[20%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[var(--color-accent-dim)] blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 px-4 pt-4">
+        <div className="mx-auto flex max-w-lg items-center justify-between gap-4 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]/70 px-5 py-3 shadow-architecture backdrop-blur-xl">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text"
+            className="inline-flex items-center gap-2 text-[13px] font-medium text-text-secondary transition-colors hover:text-text"
           >
-            <ArrowLeft size={16} />
+            <ArrowLeft size={14} />
             Home
           </Link>
+          <span className="text-[12px] font-semibold uppercase tracking-[0.18em] text-text-muted">
+            MENTOR access
+          </span>
           <button
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="rounded-full p-2 text-text-secondary transition-colors hover:bg-bg-card hover:text-text"
+            className="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-bg-card)]/60 text-text-secondary transition-all hover:border-[var(--color-border)] hover:bg-[var(--color-bg-elevated)] hover:text-text"
           >
-            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
           </button>
         </div>
       </div>
-      <div className="flex flex-1 items-center justify-center px-6 py-16">
+
+      <div className="relative z-10 flex flex-1 items-center justify-center px-6 py-16">
         <div className="w-full max-w-sm">
-          <div className="mb-8 text-center">
-            <div className="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-              <Lock size={20} className="text-accent" />
+          <div className="relative overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-bg-card)]/70 p-8 shadow-architecture backdrop-blur-xl md:p-10">
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, var(--color-accent), transparent)",
+              }}
+            />
+
+            <div className="mb-8 text-center">
+              <div className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl border border-accent/30 bg-accent/10 text-accent shadow-[0_4px_16px_-4px_rgba(16,185,129,0.4)]">
+                <Lock size={20} strokeWidth={1.75} />
+              </div>
+              <span className="mb-2 inline-flex items-center gap-2 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-accent">
+                <span className="h-px w-5 bg-accent/60" />
+                Restricted
+                <span className="h-px w-5 bg-accent/60" />
+              </span>
+              <h1 className="mb-1.5 text-[1.625rem] font-medium tracking-tight">
+                MENTOR
+              </h1>
+              <p className="text-[13px] leading-relaxed text-text-muted">
+                Enter the password to view this page
+              </p>
             </div>
-            <h1 className="mb-1 text-xl font-bold">MENTOR</h1>
-            <p className="text-sm text-text-muted">
-              Enter the password to view this page
+
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div>
+                <label
+                  htmlFor="mentor-password"
+                  className="mb-1.5 block text-[10.5px] font-semibold uppercase tracking-[0.18em] text-text-muted"
+                >
+                  Password
+                </label>
+                <input
+                  id="mentor-password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] px-4 py-3 text-[14px] text-text outline-none transition-all placeholder:text-text-muted focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  placeholder="••••••••"
+                  autoComplete="current-password"
+                  autoFocus
+                  required
+                />
+              </div>
+              {error && (
+                <p
+                  className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-center text-[12.5px] text-red-500"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={loading}
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-full bg-accent px-4 text-[13px] font-semibold text-white shadow-[0_8px_24px_-8px_rgba(16,185,129,0.6)] transition-all hover:bg-accent-hover disabled:opacity-50"
+              >
+                {loading ? (
+                  <Loader2 className="animate-spin" size={15} />
+                ) : (
+                  <ShieldCheck size={15} />
+                )}
+                {loading ? "Verifying…" : "Continue"}
+              </button>
+            </form>
+
+            <p className="mt-6 text-center text-[11.5px] text-text-muted">
+              Local-only · Encrypted at rest
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-border bg-bg-card px-4 py-3 text-text outline-none transition-colors focus:border-accent"
-              placeholder="Password"
-              autoComplete="current-password"
-              required
-            />
-            {error && (
-              <p className="text-center text-sm text-red-500" role="alert">
-                {error}
-              </p>
-            )}
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-3 font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
-            >
-              {loading ? <Loader2 className="animate-spin" size={18} /> : null}
-              {loading ? "Verifying…" : "Continue"}
-            </button>
-          </form>
         </div>
       </div>
     </div>
