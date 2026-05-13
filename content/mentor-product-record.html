@@ -455,24 +455,28 @@ body {
 
       <p class="sidebar-section">Phases</p>
       <div class="nav-item" onclick="show('p1')">
-        <div class="nav-dot" style="background:var(--purple-dim)"></div>
-        Phase 1 — Strategy
+        <div class="nav-dot" style="background:var(--teal)"></div>
+        Phase 1 — Web layer
       </div>
       <div class="nav-item" onclick="show('p2')">
         <div class="nav-dot" style="background:var(--teal)"></div>
-        Phase 2 — Build
+        Phase 2 — VS Code bridge
       </div>
       <div class="nav-item" onclick="show('p3')">
-        <div class="nav-dot" style="background:var(--amber)"></div>
-        Phase 3 — Alpha
+        <div class="nav-dot" style="background:var(--purple-dim)"></div>
+        Phase 3 — Lesson engine
       </div>
       <div class="nav-item" onclick="show('p4')">
-        <div class="nav-dot" style="background:var(--coral)"></div>
-        Phase 4 — Beta
+        <div class="nav-dot" style="background:var(--amber)"></div>
+        Phase 4 — Realtime dashboard
       </div>
       <div class="nav-item" onclick="show('p5')">
+        <div class="nav-dot" style="background:var(--coral)"></div>
+        Phase 5 — AI tutor
+      </div>
+      <div class="nav-item" onclick="show('p6')">
         <div class="nav-dot" style="background:var(--blue)"></div>
-        Phase 5 — Launch
+        Phase 6 — Polish + publish
       </div>
 
       <p class="sidebar-section">Future</p>
@@ -488,50 +492,50 @@ body {
       <!-- Overview -->
       <div class="section active" id="overview">
         <h1 class="section-title">Mentor — product record</h1>
-        <p class="updated">Last updated: May 2026 &nbsp;·&nbsp; v1.0 &nbsp;·&nbsp; private</p>
+        <p class="updated">Last updated: Feb 2026 &nbsp;·&nbsp; v1.1 &nbsp;·&nbsp; private</p>
 
         <div class="timeline">
-          <div class="tl-col current">
-            <p class="tl-phase" style="color:var(--purple)">Now · Phase 1</p>
-            <p class="tl-title">Strategy + design</p>
-            <p class="tl-time">Wks 1–6</p>
-            <div class="tl-dot" style="background:var(--purple)"></div>
-            <p class="tl-items">Discovery · Figma · Course 01 content · observation prototype</p>
-          </div>
           <div class="tl-col">
-            <p class="tl-phase" style="color:var(--teal)">Phase 2</p>
-            <p class="tl-title">Build core</p>
-            <p class="tl-time">Wks 7–14</p>
+            <p class="tl-phase" style="color:var(--teal)">Shipped · P1</p>
+            <p class="tl-title">Web layer</p>
+            <p class="tl-time">Complete</p>
             <div class="tl-dot" style="background:var(--teal)"></div>
-            <p class="tl-items">VS Code panel · validation · AI tutor · 6 free courses</p>
+            <p class="tl-items">Landing + auth console · Supabase email/OAuth · dashboard empty state · Course 01 card · OS → profiles · /dashboard middleware</p>
           </div>
           <div class="tl-col">
-            <p class="tl-phase" style="color:var(--amber)">Phase 3</p>
-            <p class="tl-title">Alpha</p>
-            <p class="tl-time">Wks 15–18</p>
+            <p class="tl-phase" style="color:var(--teal)">Shipped · P2</p>
+            <p class="tl-title">VS Code bridge</p>
+            <p class="tl-time">Complete</p>
+            <div class="tl-dot" style="background:var(--teal)"></div>
+            <p class="tl-items">3-step install + polling · events + progress APIs · extension URI/webview/doctor · dashboard → vscode:// → panel · mentor-ide.vercel.app</p>
+          </div>
+          <div class="tl-col current">
+            <p class="tl-phase" style="color:var(--purple)">Now · P3</p>
+            <p class="tl-title">Lesson engine</p>
+            <p class="tl-time">Next</p>
+            <div class="tl-dot" style="background:var(--purple)"></div>
+            <p class="tl-items">courses.json Course 01 (24 lessons) · step reveal · file + terminal watchers · validation · progress sync</p>
+          </div>
+          <div class="tl-col">
+            <p class="tl-phase" style="color:var(--amber)">P4</p>
+            <p class="tl-title">Realtime dashboard</p>
+            <p class="tl-time">Planned</p>
             <div class="tl-dot" style="background:var(--amber)"></div>
-            <p class="tl-items">10 users · observations · fix only · CLI v1</p>
+            <p class="tl-items">Supabase Realtime · live stats · streak · progress % · course bar fills with learner</p>
           </div>
           <div class="tl-col">
-            <p class="tl-phase" style="color:var(--coral)">Phase 4</p>
-            <p class="tl-title">Beta + revenue</p>
-            <p class="tl-time">Wks 19–26</p>
+            <p class="tl-phase" style="color:var(--coral)">P5</p>
+            <p class="tl-title">AI tutor</p>
+            <p class="tl-time">Planned</p>
             <div class="tl-dot" style="background:var(--coral)"></div>
-            <p class="tl-items">Supabase · dashboard · Stripe · Pro · waitlist</p>
+            <p class="tl-items">Claude in extension · mentor hint · lesson + file context · paste-error → plain English</p>
           </div>
           <div class="tl-col">
-            <p class="tl-phase" style="color:var(--blue)">Phase 5</p>
-            <p class="tl-title">Public launch</p>
-            <p class="tl-time">Wks 27–32</p>
+            <p class="tl-phase" style="color:var(--blue)">P6</p>
+            <p class="tl-title">Polish + publish</p>
+            <p class="tl-time">Planned</p>
             <div class="tl-dot" style="background:var(--blue)"></div>
-            <p class="tl-items">Marketplace · Pro+ · Athena v1 · 100 paying users</p>
-          </div>
-          <div class="tl-col">
-            <p class="tl-phase" style="color:var(--gray)">Backlog</p>
-            <p class="tl-title">Post-launch</p>
-            <p class="tl-time">Future</p>
-            <div class="tl-dot" style="background:var(--gray)"></div>
-            <p class="tl-items">Mobile · Figma import · schools · community</p>
+            <p class="tl-items">Marketplace · Apple/Microsoft OAuth · responsive dashboard · onboarding email · admin analytics</p>
           </div>
         </div>
 
@@ -546,7 +550,7 @@ body {
           <div class="mini"><p class="mini-label">Paywall</p><p class="mini-val">After Course 06</p><p class="mini-sub">Full loop complete. Peak motivation moment.</p></div>
           <div class="mini"><p class="mini-label">Primary user</p><p class="mini-val">13+ zero knowledge</p><p class="mini-sub">Growing up with AI, no coding foundation</p></div>
           <div class="mini"><p class="mini-label">Secondary user</p><p class="mini-val">Frustrated re-starter</p><p class="mini-sub">Tried and quit. High urgency.</p></div>
-          <div class="mini"><p class="mini-label">Athena</p><p class="mini-val">Product 2 in suite</p><p class="mini-sub">Figma plugin. Ships in Phase 5 under Mentor brand.</p></div>
+          <div class="mini"><p class="mini-label">Shipped web</p><p class="mini-val">mentor-ide.vercel.app</p><p class="mini-sub">Web layer + Supabase + VS Code bridge. Production deploy.</p></div>
         </div>
 
         <div class="card">
@@ -587,7 +591,7 @@ body {
       <!-- Architecture -->
       <div class="section" id="architecture">
         <h1 class="section-title">Architecture</h1>
-        <p class="section-sub">// three surfaces · one source of truth · no backend in v1</p>
+        <p class="section-sub">// three surfaces · Supabase + web app shipped · VS Code extension bridge live</p>
 
         <div class="g3">
           <div class="mini"><p class="mini-label">Surface 1</p><p class="mini-val">VS Code panel</p><p class="mini-sub">Primary learning surface. Webview HTML/CSS/JS. postMessage bridge.</p></div>
@@ -782,148 +786,155 @@ body {
         </div>
       </div>
 
-      <!-- Phase 1 -->
+      <!-- Phase 1 — Web layer -->
       <div class="section" id="p1">
         <div class="phase-hero">
-          <p class="phase-eye" style="color:var(--purple)">Phase 1 · Weeks 1–6</p>
-          <p class="phase-title">Strategy + design</p>
-          <p class="phase-sub">Lock everything before writing code. Discovery research, Figma design system, Course 01 content, and observation prototype.</p>
+          <p class="phase-eye" style="color:var(--teal)">Phase 1 — Web layer</p>
+          <p class="phase-title">Shipped</p>
+          <p class="phase-sub">Learner-facing web stack: auth, dashboard shell, profile prefs, and route protection — before the IDE loop is primary.</p>
           <div class="badges">
-            <span class="badge badge-purple">In progress</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">No code yet</span>
+            <span class="badge badge-teal">Complete</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Supabase</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Next.js</span>
           </div>
         </div>
         <div class="card">
-          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Problem + solution locked</p><p class="ms-desc">Both defined. Not revisited.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Competitive benchmark — 4 gaps identified</p><p class="ms-desc">No real IDE, jargon-heavy, poor UI, AI bolted on. Validated against research.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Business model + success metrics</p><p class="ms-desc">Freemium. Paywall after Course 06. North star: 40% share rate.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Architecture locked</p><p class="ms-desc">3 surfaces. courses.json + progress.json. Supabase. CLI. URI launch. mentor-daemon.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Reference design — dark + light mode</p><p class="ms-desc">VS Code panel + dashboard. Both modes. Color tokens defined.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-next">→</div><div><p class="ms-title">Discovery — 10 interviews + 3 observations</p><p class="ms-desc">Type A: 13–25, zero knowledge. Type B: frustrated re-starters. Test 12 assumptions. Fill synthesis template.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Figma design system</p><p class="ms-desc">Variable library (4 tokens, light + dark). Panel + dashboard components. All 6 free tier screens.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Course 01 content — fully written</p><p class="ms-desc">Every lesson, analogy, exercise, win_condition, terminal command. Validated with real users.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Course 01 observation prototype — standalone HTML</p><p class="ms-desc">Static webpage version of Course 01. Used for unmoderated observation tests before plugin is built.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Landing + animated auth console</p><p class="ms-desc">Bottom sheet pattern for sign-in / sign-up.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Supabase Auth</p><p class="ms-desc">Email magic link + GitHub + Google + Discord.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Dashboard empty state</p><p class="ms-desc">Course 01 entry card and clear first action.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">OS selector → profiles</p><p class="ms-desc">Preferred OS stored on Supabase profiles for install UX.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Middleware</p><p class="ms-desc"><code>/dashboard</code> protected for signed-in learners only.</p></div></div>
         </div>
       </div>
 
-      <!-- Phase 2 -->
+      <!-- Phase 2 — VS Code bridge -->
       <div class="section" id="p2">
         <div class="phase-hero">
-          <p class="phase-eye" style="color:var(--teal)">Phase 2 · Weeks 7–14</p>
-          <p class="phase-title">Build core</p>
-          <p class="phase-sub">VS Code extension, webview panel, validation engine, AI tutor, all 6 free courses content-complete. No backend yet — everything local.</p>
+          <p class="phase-eye" style="color:var(--teal)">Phase 2 — VS Code bridge</p>
+          <p class="phase-title">Shipped</p>
+          <p class="phase-sub">Install path, telemetry tables, APIs, and extension glue so dashboard ↔ VS Code is a real loop.</p>
           <div class="badges">
-            <span class="badge badge-teal">Build</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">TypeScript + React</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">Local only · no auth</span>
+            <span class="badge badge-teal">Complete</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Extension</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">vscode:// URI</span>
           </div>
         </div>
         <div class="card">
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">VS Code extension scaffolded</p><p class="ms-desc">Activates on install. Reads courses.json. Opens panel. URI handler registered.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Webview panel — lesson renderer</p><p class="ms-desc">Renders from course template. postMessage bridge working. Step navigation. Dark + light theme.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">File watcher + terminal watcher</p><p class="ms-desc">File: triggers on save, feeds validation. Terminal: 20 error patterns mapped to plain English.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Validation engine v1</p><p class="ms-desc">win_condition rules per step. Pass → unlock. Fail → AI tutor. Events fired.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">AI tutor — Claude API</p><p class="ms-desc">Context: file + step + error + system_prompt + common_mistakes. Free tier 5 hints/lesson enforced.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Project scaffolding</p><p class="ms-desc">Auto folder + file creation on "Start course." Shows every command. mentor doctor checks setup.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">All 6 free courses — content complete</p><p class="ms-desc">All lessons, analogies, exercises, code, win_conditions, design previews in courses.json.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Design previews — Tailwind HTML per course</p><p class="ms-desc">One finished interactive Tailwind preview per course. Embedded in panel iframe throughout course.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">3-step install guide</p><p class="ms-desc">Supabase polling auto-detects when the extension is installed.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Supabase tables</p><p class="ms-desc"><code>events</code> + <code>progress</code> (and related profile reads).</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">API routes</p><p class="ms-desc"><code>/api/events</code> · <code>/api/progress</code> · <code>/api/profile</code>.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">VS Code extension</p><p class="ms-desc">URI handler, webview panel, <code>doctor</code> command.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">End-to-end flow (local)</p><p class="ms-desc">Dashboard → install guide → <code>vscode://</code> → Mentor panel opens.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-done">✓</div><div><p class="ms-title">Deployed</p><p class="ms-desc"><a href="https://mentor-ide.vercel.app" target="_blank" rel="noopener noreferrer" style="color:var(--purple)">mentor-ide.vercel.app</a></p></div></div>
         </div>
       </div>
 
-      <!-- Phase 3 -->
+      <!-- Phase 3 — Lesson engine -->
       <div class="section" id="p3">
         <div class="phase-hero">
-          <p class="phase-eye" style="color:var(--amber)">Phase 3 · Weeks 15–18</p>
-          <p class="phase-title">Alpha — fix, do not add</p>
-          <p class="phase-sub">10 real learners. Watch them. Fix what breaks. CLI v1 ships. First north star reading. No new features until this is done.</p>
+          <p class="phase-eye" style="color:var(--purple)">Phase 3 — Lesson engine</p>
+          <p class="phase-title">Next</p>
+          <p class="phase-sub">Structured lessons in the panel with real validation against the learner&apos;s workspace.</p>
           <div class="badges">
-            <span class="badge badge-amber">Alpha</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">10 users max</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">Fix only</span>
+            <span class="badge badge-purple">In progress</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">courses.json</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">VS Code panel</span>
           </div>
         </div>
         <div class="card">
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">CLI v1 — mentor npm package</p><p class="ms-desc">All commands listed in architecture. Reads same local state as extension.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Alpha cohort — 10 learners recruited</p><p class="ms-desc">Type A (13–25, zero knowledge) + Type B (frustrated re-starters). Personal network. Offer: early free Pro access.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">3 unmoderated observation sessions</p><p class="ms-desc">Participant attempts Course 01 alone. Screen recorded. Track: time to first win, confusion, dropout point, Live Preview reaction.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Discovery synthesis</p><p class="ms-desc">Fill synthesis template: confirmed assumptions, broken assumptions, surprising findings, product changes, strategy changes.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">North star — first reading</p><p class="ms-desc">Did any alpha user finish Course 06 and share their project? One yes = core loop works. Below 30% = fix content before Phase 4.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Error library — 20 patterns</p><p class="ms-desc">Terminal watcher maps 20 beginner errors to plain English. Feeds panel sidebar immediately.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-next">→</div><div><p class="ms-title">courses.json — Course 01</p><p class="ms-desc">24 lessons of content in the template format.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Step-by-step lesson reveal</p><p class="ms-desc">Guided reveal in the VS Code webview panel.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">File watcher</p><p class="ms-desc">Detect when the learner creates or edits the right files.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Terminal watcher</p><p class="ms-desc">Detect command output and map errors to guidance.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Validation engine</p><p class="ms-desc">Objective checks that the step task was completed correctly.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Progress sync</p><p class="ms-desc">Real-time (or near-real-time) writes to Supabase as the learner advances.</p></div></div>
         </div>
       </div>
 
-      <!-- Phase 4 -->
+      <!-- Phase 4 — Realtime dashboard -->
       <div class="section" id="p4">
         <div class="phase-hero">
-          <p class="phase-eye" style="color:var(--coral)">Phase 4 · Weeks 19–26</p>
-          <p class="phase-title">Beta + first revenue</p>
-          <p class="phase-sub">Backend goes live. Dashboard ships. Pro tier unlocked. Stripe integrated. Waitlist opens publicly. First paying users.</p>
+          <p class="phase-eye" style="color:var(--amber)">Phase 4 — Realtime dashboard</p>
+          <p class="phase-title">Planned</p>
+          <p class="phase-sub">Dashboard reflects IDE progress instantly — motivation and trust.</p>
           <div class="badges">
-            <span class="badge badge-coral">Beta</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">Supabase + Stripe</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">First paying users</span>
+            <span class="badge badge-amber">Planned</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Supabase Realtime</span>
           </div>
         </div>
         <div class="card">
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Supabase backend</p><p class="ms-desc">Auth · progress table · events table · Realtime. Offline sync queue — batch-flush on reconnect. mentor sync flushes manually.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Dashboard web app</p><p class="ms-desc">Progress · courses · shipped projects · "Continue in VS Code" URI · live dot · CLI bar footer.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">vscode:// URI launch + mentor-daemon</p><p class="ms-desc">Dashboard fires URI. Extension handles. mentor-daemon handles when VS Code is closed. System tray Node process.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Stripe — Pro $8/mo · Pro+ $15/mo</p><p class="ms-desc">Paywall gate after Course 06. Upgrade flow in dashboard. Subscription management. Annual discount.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Pro courses 07–10 — content complete before paywall opens</p><p class="ms-desc">Never charge for incomplete content.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Waitlist landing page</p><p class="ms-desc">One page. Problem statement. Design preview. Email capture. No hype. mentor.ai domain.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Admin analytics view</p><p class="ms-desc">Drop-off per step · AI tutor usage · conversion rate · MRR. All from events table.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Realtime subscriptions</p><p class="ms-desc">Wire progress + events to live UI updates.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Live stats</p><p class="ms-desc">Lessons complete, streak, progress %.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Course progress bar</p><p class="ms-desc">Fills as the learner advances through the course.</p></div></div>
         </div>
       </div>
 
-      <!-- Phase 5 -->
+      <!-- Phase 5 — AI tutor -->
       <div class="section" id="p5">
         <div class="phase-hero">
-          <p class="phase-eye" style="color:var(--blue)">Phase 5 · Weeks 27–32</p>
-          <p class="phase-title">Public launch</p>
-          <p class="phase-sub">VS Code Marketplace live. Marketing starts. Pro+ ships. Athena joins Mentor suite as second product. 100 paying users target.</p>
+          <p class="phase-eye" style="color:var(--coral)">Phase 5 — AI tutor</p>
+          <p class="phase-title">Planned</p>
+          <p class="phase-sub">Contextual help inside the IDE — not a generic chat window.</p>
           <div class="badges">
-            <span class="badge badge-blue">Public</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">VS Code Marketplace</span>
-            <span class="badge" style="background:var(--surface2);color:var(--muted)">Mentor suite begins</span>
+            <span class="badge badge-coral">Planned</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Claude API</span>
           </div>
         </div>
         <div class="card">
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">VS Code Marketplace listing</p><p class="ms-desc">README is the storefront. Screenshots from reference design. Dark + light previews. Install count = first public metric.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Content marketing — first 5 videos</p><p class="ms-desc">"Zero to webpage in 30 minutes." YouTube + TikTok + Instagram Reels. Product demo is the ad. Designer-quality visuals are the differentiator.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Pro+ courses 11–14 — content complete before paywall opens</p><p class="ms-desc">Claude API · React Native · debug AI code · VS Code extension dev.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Athena Figma plugin — v1 within Mentor suite</p><p class="ms-desc">Second Mentor product. Figma Community free launch. Cross-promotes to Mentor's developer audience. Dual-purpose: revenue + portfolio asset.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Referral mechanism — live shareable project URLs</p><p class="ms-desc">Every completed project gets a hosted URL. "Built with Mentor" attribution. Friend clicks → waitlist. Shareability is the growth engine.</p></div></div>
-          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">100 Pro subscribers milestone</p><p class="ms-desc">Real validation. Below 50 after 4 weeks → investigate and fix before scaling marketing. Above 100 → scale.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Claude API in the extension</p><p class="ms-desc">Server-side or extension-hosted calls per security model.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Hint system</p><p class="ms-desc">Learner types <code>mentor hint</code> in the terminal (and/or panel action).</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Contextual help</p><p class="ms-desc">Uses current lesson + file state + last error context.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Error explanation</p><p class="ms-desc">Paste an error → plain-English fix path.</p></div></div>
+        </div>
+      </div>
+
+      <!-- Phase 6 — Polish + publish -->
+      <div class="section" id="p6">
+        <div class="phase-hero">
+          <p class="phase-eye" style="color:var(--blue)">Phase 6 — Polish + publish</p>
+          <p class="phase-title">Planned</p>
+          <p class="phase-sub">Distribution, identity providers, lifecycle email, and operator visibility.</p>
+          <div class="badges">
+            <span class="badge badge-blue">Planned</span>
+            <span class="badge" style="background:var(--surface2);color:var(--muted)">Marketplace</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Publish to VS Code Marketplace</p><p class="ms-desc">Listing, screenshots, README as storefront.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Apple + Microsoft OAuth</p><p class="ms-desc">Additional auth surfaces alongside existing providers.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Mobile-responsive dashboard</p><p class="ms-desc">Polish layouts for small screens.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Onboarding email sequence</p><p class="ms-desc">Lifecycle messages after sign-up / first win.</p></div></div>
+          <div class="ms"><div class="ms-ico ms-todo">○</div><div><p class="ms-title">Admin analytics</p><p class="ms-desc">Funnel + health metrics for the operator.</p></div></div>
         </div>
       </div>
 
       <!-- Backlog -->
       <div class="section" id="backlog">
         <h1 class="section-title">Backlog</h1>
-        <p class="section-sub">// decided · not yet scheduled · do not touch until Phase 5 complete + north star &gt; 40%</p>
+        <p class="section-sub">// decided · not yet scheduled · do not pick until Phases 3–6 are shipped + north star &gt; 40%</p>
 
         <div class="card" style="border-color:var(--amber);margin-bottom:1rem;">
           <p class="card-title">Backlog discipline</p>
-          <p class="card-body">Nothing here gets built until north star is consistently above 40% AND Phase 5 is complete. Picking from this list early is productive procrastination. Flag it and move on.</p>
+          <p class="card-body">Nothing here ships before the roadmap Phases 3–6 are executed and the north star is consistently above 40%. Early execution here is productive procrastination. Flag it and move on.</p>
         </div>
 
         <div class="card">
           <div class="bl">
-            <span class="bl-phase" style="background:var(--purple-bg);color:var(--purple);">Phase 6</span>
+            <span class="bl-phase" style="background:var(--gray-bg);color:var(--gray);">Beyond</span>
             <div>
               <p class="bl-title">Mobile companion app — with remote CLI launch</p>
               <p class="bl-desc">React Native + Expo. Dashboard, progress, AI tutor, streak notifications. Remote IDE launch: learner types <code>mentor start</code> on phone → Supabase Realtime event → mentor-daemon on desktop → vscode:// URI opens VS Code at exact step. Wrong command corrected immediately with AI tutor tone. trigger field in event: 'mobile_cli'. Graduation signal: rising CLI ratio = learner internalising tools.</p>
             </div>
           </div>
           <div class="bl">
-            <span class="bl-phase" style="background:var(--purple-bg);color:var(--purple);">Phase 6</span>
+            <span class="bl-phase" style="background:var(--gray-bg);color:var(--gray);">Beyond</span>
             <div>
               <p class="bl-title">Figma design import — Pro+ feature</p>
               <p class="bl-desc">"Import your Figma URL and we teach you to build it." figma_url stored in course template already. Requires Figma API + curriculum that adapts to imported designs. Only after predefined flow is proven.</p>
             </div>
           </div>
           <div class="bl">
-            <span class="bl-phase" style="background:var(--teal-bg);color:var(--teal);">Phase 6</span>
+            <span class="bl-phase" style="background:var(--gray-bg);color:var(--gray);">Beyond</span>
             <div>
               <p class="bl-title">School licence model</p>
               <p class="bl-desc">Flat annual fee per school. Teacher dashboard. Cohort progress tracking. One teacher = 30 students. Requires teacher-facing admin layer on top of existing events infrastructure.</p>

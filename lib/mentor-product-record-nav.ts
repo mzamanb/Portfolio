@@ -15,11 +15,12 @@ export const PRODUCT_RECORD_NAV_ITEMS: ProductRecordNavItem[] = [
   { id: "courses", label: "Course structure", group: "Foundation" },
   { id: "design", label: "Design system", group: "Foundation" },
   { id: "metrics", label: "Metrics", group: "Foundation" },
-  { id: "p1", label: "Phase 1 — Strategy", group: "Phases" },
-  { id: "p2", label: "Phase 2 — Build", group: "Phases" },
-  { id: "p3", label: "Phase 3 — Alpha", group: "Phases" },
-  { id: "p4", label: "Phase 4 — Beta", group: "Phases" },
-  { id: "p5", label: "Phase 5 — Launch", group: "Phases" },
+  { id: "p1", label: "Phase 1 — Web layer", group: "Phases" },
+  { id: "p2", label: "Phase 2 — VS Code bridge", group: "Phases" },
+  { id: "p3", label: "Phase 3 — Lesson engine", group: "Phases" },
+  { id: "p4", label: "Phase 4 — Realtime dashboard", group: "Phases" },
+  { id: "p5", label: "Phase 5 — AI tutor", group: "Phases" },
+  { id: "p6", label: "Phase 6 — Polish + publish", group: "Phases" },
   { id: "backlog", label: "Backlog", group: "Future" },
 ];
 
