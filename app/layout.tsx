@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getContent } from "@/lib/content";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ChatWidget } from "@/components/ChatWidget";
+import CustomCursor from "@/components/CustomCursor";
 import { showChatWidget } from "@/lib/chat-config";
 import "./globals.css";
 
@@ -76,8 +77,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" style={{ cursor: "none" }}>
         <ThemeProvider>
+          <CustomCursor />
           {children}
           {showChatWidget() ? <ChatWidget /> : null}
         </ThemeProvider>

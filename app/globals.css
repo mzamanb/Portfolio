@@ -106,6 +106,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
