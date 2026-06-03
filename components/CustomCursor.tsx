@@ -1,57 +1,67 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
-  const [visible, setVisible] = useState(false);
-
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-
-  const x = useSpring(mouseX, { stiffness: 200, damping: 28, mass: 0.5 });
-  const y = useSpring(mouseY, { stiffness: 200, damping: 28, mass: 0.5 });
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const move = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    const show = () => setVisible(true);
-    const hide = () => setVisible(false);
+    const el = cursorRef.current;
+    if (!el) return;
 
-    window.addEventListener("mousemove", move);
-    document.addEventListener("mouseenter", show);
-    document.addEventListener("mouseleave", hide);
+    const SIZE = 36;
+    let targetX = -200;
+    let targetY = -200;
+    let curX = -200;
+    let curY = -200;
+    let raf: number;
+
+    // Lower = lazier follow. 0.08 is visibly smooth but clearly trailing.
+    const LERP = 0.08;
+
+    const tick = () => {
+      curX += (targetX - curX) * LERP;
+      curY += (targetY - curY) * LERP;
+      el.style.transform = `translate(${curX - SIZE / 2}px, ${curY - SIZE / 2}px)`;
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onMove = (e: MouseEvent) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      el.style.opacity = "1";
+    };
+
+    const onLeave = () => { el.style.opacity = "0"; };
+    const onEnter = () => { el.style.opacity = "1"; };
+
+    raf = requestAnimationFrame(tick);
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mouseenter", onEnter);
 
     return () => {
-      window.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseenter", show);
-      document.removeEventListener("mouseleave", hide);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("mouseenter", onEnter);
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
-    <motion.div
+    <div
+      ref={cursorRef}
       className="pointer-events-none fixed left-0 top-0 z-[999] hidden md:block"
       style={{
-        x,
-        y,
-        translateX: "-50%",
-        translateY: "-50%",
-        opacity: visible ? 1 : 0,
+        width: 36,
+        height: 36,
+        borderRadius: "50%",
+        background: "white",
+        mixBlendMode: "difference",
+        opacity: 0,
+        willChange: "transform",
+        transition: "opacity 0.2s ease",
       }}
-      transition={{ opacity: { duration: 0.2 } }}
-    >
-      <div
-        style={{
-          width: 36,
-          height: 36,
-          borderRadius: "50%",
-          background: "white",
-          mixBlendMode: "difference",
-        }}
-      />
-    </motion.div>
+    />
   );
 }
