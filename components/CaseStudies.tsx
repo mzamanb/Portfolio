@@ -24,13 +24,11 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
 
 /* Featured study — full-width split */
 function FeaturedStudy({ study }: { study: CaseStudy }) {
-  const metrics = study.fullContent.impact.slice(0, 2);
-
   return (
     <FadeIn>
       <Link href={`/case-study/${study.slug}`} className="group block">
         <div className="grid min-h-[520px] md:grid-cols-2">
-          {/* Left — text + metrics */}
+          {/* Left — text + CTA */}
           <div className="flex flex-col justify-between border border-[var(--color-border)] bg-[var(--color-bg-card)] p-8 md:p-12">
             <div>
               <div className="mb-6 flex flex-wrap gap-1.5">
@@ -56,27 +54,6 @@ function FeaturedStudy({ study }: { study: CaseStudy }) {
             </div>
 
             <div className="mt-8">
-              {metrics.length > 0 && (
-                <div className="mb-8 border-t border-[var(--color-border)] pt-6">
-                  <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-text-muted">
-                    Results
-                  </p>
-                  <div className="flex flex-col gap-3">
-                    {metrics.map((m) => (
-                      <div key={m.label} className="flex items-baseline gap-3">
-                        <span
-                          className="font-bold text-text"
-                          style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", letterSpacing: "-0.03em" }}
-                        >
-                          {m.value}
-                        </span>
-                        <span className="text-[13px] text-text-secondary">{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-text transition-all group-hover:gap-3.5">
                 See the project
                 <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -106,7 +83,7 @@ function StudyCard({ study, delay }: { study: CaseStudy; delay: number }) {
     <FadeIn delay={delay}>
       <Link href={`/case-study/${study.slug}`} className="group block">
         <div className="overflow-hidden rounded-2xl border border-[var(--color-border)]">
-          {/* Card header — name + tags */}
+          {/* Card header — name + tags + description */}
           <div className="bg-[var(--color-bg-card)] px-6 py-5">
             <div className="mb-2 flex flex-wrap gap-1.5">
               {study.tags.slice(0, 3).map((t) => (
@@ -129,6 +106,9 @@ function StudyCard({ study, delay }: { study: CaseStudy; delay: number }) {
               />
             </h3>
             <p className="text-[13px] text-text-muted">{study.subtitle}</p>
+            <p className="mt-3 text-[13px] leading-relaxed text-text-secondary">
+              {study.description}
+            </p>
           </div>
 
           {/* Image */}
