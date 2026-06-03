@@ -48,10 +48,8 @@ export default function CustomCursor() {
           width: 36,
           height: 36,
           borderRadius: "50%",
-          background: "rgba(0, 0, 0, 0.08)",
-          border: "1px solid rgba(0, 0, 0, 0.18)",
-          backdropFilter: "blur(4px)",
-          WebkitBackdropFilter: "blur(4px)",
+          background: "white",
+          mixBlendMode: "difference",
         }}
       />
     </motion.div>
