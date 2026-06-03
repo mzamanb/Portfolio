@@ -21,7 +21,7 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
         className="fixed inset-x-0 top-0 z-50 border-b border-[var(--color-border)]"
         style={{ background: "var(--nav-bg)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
       >
-        <div className="mx-auto grid h-14 max-w-7xl grid-cols-3 items-center px-6">
+        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 md:grid md:grid-cols-3">
           {/* Left — nav links */}
           <ul className="hidden items-center gap-1 md:flex">
             {leftLinks.map((link) => (
@@ -37,7 +37,7 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
           </ul>
 
           {/* Center — wordmark */}
-          <div className="flex justify-center">
+          <div className="flex md:justify-center">
             <a
               href="#home"
               className="text-[15px] font-bold tracking-[-0.02em] text-text"
