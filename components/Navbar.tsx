@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 const leftLinks = [
@@ -89,9 +89,9 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="hidden rounded-full px-3 py-1.5 text-[12px] text-text-muted transition-colors hover:text-text md:block"
+              className="hidden h-8 w-8 place-items-center rounded-full border border-[var(--color-border-strong)] text-text-secondary transition-colors hover:text-text md:grid"
             >
-              {theme === "dark" ? "Light" : "Dark"}
+              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
             </button>
 
             <a
