@@ -1,0 +1,126 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#0f0e17"/>
+
+  <!-- Subtle grid -->
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7f77dd"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.08)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="400" cy="240" rx="320" ry="200" fill="rgba(127,119,221,0.12)" style="filter:blur(60px)"/>
+
+  <!-- VS Code activity bar -->
+  <rect x="60" y="80" width="44" height="440" rx="0" fill="#1a1a2e" opacity="0.9"/>
+  <rect x="72" y="110" width="20" height="20" rx="4" fill="rgba(127,119,221,0.8)"/>
+  <rect x="72" y="146" width="20" height="20" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <rect x="72" y="182" width="20" height="20" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <rect x="72" y="218" width="20" height="20" rx="3" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Main lesson panel -->
+  <rect x="104" y="80" width="480" height="440" rx="0" fill="#111118" opacity="0.95"/>
+
+  <!-- Panel header -->
+  <rect x="104" y="80" width="480" height="48" fill="#1a1a2e" opacity="0.9"/>
+  <text x="128" y="110" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(127,119,221,0.9)" letter-spacing="2" font-weight="500">MENTOR</text>
+  <text x="232" y="110" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(255,255,255,0.3)" letter-spacing="1">IDE</text>
+
+  <!-- Narrator toggle -->
+  <rect x="518" y="92" width="50" height="24" rx="12" fill="rgba(127,119,221,0.2)" stroke="rgba(127,119,221,0.4)" stroke-width="1"/>
+  <circle cx="554" cy="104" r="9" fill="#7f77dd"/>
+  <text x="524" y="108" font-family="sans-serif" font-size="9" fill="rgba(127,119,221,0.8)">♪</text>
+
+  <!-- Progress bar area -->
+  <rect x="120" y="146" width="448" height="2" rx="1" fill="rgba(255,255,255,0.06)"/>
+  <rect x="120" y="146" width="148" height="2" rx="1" fill="#7f77dd"/>
+
+  <!-- Step dots -->
+  <circle cx="136" cy="164" r="5" fill="#7f77dd"/>
+  <circle cx="156" cy="164" r="5" fill="#7f77dd"/>
+  <circle cx="176" cy="164" r="5" fill="#7f77dd" opacity="0.4"/>
+  <circle cx="196" cy="164" r="5" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="216" cy="164" r="5" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="236" cy="164" r="5" fill="rgba(255,255,255,0.1)"/>
+
+  <text x="120" y="158" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="rgba(127,119,221,0.7)" letter-spacing="1">COURSE 01 · LESSON 2</text>
+
+  <!-- Step card — concept type -->
+  <rect x="120" y="182" width="448" height="140" rx="10" fill="#1a1a2e" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+  <rect x="120" y="182" width="3" height="140" rx="0" fill="#7f77dd" rx="1.5"/>
+  <text x="138" y="207" font-family="sans-serif" font-size="9" fill="rgba(127,119,221,0.7)" letter-spacing="1.5" font-weight="600">CONCEPT</text>
+  <text x="138" y="228" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,0.9)" font-weight="600">Variables store information your</text>
+  <text x="138" y="247" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,0.9)" font-weight="600">program needs to remember.</text>
+  <text x="138" y="272" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.45)" line-height="1.6">Think of a variable as a labeled box. You put</text>
+  <text x="138" y="289" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">something inside it, and can read or change it later.</text>
+  <text x="138" y="313" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(127,119,221,0.7)">name = "Alex"  # a string variable</text>
+
+  <!-- Step card — exercise type -->
+  <rect x="120" y="338" width="448" height="100" rx="10" fill="#111820" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="138" y="362" font-family="sans-serif" font-size="9" fill="rgba(255,200,80,0.8)" letter-spacing="1.5" font-weight="600">EXERCISE</text>
+  <!-- Checkbox -->
+  <rect x="138" y="374" width="14" height="14" rx="3" fill="rgba(127,119,221,0.2)" stroke="rgba(127,119,221,0.5)" stroke-width="1.5"/>
+  <text x="158" y="385" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.6)">Create a variable called</text>
+  <text x="246" y="385" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(127,119,221,0.9)">greeting</text>
+  <rect x="138" y="397" width="14" height="14" rx="3" fill="rgba(127,119,221,0.9)"/>
+  <text x="143" y="409" font-family="sans-serif" font-size="10" fill="white" font-weight="700">✓</text>
+  <text x="158" y="408" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.35)" style="text-decoration:line-through">Print it to the terminal</text>
+
+  <!-- Action bar -->
+  <rect x="120" y="450" width="448" height="56" rx="0" fill="#0f0e17"/>
+  <rect x="120" y="450" width="448" height="1" fill="rgba(255,255,255,0.06)"/>
+  <rect x="120" y="450" width="82" height="56" rx="0" fill="rgba(255,255,255,0.03)"/>
+  <text x="148" y="483" font-family="sans-serif" font-size="12" fill="rgba(255,255,255,0.3)">← Back</text>
+  <rect x="406" y="463" width="148" height="30" rx="15" fill="#7f77dd"/>
+  <text x="456" y="483" font-family="sans-serif" font-size="12" fill="white" font-weight="600" text-anchor="middle">got it →</text>
+
+  <!-- Right panel — token visual / design system -->
+  <rect x="600" y="80" width="160" height="440" rx="0" fill="#0d0d1a" opacity="0.95"/>
+  <text x="616" y="112" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="rgba(255,255,255,0.3)" letter-spacing="1.5">DESIGN TOKENS</text>
+
+  <!-- Token rows -->
+  <rect x="612" y="122" width="136" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="620" y="131" width="10" height="10" rx="2" fill="#10b981"/>
+  <text x="636" y="140" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">color/accent</text>
+  <text x="700" y="140" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.6)">#10B981</text>
+
+  <rect x="612" y="156" width="136" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="620" y="165" width="10" height="10" rx="2" fill="#7f77dd"/>
+  <text x="636" y="174" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">color/brand</text>
+  <text x="700" y="174" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.6)">#7F77DD</text>
+
+  <rect x="612" y="190" width="136" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="620" y="199" width="10" height="10" rx="2" fill="#0f0e17" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="636" y="208" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">color/surface</text>
+  <text x="700" y="208" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.6)">#0F0E17</text>
+
+  <rect x="612" y="224" width="136" height="28" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="620" y="233" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.4)">radius/card</text>
+  <text x="700" y="233" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.6)">12px</text>
+  <text x="620" y="244" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.25)">spacing/base</text>
+
+  <!-- Sync command terminal row -->
+  <rect x="612" y="460" width="136" height="46" rx="6" fill="rgba(127,119,221,0.08)" stroke="rgba(127,119,221,0.3)" stroke-width="1"/>
+  <text x="620" y="480" font-family="'JetBrains Mono', monospace" font-size="8" fill="rgba(127,119,221,0.8)">$ mentor sync</text>
+  <text x="620" y="496" font-family="'JetBrains Mono', monospace" font-size="8" fill="rgba(255,255,255,0.5)">27 tokens updated</text>
+
+  <!-- Status bar -->
+  <rect x="60" y="520" width="700" height="20" fill="#1a1a2e"/>
+  <circle cx="76" cy="530" r="4" fill="rgba(127,119,221,0.7)"/>
+  <text x="86" y="534" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.3)">mentor-extension</text>
+  <text x="580" y="534" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(255,255,255,0.25)">Python  ·  UTF-8  ·  LF</text>
+
+  <!-- Speaking indicator -->
+  <circle cx="490" cy="530" r="3" fill="rgba(127,119,221,0.8)"/>
+  <text x="498" y="534" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="rgba(127,119,221,0.6)">Narrating...</text>
+</svg>

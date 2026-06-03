@@ -1,153 +1,137 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
 import type { HeroContent } from "@/lib/content";
 
-const META = [
-  { k: "Role",      v: "Lead Product Designer" },
-  { k: "Focus",     v: "Systems · UX · AI" },
-  { k: "Available", v: "For new work", pulse: true },
-  { k: "Based",     v: "Remote · Worldwide" },
+const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
+
+const TAGS = [
+  { label: "Design Systems",  style: { top: "28%",  left: "6%" } },
+  { label: "UX Research",     style: { top: "52%",  left: "4%" } },
+  { label: "AI Workflows",    style: { top: "34%",  right: "5%" } },
+  { label: "Dev-adjacent",    style: { top: "62%",  right: "7%" } },
 ];
 
 export default function Hero({ data }: { data: HeroContent }) {
-  const [tagline1 = "", tagline2 = "", tagline3 = ""] = data.title;
+  const headline = data.title.join(" ");
 
   return (
     <section
       id="home"
-      className="relative overflow-hidden px-6 pb-20 pt-28 sm:pb-24 sm:pt-36 md:pb-28 md:pt-44"
+      className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-6"
     >
-      {/* 64px grid overlay */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, var(--color-border-subtle) 1px, transparent 1px), linear-gradient(to bottom, var(--color-border-subtle) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-          backgroundPosition: "-1px -1px",
-        }}
-      />
-
-      {/* Ambient glow — ≈1100×600px, 18% opacity, blur 20px, top-center */}
-      <div
+      {/* Ghost headline — fills the background */}
+      <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 -translate-x-1/2"
-        style={{
-          top: -200,
-          width: 1100,
-          height: 600,
-          background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(16,185,129,0.18) 0%, rgba(16,185,129,0) 70%)",
-          filter: "blur(20px)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-6xl">
-        {/* Kicker — monospace uppercase, 24px green bar prefix */}
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-          className="mb-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.08em] text-text-muted"
-        >
-          <span className="h-px w-6 shrink-0 bg-accent" />
-          {data.badge}
-        </motion.span>
-
-        {/* Display headline — 96px / lh 0.98 / tracking -0.035em */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.05, ease: [0.4, 0, 0.2, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: EASE }}
+        className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center"
+        style={{ userSelect: "none" }}
+      >
+        <span
           style={{
-            fontSize: "clamp(2.5rem, 8.5vw, 6rem)",
-            lineHeight: 0.98,
-            letterSpacing: "-0.035em",
-            fontWeight: 400,
+            fontSize: "clamp(4rem, 13vw, 12rem)",
+            fontWeight: 800,
+            lineHeight: 0.92,
+            letterSpacing: "-0.045em",
+            color: "var(--color-text-ghost)",
+            display: "block",
+            maxWidth: "95vw",
           }}
         >
-          <span className="block text-text">{tagline1}</span>
-          {tagline2 && <span className="block text-text">{tagline2}</span>}
-          <span className="block text-accent">{tagline3}</span>
-        </motion.h1>
+          {data.title[0]}<br />
+          {data.title[1]}<br />
+          {data.title[2]}
+        </span>
+      </motion.div>
 
-        {/* Lead paragraph — max 580px, Inter 17/26, text-secondary */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-8 max-w-[580px] text-[15px] font-light leading-relaxed text-text-secondary sm:text-[16px] md:text-[17px] md:leading-[26px]"
+      {/* Floating discipline tags */}
+      {TAGS.map((tag, i) => (
+        <motion.span
+          key={tag.label}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 + i * 0.1, ease: EASE }}
+          className="absolute hidden rounded-full border border-[var(--color-border-strong)] bg-[var(--color-bg-card)] px-3.5 py-1.5 text-[12px] text-text-secondary shadow-sm md:block"
+          style={tag.style}
         >
-          {data.subtitle}
-        </motion.p>
+          {tag.label}
+        </motion.span>
+      ))}
+
+      {/* Center content — readable overlay */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+        className="relative z-10 flex flex-col items-center gap-5 text-center"
+      >
+        {/* Badge */}
+        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-bg-card)] px-4 py-1.5 text-[12px] text-text-secondary shadow-sm">
+          <span
+            className="h-1.5 w-1.5 animate-architecture-pulse rounded-full bg-accent"
+            style={{ boxShadow: "0 0 6px var(--color-accent)" }}
+          />
+          {data.badge}
+        </span>
+
+        {/* Name */}
+        <h1
+          className="text-text"
+          style={{ fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1 }}
+        >
+          {data.name}
+        </h1>
+
+        {/* Subtitle */}
+        <p className="max-w-[360px] text-[15px] leading-relaxed text-text-secondary">
+          Lead Product Designer · UAE, India, UK, Remote
+        </p>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-10 flex flex-wrap items-center gap-3"
-        >
-          {/* Primary — filled green pill */}
+        <div className="flex items-center gap-3">
           <a
             href="#work"
-            className="group inline-flex h-11 items-center gap-2.5 rounded-full bg-accent px-[22px] text-[14px] font-medium text-white transition-colors hover:bg-accent-soft"
+            className="inline-flex h-10 items-center rounded-full bg-text px-6 text-[13px] font-semibold text-bg transition-opacity hover:opacity-75"
           >
-            View case studies
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+            View work
           </a>
-
-          {/* Ghost — outlined pill */}
           <a
             href="#contact"
-            className="inline-flex h-11 items-center rounded-full border border-[var(--color-border-strong)] bg-transparent px-[22px] text-[14px] font-normal text-text transition-all hover:border-accent hover:text-accent"
+            className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-strong)] px-6 text-[13px] text-text-secondary transition-colors hover:text-text"
           >
             Get in touch
           </a>
-        </motion.div>
+        </div>
+      </motion.div>
 
-        {/* Meta strip — 4-col glass grid, 1px gap, 12px radius, gradient-border shell */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
-          className="mt-16"
-        >
-          {/* Outer gradient-border shell */}
-          <div
-            className="rounded-[13px] p-px"
-            style={{ background: "var(--shell-grad)" }}
-          >
-            <div
-              className="grid grid-cols-2 gap-px overflow-hidden rounded-xl md:grid-cols-4"
-              style={{ background: "var(--color-border)" }}
-            >
-              {META.map((cell) => (
-                <div
-                  key={cell.k}
-                  className="flex flex-col gap-1.5 px-4 py-4 backdrop-blur-md sm:px-5 md:px-6 md:py-5"
-                  style={{ background: "var(--color-bg-card)" }}
-                >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-muted">
-                    {cell.k}
-                  </span>
-                  <span className="flex items-center gap-2 text-[15px] tracking-[-0.01em] text-text sm:text-[16px] md:text-[18px]">
-                    {cell.pulse && (
-                      <span
-                        className="h-1.5 w-1.5 shrink-0 animate-architecture-pulse rounded-full bg-accent"
-                        style={{ boxShadow: "0 0 6px var(--color-accent)" }}
-                      />
-                    )}
-                    {cell.v}
-                  </span>
-                </div>
-              ))}
+      {/* Stats row — bottom of section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+        className="absolute bottom-0 inset-x-0 border-t border-[var(--color-border)]"
+      >
+        <div className="mx-auto grid max-w-7xl grid-cols-4 divide-x divide-[var(--color-border)]">
+          {[
+            { v: "10+", l: "Years" },
+            { v: "6+",  l: "Projects" },
+            { v: "5+",  l: "Clients" },
+            { v: "4",   l: "Markets" },
+          ].map((s) => (
+            <div key={s.l} className="flex flex-col items-center gap-0.5 py-6">
+              <span
+                className="text-text"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1 }}
+              >
+                {s.v}
+              </span>
+              <span className="text-[12px] text-text-muted">{s.l}</span>
             </div>
-          </div>
-        </motion.div>
-      </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

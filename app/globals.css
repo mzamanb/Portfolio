@@ -8,19 +8,21 @@
 
 @theme {
   /* DEFAULT (LIGHT) THEME */
-  --color-bg: #fafafa;
+  --color-bg: #f4f4f2;
   --color-bg-surface: #ffffff;
   --color-bg-card: #ffffff;
-  --color-bg-elevated: #f4f4f5;
-  --color-bg-hover: #f9fafb;
+  --color-bg-elevated: #ebebea;
+  --color-bg-hover: #e8e8e6;
+  --color-bg-dark: #111111;
 
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-border-subtle: rgba(0, 0, 0, 0.05);
-  --color-border-strong: rgba(0, 0, 0, 0.12);
+  --color-border: rgba(0, 0, 0, 0.09);
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+  --color-border-strong: rgba(0, 0, 0, 0.14);
 
-  --color-text: #0a0a0a;
-  --color-text-secondary: #404040;
-  --color-text-muted: #737373;
+  --color-text: #0d0d0d;
+  --color-text-secondary: #525252;
+  --color-text-muted: #909090;
+  --color-text-ghost: rgba(0, 0, 0, 0.045);
 
   --color-accent: #059669;
   --color-accent-hover: #047857;
@@ -64,7 +66,7 @@
 
 /* Nav bg + shell grad — semi-transparent, theme-aware */
 :root {
-  --nav-bg: rgba(250, 250, 247, 0.8);
+  --nav-bg: rgba(244, 244, 242, 0.90);
   --shell-grad: linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.02) 40%, rgba(0,0,0,0) 100%);
 }
 

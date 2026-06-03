@@ -1,9 +1,13 @@
 {
   "hero": {
     "name": "Zaman Bayezid",
-    "title": ["Designing systems", "where craft meets", "computation."],
+    "title": [
+      "Designing systems",
+      "where craft meets",
+      "computation."
+    ],
     "subtitle": "I'm Zaman Bayezid — a Lead Product Designer bridging design and development with deep user empathy and technical logic. I specialize in atomic design systems and AI-powered workflows that accelerate how teams ship.",
-    "resumeUrl": "https://drive.google.com/uc?export=download&id=1-dImHqOBRh19kJbyjFTs__rCNJv70LiW",
+    "resumeUrl": "https://drive.google.com/uc?export=download&id=1eDpi0buIyavsAzTZmE1W6kwxAT5LP_g0",
     "badge": "CSPO Certified · Lead Product Designer"
   },
   "skills": [
@@ -28,20 +32,159 @@
   ],
   "caseStudies": [
     {
+      "id": "mentor",
+      "label": "product",
+      "title": "MENTOR",
+      "subtitle": "IDE Learning System",
+      "tags": [
+        "VS Code Extension",
+        "AI / TTS",
+        "Product Design"
+      ],
+      "description": "An end-to-end guided learning system for absolute beginners — coherent, sequenced instruction delivered inside VS Code, not a browser sandbox. Web auth, deep-links, offline lessons, local AI narration, and progress sync. All shipped.",
+      "image": "/images/mentor-hero.png",
+      "slug": "mentor",
+      "fullContent": {
+        "intro": "Most people who try to learn to code never finish. The median completion rate across 221 online courses is 12.6%. The failure isn't content — it's structure and environment. Beginners learn in browser sandboxes that don't transfer to real tools, and from fragmented resources that dissolve into tutorial hell. MENTOR is a product built to close that gap: coherent, sequenced instruction delivered inside VS Code — the editor they'll actually use — with local AI narration, offline lessons, and progress that persists across sessions.",
+        "impact": [
+          {
+            "value": "12.6%",
+            "label": "MOOC completion rate",
+            "detail": "The problem MENTOR was built to solve"
+          },
+          {
+            "value": "$14k",
+            "label": "Avg bootcamp cost",
+            "detail": "vs MENTOR at $15/mo"
+          },
+          {
+            "value": "6",
+            "label": "Milestones shipped",
+            "detail": "End-to-end, from web auth to narrated lessons"
+          },
+          {
+            "value": "100%",
+            "label": "Local TTS",
+            "detail": "No API cost, no latency, runs in worker threads"
+          }
+        ],
+        "showcaseImage": {
+          "url": "/images/mentor-hero.png",
+          "caption": "MENTOR IDE — learn to code where developers actually work. Real VS Code, real terminal, real files, with audio narration guiding every step."
+        },
+        "role": "Solo product designer and developer — designed the learning system architecture, the VS Code extension panel, and the web app onboarding. Shipped the full stack from Figma to production VSIX.",
+        "timeline": "Ongoing — web app and VS Code extension live as of June 2026. Lesson content expanding quarterly.",
+        "tools": "Next.js, Supabase, VS Code Extension API, Kokoro TTS, TypeScript, Figma",
+        "problem": "A beginner in 2026 can choose from hundreds of platforms and millions of hours of video, yet most never reach the point of building something real. Two failures explain it: the path dissolves — fragmented resources with no single voice carrying the learner forward — and the skills don't transfer — browser sandboxes that hide the real machine, so everything learned evaporates the moment the tab closes.",
+        "challenges": [
+          "Delivering coherent, sequenced instruction inside a real development environment at the same time — something the market treats as an impossible trade-off",
+          "Building a local TTS narrator (Kokoro) that runs in VS Code worker threads without blocking the extension host, with chunking, caching, and stale-audio protection",
+          "Making the experience accessible to absolute beginners (zero prior setup) while keeping the environment genuine — real terminal, real editor, real version control from lesson one"
+        ],
+        "solutions": [
+          {
+            "title": "One path, not a catalogue",
+            "problem": "Most platforms hand beginners a catalogue and ask them to assemble their own curriculum — the hardest task you can give someone who came to acquire the expertise required to do it. MENTOR has a single, ordered journey from first variable to first deployed project.",
+            "process": [
+              "Designed a content model with typed step formats: intro, concept, analogy, exercise, and win — each with explicit progression rules",
+              "Shipped Course 01, Lesson 1 with 6 steps covering variables, types, and the terminal — tested with zero-experience beginners",
+              "Built ID-safe routing so progress persists across restarts using full IDs (c01-l01-s01) rather than fragile numeric indices",
+              "Bundled the full lesson JSON with the VSIX so lessons work offline from day one — no server round-trips required"
+            ],
+            "showcaseImages": [
+              {
+                "url": "/images/mentor-detail.png",
+                "caption": "Lesson walkthrough — step sidebar, narrator card, and terminal mockup. From zero to first command in five minutes."
+              }
+            ]
+          },
+          {
+            "title": "Real tools from day one, with guardrails",
+            "problem": "Sandbox platforms protect beginners from the real environment. MENTOR does the opposite: beginners work in VS Code — the editor professionals use — but the extension scaffolds the experience progressively so complexity reveals itself in order.",
+            "process": [
+              "Built a VS Code extension that activates on startup, catches deep-links from the web app, and opens lesson panels in context",
+              "Designed the lesson panel as a webview inside VS Code — same editor, same terminal, guided by the panel alongside their real workspace",
+              "Implemented a doctor command (Mentor: Check setup) that diagnoses the environment without requiring the learner to understand it",
+              "Auth token stored in VS Code secret storage — no plaintext credentials, no manual configuration"
+            ],
+            "showcaseImages": [
+              {
+                "url": "/images/mentor-hero.png",
+                "caption": "MENTOR in VS Code — file explorer, code editor, terminal, and lesson panel side by side. No sandbox, no shortcuts."
+              }
+            ]
+          },
+          {
+            "title": "A narrator, always on",
+            "problem": "Reading alone is slow and passive. Audio narration keeps beginners engaged and reduces cognitive load on dense concept steps — but cloud TTS adds latency, API cost, and a dependency that breaks offline.",
+            "process": [
+              "Integrated Kokoro TTS (local, open-source) via kokoro-js — no API key, no external dependency, runs fully offline",
+              "Isolated ONNX inference in a worker_threads worker so the extension host never blocks during generation",
+              "Implemented sentence-level chunking at ~200-char boundaries, preventing token-limit cutoff and white-noise artifacts on long narrations",
+              "Built proactive pre-generation — the next step's audio generates while the learner reads the current one, so playback is instant"
+            ],
+            "showcaseImages": [
+              {
+                "url": "/images/mentor-features.png",
+                "caption": "Four product principles — Real IDE, Audio narration, Instruction tied to action, One voice one project."
+              }
+            ]
+          },
+          {
+            "title": "Built, not just finished",
+            "problem": "Progress measured by lessons marked complete produces a false sense of mastery. MENTOR tracks what learners can actually do — position is saved across restarts, resume shows exactly where they left off, and every stage ends in something real on their own machine.",
+            "process": [
+              "Saved step position to VS Code globalState on every navigation event using full course/lesson/step IDs",
+              "Resume prompt on activation shows chapter and lesson title with Resume / Start over options — no auth required",
+              "Exercise steps use a checkbox task list that auto-advances only when all tasks are checked — completion is verified, not assumed",
+              "Packaged the full system as a VSIX that installs and runs outside dev mode — 401MB including Kokoro and onnxruntime native binaries"
+            ]
+          }
+        ],
+        "outcomes": [
+          "End-to-end learning system live: web onboarding → deep-link → VS Code extension → lesson panel → narration → progress sync.",
+          "Local Kokoro TTS with chunking, caching, pre-generation, and stale-audio protection — zero API cost, works offline.",
+          "VSIX installs and runs outside F5 dev mode. TTS model cache persists across VS Code restarts; cold start paid once.",
+          "Lesson panel renders 5 step types with keyboard navigation, back/forward, replay, hint, and context-aware CTA labels."
+        ],
+        "learnings": [
+          "The convergence gap is real and measurable: coherence and environment realism are jointly necessary, not interchangeable. Optimising one without the other produces the 12.6% completion rate.",
+          "Local inference (Kokoro in worker threads) is now a viable first-class choice — it removes a class of failure modes (latency, API keys, network dependency) that cloud TTS introduces.",
+          "Building solo across design and code collapses the handoff gap — design decisions get validated in minutes, not sprints."
+        ]
+      }
+    },
+    {
       "id": "emcan",
       "label": "case study",
       "title": "Emarat",
       "subtitle": "Loyalty App",
-      "tags": ["UI/UX Design", "Design Systems", "Scrum Management"],
+      "tags": [
+        "UI/UX Design",
+        "Design Systems",
+        "Scrum Management"
+      ],
       "description": "Redesigned a UAE fuel station loyalty app, introducing digital promotions, car wash packages, coffee stamp cards, and partner integrations that transformed user engagement.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/98ad905cd43d6843af17c7ea8a82850856b374ba.png",
       "slug": "emcan-case-study",
       "fullContent": {
         "intro": "EmCan is a mobile loyalty app for fuel stations across the UAE. Customers earn and redeem rewards on fuel, car washes, coffee, and partner offers. I joined as Lead Product Designer to tackle a core problem: users weren't engaging with the loyalty system. My job was to redesign key features — promotions, car wash packages, coffee stamp cards, and partner integrations — to make rewards intuitive and drive repeat usage.",
         "impact": [
-          { "value": "+35%", "label": "Reward Redemption", "detail": "Increase after redesign" },
-          { "value": "30%", "label": "Faster Delivery", "detail": "Via design system" },
-          { "value": "4 Features", "label": "Shipped in 7 Months", "detail": "From discovery to launch" }
+          {
+            "value": "+35%",
+            "label": "Reward Redemption",
+            "detail": "Increase after redesign"
+          },
+          {
+            "value": "30%",
+            "label": "Faster Delivery",
+            "detail": "Via design system"
+          },
+          {
+            "value": "4 Features",
+            "label": "Shipped in 7 Months",
+            "detail": "From discovery to launch"
+          }
         ],
         "role": "Lead UI/UX Designer for the loyalty experience, working alongside a product manager, engineering team, marketing, and external partner teams.",
         "timeline": "7 months from discovery to launch, with continuous iteration post-release.",
@@ -136,17 +279,36 @@
       "label": "case study",
       "title": "VeeHive",
       "subtitle": "Platform",
-      "tags": ["Product Design", "User Research"],
+      "tags": [
+        "Product Design",
+        "User Research"
+      ],
       "description": "Led end-to-end design for a community-first creator platform — from research through PWA launch — focusing on content discovery, moderation efficiency, and creator monetization.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/82ef2c21715839e0248c902181e043c9858b23b1.png",
       "slug": "veehive-case-study",
       "fullContent": {
         "intro": "VeeHive.ai is a community-first media platform where creators build focused communities around their content. I led product and interaction design from discovery through PWA launch, tackling three interconnected problems: helping audiences find and consume content, giving creators tools to grow, and enabling moderators to keep quality high at scale.",
         "impact": [
-          { "value": "7 Months", "label": "Discovery to Launch", "detail": "Full PWA shipped" },
-          { "value": "73%", "label": "Faster Moderation", "detail": "Review time reduced" },
-          { "value": "30%", "label": "Faster Delivery", "detail": "Via design system reuse" },
-          { "value": "8+", "label": "Usability Tests", "detail": "Across key flows" }
+          {
+            "value": "7 Months",
+            "label": "Discovery to Launch",
+            "detail": "Full PWA shipped"
+          },
+          {
+            "value": "73%",
+            "label": "Faster Moderation",
+            "detail": "Review time reduced"
+          },
+          {
+            "value": "30%",
+            "label": "Faster Delivery",
+            "detail": "Via design system reuse"
+          },
+          {
+            "value": "8+",
+            "label": "Usability Tests",
+            "detail": "Across key flows"
+          }
         ],
         "role": "Lead UI/UX Designer, end-to-end: user research, interaction design, high-fidelity prototypes, design system, and design QA. Daily coordination with Product, Engineering, and CX.",
         "timeline": "7 months from discovery to PWA launch, with continuous iteration and feature delivery post-launch.",
@@ -230,42 +392,60 @@
       "title": "Finance Dashboard",
       "description": "A dark-themed finance management interface focused on clarity and data density. Designed to make complex financial data approachable.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/4a4d22e3100bad088ef8e323475a19414b3b9d60.png",
-      "tags": ["UI Design", "Dark Mode"]
+      "tags": [
+        "UI Design",
+        "Dark Mode"
+      ]
     },
     {
       "id": "fitness-app",
       "title": "FEVAFIT",
       "description": "A bold, high-energy fitness app concept with workout tracking, progress visualization, and social motivation features.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/1c8a88f2932f4abc620226c036084b325cfb5207.png",
-      "tags": ["UI Design", "Mobile"]
+      "tags": [
+        "UI Design",
+        "Mobile"
+      ]
     },
     {
       "id": "traffic-ai",
       "title": "Traffic AI",
       "description": "Dashboard for an AI-powered traffic analysis system — real-time monitoring, accident prediction, and route optimization.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/6d37dc9f98d1d54015c21cd161a6c5b7f9ee3174.png",
-      "tags": ["AI/ML", "Dashboard"]
+      "tags": [
+        "AI/ML",
+        "Dashboard"
+      ]
     },
     {
       "id": "fashion-app",
       "title": "Fashion E-commerce",
       "description": "A dual-themed shopping experience with light and dark modes. Designed for seamless browsing across categories with a focus on product imagery.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/dc6706aa4bf6e49b1dbc9114a01038dabf2109ef.png",
-      "tags": ["E-commerce", "UI Design"]
+      "tags": [
+        "E-commerce",
+        "UI Design"
+      ]
     },
     {
       "id": "crypto-wallet",
       "title": "Cryptoverse",
       "description": "A spatial UI concept for Vision Pro — an immersive crypto wallet that lets you view and manage your portfolio in 3D space.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/c7bb1f304e9638503e4e1ac8047df0bcb50bfa90.png",
-      "tags": ["Vision Pro", "Spatial UI"]
+      "tags": [
+        "Vision Pro",
+        "Spatial UI"
+      ]
     },
     {
       "id": "health-ai",
       "title": "Health AI",
       "description": "An AI health guidance interface providing personalized recommendations, symptom analysis, and wellness tracking.",
       "image": "https://ebook-walnut-50035687.figma.site/_assets/v11/cfbc78e844f4709fa6a5fd4a88e4ce6f896164ef.png",
-      "tags": ["AI/ML", "Healthcare"]
+      "tags": [
+        "AI/ML",
+        "Healthcare"
+      ]
     }
   ],
   "contact": {
