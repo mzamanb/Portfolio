@@ -91,7 +91,7 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
               aria-label="Toggle theme"
               className="hidden rounded-full px-3 py-1.5 text-[12px] text-text-muted transition-colors hover:text-text md:block"
             >
-              {theme === "dark" ? "☀" : "☾"}
+              {theme === "dark" ? "Light" : "Dark"}
             </button>
 
             <a
