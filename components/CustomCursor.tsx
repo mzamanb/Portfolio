@@ -9,6 +9,18 @@ export default function CustomCursor() {
   // The interactive homepage ships its own cursor ring; suppress the global one.
   const hidden = pathname === "/";
 
+  // When the global dot is hidden, the real OS cursor is the active one. Flag
+  // that on <html> so elements outside the homepage wrapper (e.g. the chat
+  // widget, which has its own cursor:none from globals) can re-enable it.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (hidden) root.dataset.nativeCursor = "true";
+    else delete root.dataset.nativeCursor;
+    return () => {
+      delete root.dataset.nativeCursor;
+    };
+  }, [hidden]);
+
   useEffect(() => {
     if (hidden) return;
     const el = cursorRef.current;

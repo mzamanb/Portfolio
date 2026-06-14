@@ -73,6 +73,23 @@ html {
   *, *::before, *::after {
     cursor: none !important;
   }
+
+  /* On routes using the native OS cursor (e.g. the interactive homepage, where
+     the white-dot CustomCursor is suppressed), re-enable a real cursor over the
+     chat widget so it isn't left without a usable pointer. */
+  html[data-native-cursor] .chat-widget,
+  html[data-native-cursor] .chat-widget * {
+    cursor: auto !important;
+  }
+  html[data-native-cursor] .chat-widget button,
+  html[data-native-cursor] .chat-widget a,
+  html[data-native-cursor] .chat-widget [role="button"] {
+    cursor: pointer !important;
+  }
+  html[data-native-cursor] .chat-widget textarea,
+  html[data-native-cursor] .chat-widget input {
+    cursor: text !important;
+  }
 }
 
 body {

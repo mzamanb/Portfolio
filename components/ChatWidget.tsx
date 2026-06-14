@@ -283,7 +283,7 @@ export function ChatWidget() {
 
   return (
     <div
-      className="pointer-events-none fixed bottom-0 right-0 z-[100] p-3 sm:p-4 md:p-5"
+      className="chat-widget pointer-events-none fixed bottom-0 right-0 z-[100] p-3 sm:p-4 md:p-5"
       aria-live="polite"
     >
       <div className="pointer-events-auto flex w-[min(100vw-1.5rem,24rem)] flex-col items-end gap-3">
