@@ -1,5 +1,3 @@
-import ImageSlot from "./ImageSlot";
-
 export interface InteractiveContact {
   email: string;
   linkedin?: string;
@@ -161,24 +159,26 @@ export function Work({ items }: WorkProps) {
               Things I<br />shipped
             </h2>
           </div>
-          <p>
-            Three projects, three industries.{" "}
-            <span className="aside-note">
-              drop your own screenshots right onto the frames →
-            </span>
-          </p>
+          <p>Three projects, three industries — tap any frame to read the case study.</p>
         </div>
 
         {items.map((p, i) => (
           <article className="project reveal" key={p.slotId}>
             <div className="project-media">
               <span className="project-tag">{p.tag}</span>
-              <ImageSlot
-                id={p.slotId}
-                placeholder={`Drop ${p.title} shot`}
-                defaultSrc={p.image}
-                href={p.href}
-              />
+              {p.image ? (
+                p.href ? (
+                  <a href={p.href} aria-label={`Read the ${p.title} case study`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.image} alt={p.title} />
+                  </a>
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={p.image} alt={p.title} />
+                )
+              ) : (
+                <span className="image-slot-hint">{p.title}</span>
+              )}
             </div>
             <div className="project-body">
               <span className="project-num">
