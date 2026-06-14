@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  // The interactive homepage ships its own cursor ring; suppress the global one.
+  const hidden = pathname === "/";
 
   useEffect(() => {
+    if (hidden) return;
     const el = cursorRef.current;
     if (!el) return;
 
@@ -46,7 +51,9 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
     };
-  }, []);
+  }, [hidden]);
+
+  if (hidden) return null;
 
   return (
     <div

@@ -8,8 +8,112 @@
     ],
     "subtitle": "I'm Zaman Bayezid — a Lead Product Designer bridging design and development with deep user empathy and technical logic. I specialize in atomic design systems and AI-powered workflows that accelerate how teams ship.",
     "resumeUrl": "https://drive.google.com/uc?export=download&id=1eDpi0buIyavsAzTZmE1W6kwxAT5LP_g0",
-    "badge": "CSPO Certified · Lead Product Designer"
+    "badge": "CSPO Certified · Lead Product Designer",
+    "portrait": "/images/mentor-hero.png",
+    "ctaLabel": "Book a Quick Call",
+    "social": {
+      "behance": "https://www.behance.net/zamanbayezid",
+      "dribbble": "https://dribbble.com/zamanbayezid",
+      "linkedin": "https://www.linkedin.com/in/zamanbayezid/",
+      "github": "https://github.com/mzamanb"
+    },
+    "marqueeImages": [
+      "/images/mentor-hero.png",
+      "/images/mentor-detail.png",
+      "/images/mentor-features.png",
+      "/images/emcan-cover.svg",
+      "/images/veehive-cover.svg",
+      "/images/project-finance.svg",
+      "/images/project-fitness.svg",
+      "/images/project-traffic.svg"
+    ]
   },
+  "about": {
+    "headline": "Designing Impactful Experiences for the Digital Age",
+    "description": "I craft brands and digital products that resonate. My work blends design, strategy, and technology to help ambitious businesses stand out in today's fast-moving world. Whether it's building a product, shaping a brand identity, or curating digital strategies — I focus on clarity, creativity, and measurable impact.",
+    "rotatingWords": [
+      "Create Boldly",
+      "Think Forward",
+      "Design Fearlessly",
+      "Build Smart",
+      "Move Differently",
+      "Evolve Constantly"
+    ]
+  },
+  "stats": [
+    {
+      "value": 10,
+      "suffix": "+",
+      "label": "Years Experience"
+    },
+    {
+      "value": 6,
+      "suffix": "+",
+      "label": "Projects Delivered"
+    },
+    {
+      "value": 5,
+      "suffix": "+",
+      "label": "Trusted Clients"
+    },
+    {
+      "value": 4,
+      "suffix": "",
+      "label": "Markets Served"
+    }
+  ],
+  "services": [
+    {
+      "id": "design-systems",
+      "title": "Design Systems",
+      "description": "I build atomic design systems that bridge Figma and code, keeping UI consistent across platforms while cutting engineering sprint cycles.",
+      "image": "/images/project-finance.svg"
+    },
+    {
+      "id": "ux-design",
+      "title": "UX Design",
+      "description": "I design with business outcomes in mind — rapid prototyping, stakeholder alignment, and user-validated flows before a single line of code is written.",
+      "image": "/images/project-fitness.svg"
+    },
+    {
+      "id": "user-research",
+      "title": "User Research",
+      "description": "I uncover what users actually need through structured research — interviews, usability tests, and data analysis — so every design decision is grounded in evidence.",
+      "image": "/images/project-traffic.svg"
+    },
+    {
+      "id": "creative-dev",
+      "title": "Creative Development",
+      "description": "I transform innovative ideas into scalable digital solutions through clean code, smart design, and creative precision.",
+      "image": "/images/mentor-hero.png"
+    }
+  ],
+  "trustedBy": [
+    {
+      "name": "Emarat"
+    },
+    {
+      "name": "VeeHive"
+    },
+    {
+      "name": "MENTOR"
+    },
+    {
+      "name": "EmCan"
+    },
+    {
+      "name": "NovaTech"
+    },
+    {
+      "name": "Bloom"
+    },
+    {
+      "name": "Horizon"
+    },
+    {
+      "name": "Vertex"
+    }
+  ],
   "skills": [
     {
       "id": "design-systems",
@@ -470,5 +574,42 @@
     "twitterHandle": "",
     "linkedinUrl": "https://www.linkedin.com/in/zamanbayezid/",
     "googleVerification": ""
-  }
+  },
+  "experience": [
+    {
+      "period": "2026 — NOW",
+      "title": "Founder & Senior Product Designer",
+      "org": "Mentor IDE · VS Code education platform",
+      "description": "Building a coding-education platform for beginners inside VS Code, with end-to-end ownership from strategy to technical execution. Architected a 9-stage, 28-course curriculum and shipped authentication, dashboard, the VS Code extension, and a TTS-powered lesson renderer.",
+      "place": "Mentor"
+    },
+    {
+      "period": "2023 — NOW",
+      "title": "Lead Product Designer",
+      "org": "Emarat Loyalty · SiaXperience",
+      "description": "Designed a loyalty ecosystem for 100K+ active users across iOS, Android, and web. Architected the design system governing cross-platform consistency — tokens, naming, components — plus end-to-end flows for rewards, transactions, and accounts.",
+      "place": "Emarat"
+    },
+    {
+      "period": "2022 — 2023",
+      "title": "Senior Product Designer",
+      "org": "VeeHive.ai · creator platform",
+      "description": "Led a full platform redesign and design system for a creator community. Ran 8+ usability tests and built a system that sped feature delivery by 30%. Result: 40% more qualified leads and 15% higher user satisfaction.",
+      "place": "VeeHive"
+    },
+    {
+      "period": "2026",
+      "title": "Designer & Brand Lead",
+      "org": "Bludres Studio",
+      "description": "Designed and launched the complete brand and marketing website for a digital execution studio — visual identity, messaging, and a clear value proposition.",
+      "place": "Bludres"
+    },
+    {
+      "period": "2016 — 2023",
+      "title": "Product Designer",
+      "org": "Launchpad Ventures · Decolight · FEVAFIT",
+      "description": "Foundational work across fintech, ecommerce, and health products — building research, prototyping, and cross-functional collaboration practices.",
+      "place": "Earlier"
+    }
+  ]
 }

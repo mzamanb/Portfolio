@@ -2,60 +2,60 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import { Menu, X } from "lucide-react";
 
-const leftLinks = [
-  { label: "Work",     href: "#work" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills",   href: "#skills" },
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#work" },
+  { label: "Contact", href: "#contact" },
 ];
 
-const mobileLinks = [
-  { label: "Home.",     href: "#home" },
-  { label: "Work.",     href: "#work" },
-  { label: "Projects.", href: "#projects" },
-  { label: "Skills.",   href: "#skills" },
-  { label: "Contact.",  href: "#contact" },
-];
-
-const socialLinks = [
-  { label: "LI.", href: "https://www.linkedin.com/in/zamanbayezid/" },
-  { label: "GH.", href: "https://github.com/mzamanb" },
-  { label: "BE.", href: "https://www.behance.net/zamanbayezid" },
-];
-
-/* Dotted crosshair icon — matches td-moro's decorative arrow */
-function Crosshair() {
+function VeloryLogo() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-      <circle cx="9"  cy="3"  r="1.5" fill="currentColor" opacity="0.4" />
-      <circle cx="9"  cy="15" r="1.5" fill="currentColor" opacity="0.4" />
-      <circle cx="3"  cy="9"  r="1.5" fill="currentColor" opacity="0.4" />
-      <circle cx="15" cy="9"  r="1.5" fill="currentColor" opacity="0.4" />
-      <circle cx="9"  cy="9"  r="1.5" fill="currentColor" opacity="0.25" />
-    </svg>
+    <a href="#home" className="flex items-center gap-2.5">
+      <span
+        className="grid h-8 w-8 place-items-center rounded-lg bg-accent"
+        aria-hidden
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 12L8 4L13 12H3Z"
+            fill="white"
+            fillOpacity="0.9"
+          />
+        </svg>
+      </span>
+      <span className="font-display text-[15px] font-semibold tracking-[-0.02em] text-text">
+        Zaman.
+      </span>
+    </a>
   );
 }
 
 export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
       <nav
         className="fixed inset-x-0 top-0 z-50 border-b border-[var(--color-border)]"
-        style={{ background: "var(--nav-bg)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+        style={{
+          background: "var(--nav-bg)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
       >
-        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-6 md:grid md:grid-cols-3">
-          {/* Left — desktop nav links */}
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <VeloryLogo />
+
           <ul className="hidden items-center gap-1 md:flex">
-            {leftLinks.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="rounded-full px-3.5 py-1.5 text-[13px] text-text-secondary transition-colors hover:text-text"
+                  className="rounded-full px-4 py-2 text-[13px] text-text-secondary transition-colors hover:text-text"
                 >
                   {link.label}
                 </a>
@@ -63,48 +63,24 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
             ))}
           </ul>
 
-          {/* Center — wordmark */}
-          <div className="flex md:justify-center">
-            <a href="#home" className="text-[15px] font-bold tracking-[-0.02em] text-text">
-              Zaman.
-            </a>
-          </div>
-
-          {/* Right — desktop social + CTA + mobile hamburger */}
-          <div className="flex items-center justify-end gap-2">
-            <div className="hidden items-center gap-0.5 md:flex">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full px-3 py-1.5 text-[13px] text-text-secondary transition-colors hover:text-text"
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
-
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="hidden h-8 w-8 place-items-center rounded-full border border-[var(--color-border-strong)] text-text-secondary transition-colors hover:text-text md:grid"
+          <div className="flex items-center gap-3">
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden text-[13px] text-text-secondary transition-colors hover:text-text md:inline-flex"
             >
-              {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-            </button>
-
+              Resume
+            </a>
             <a
               href="#contact"
-              className="hidden h-8 items-center rounded-full bg-text px-4 text-[13px] font-medium text-bg transition-opacity hover:opacity-80 md:inline-flex"
+              className="hidden h-9 items-center rounded-full bg-accent px-5 text-[13px] font-semibold text-white transition-opacity hover:opacity-90 md:inline-flex"
             >
-              Contact
+              Contact Us
             </a>
-
-            {/* Mobile hamburger — only shown on mobile */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="grid h-8 w-8 place-items-center text-text md:hidden"
+              className="grid h-9 w-9 place-items-center text-text md:hidden"
               aria-label="Open menu"
             >
               <Menu size={20} strokeWidth={2} />
@@ -113,7 +89,6 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
         </div>
       </nav>
 
-      {/* Mobile full-screen menu — td-moro style */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -121,38 +96,21 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-[var(--color-bg-card)] md:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-bg md:hidden"
           >
-            {/* Top bar — mirrors the nav */}
-            <div className="flex h-14 items-center justify-between border-b border-[var(--color-border)] px-6">
-              <a
-                href="#home"
+            <div className="flex h-16 items-center justify-between border-b border-[var(--color-border)] px-6">
+              <VeloryLogo />
+              <button
                 onClick={() => setMobileOpen(false)}
-                className="text-[15px] font-bold tracking-[-0.02em] text-text"
+                aria-label="Close menu"
+                className="text-text"
               >
-                Zaman.
-              </a>
-              <div className="flex items-center gap-3">
-                <a
-                  href="#contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex h-8 items-center rounded-full bg-text px-4 text-[13px] font-medium text-bg"
-                >
-                  Contact
-                </a>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  aria-label="Close menu"
-                  className="text-text"
-                >
-                  <X size={22} strokeWidth={2} />
-                </button>
-              </div>
+                <X size={22} strokeWidth={2} />
+              </button>
             </div>
 
-            {/* Nav links — large, bold, full-width rows */}
             <nav className="flex flex-1 flex-col justify-center px-6">
-              {mobileLinks.map((link, i) => (
+              {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -160,43 +118,28 @@ export default function Navbar({ resumeUrl }: { resumeUrl: string }) {
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: i * 0.05 }}
-                  className="flex items-center justify-between border-b border-[var(--color-border)] py-6 text-text"
+                  className="border-b border-[var(--color-border)] py-6 font-display text-[clamp(1.75rem,8vw,2.5rem)] font-bold tracking-[-0.03em] text-text"
                 >
-                  <span
-                    style={{
-                      fontSize: "clamp(1.75rem, 8vw, 2.5rem)",
-                      fontWeight: 800,
-                      letterSpacing: "-0.03em",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {link.label}
-                  </span>
-                  <Crosshair />
+                  {link.label}
                 </motion.a>
               ))}
             </nav>
 
-            {/* Bottom — social links */}
             <div className="flex items-center justify-between border-t border-[var(--color-border)] px-6 py-6">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[15px] font-semibold text-text-muted transition-colors hover:text-text"
-                >
-                  {s.label}
-                </a>
-              ))}
+              <a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex h-10 items-center rounded-full bg-accent px-6 text-[13px] font-semibold text-white"
+              >
+                Contact Us
+              </a>
               <a
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[15px] font-semibold text-text-muted transition-colors hover:text-text"
+                className="text-[14px] font-medium text-text-muted"
               >
-                CV.
+                Resume ↓
               </a>
             </div>
           </motion.div>

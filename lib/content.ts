@@ -8,6 +8,34 @@ export type HeroContent = {
   subtitle: string;
   resumeUrl: string;
   badge: string;
+  portrait?: string;
+  ctaLabel?: string;
+  social?: Record<string, string>;
+  marqueeImages?: string[];
+};
+
+export type AboutContent = {
+  headline: string;
+  description: string;
+  rotatingWords: string[];
+};
+
+export type StatItem = {
+  value: number;
+  suffix?: string;
+  label: string;
+};
+
+export type ServiceItem = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+export type TrustedByItem = {
+  name: string;
+  logo?: string;
 };
 
 export type Skill = {
@@ -69,6 +97,14 @@ export type Project = {
   tags: string[];
 };
 
+export type ExperienceItem = {
+  period: string;
+  title: string;
+  org: string;
+  description: string;
+  place: string;
+};
+
 export type ContactContent = {
   heading: string;
   description: string;
@@ -94,9 +130,14 @@ export type SEOContent = {
 
 export type SiteContent = {
   hero: HeroContent;
+  about?: AboutContent;
+  stats?: StatItem[];
+  services?: ServiceItem[];
+  trustedBy?: TrustedByItem[];
   skills: Skill[];
   caseStudies: CaseStudy[];
   projects: Project[];
+  experience?: ExperienceItem[];
   contact: ContactContent;
   footer: FooterContent;
   seo: SEOContent;
@@ -131,7 +172,33 @@ function ensureSeo(content: SiteContent): SiteContent {
   return { ...content, seo: { ...DEFAULT_SEO, ...content.seo } };
 }
 
+// The Supabase row can be a partial subset of the full content (e.g. missing
+// `about`/`stats`/`services`). Use the local file as a base and overlay any
+// key Supabase actually provides, so remote edits still win while local fills
+// the gaps. A key only overrides when it is present and non-empty.
+function mergeContent(
+  base: SiteContent,
+  override: Partial<SiteContent>
+): SiteContent {
+  const isEmpty = (v: unknown): boolean =>
+    v === undefined ||
+    v === null ||
+    (Array.isArray(v) && v.length === 0) ||
+    (typeof v === "object" && !Array.isArray(v) && Object.keys(v).length === 0);
+
+  const merged: SiteContent = { ...base };
+  for (const key of Object.keys(override) as (keyof SiteContent)[]) {
+    const value = override[key];
+    if (!isEmpty(value)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (merged as any)[key] = value;
+    }
+  }
+  return merged;
+}
+
 export async function getContent(): Promise<SiteContent> {
+  const local = getLocalContent();
   const supabase = getSupabase();
   if (supabase) {
     try {
@@ -142,13 +209,13 @@ export async function getContent(): Promise<SiteContent> {
         .single();
 
       if (!error && data?.data) {
-        return ensureSeo(data.data as SiteContent);
+        return ensureSeo(mergeContent(local, data.data as Partial<SiteContent>));
       }
     } catch {
       // fall through to local
     }
   }
-  return ensureSeo(getLocalContent());
+  return ensureSeo(local);
 }
 
 export async function updateContent(content: SiteContent): Promise<void> {

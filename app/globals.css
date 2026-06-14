@@ -1,40 +1,38 @@
 @import "tailwindcss";
 
 /* ============================================================================
- * Authentication Architecture — Design Tokens
- * Derived from Authentication-Architecture-DESIGN.md
- * Glass surfaces · Bounded grid · 4px rhythm · Emerald accent
+ * Velory Design Tokens — warm dark + orange accent
  * ========================================================================= */
 
 @theme {
-  /* DEFAULT (LIGHT) THEME */
-  --color-bg: #f4f4f2;
-  --color-bg-surface: #ffffff;
-  --color-bg-card: #ffffff;
-  --color-bg-elevated: #ebebea;
-  --color-bg-hover: #e8e8e6;
-  --color-bg-dark: #111111;
+  --color-bg: #0c0c0c;
+  --color-bg-surface: #141414;
+  --color-bg-card: #1a1a1a;
+  --color-bg-elevated: #222222;
+  --color-bg-hover: #2a2a2a;
+  --color-bg-dark: #0c0c0c;
+  --color-bg-cream: #f2ece3;
 
-  --color-border: rgba(0, 0, 0, 0.09);
-  --color-border-subtle: rgba(0, 0, 0, 0.06);
-  --color-border-strong: rgba(0, 0, 0, 0.14);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
 
-  --color-text: #0d0d0d;
-  --color-text-secondary: #525252;
-  --color-text-muted: #909090;
-  --color-text-ghost: rgba(0, 0, 0, 0.045);
+  --color-text: #f5f0ea;
+  --color-text-secondary: rgba(245, 240, 234, 0.65);
+  --color-text-muted: rgba(245, 240, 234, 0.4);
+  --color-text-ghost: rgba(245, 240, 234, 0.06);
+  --color-text-dark: #0c0c0c;
 
-  --color-accent: #059669;
-  --color-accent-hover: #047857;
-  --color-accent-soft: #10b981;
-  --color-accent-glow: #6ee7b7;
-  --color-accent-dim: rgba(5, 150, 105, 0.1);
+  --color-accent: #f15a29;
+  --color-accent-hover: #ff6b3d;
+  --color-accent-soft: #ff8a5c;
+  --color-accent-glow: #ffb899;
+  --color-accent-dim: rgba(241, 90, 41, 0.15);
 
-  --color-success: #059669;
-  --color-warn: #d97706;
-  --color-danger: #dc2626;
+  --color-success: #22c55e;
+  --color-warn: #f59e0b;
+  --color-danger: #ef4444;
 
-  /* Spacing rhythm — 4px base */
   --space-1: 1px;
   --space-2: 4px;
   --space-3: 8px;
@@ -45,18 +43,17 @@
   --space-20: 77px;
   --space-32: 128px;
 
-  /* Radii */
   --radius-xs: 6px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 15px;
-  --radius-xl: 16px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-pill: 9999px;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Mono", ui-monospace, monospace;
 
-  /* Motion */
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-fast: 200ms;
   --duration-base: 500ms;
@@ -64,44 +61,9 @@
   --duration-xlong: 1000ms;
 }
 
-/* Nav bg + shell grad — semi-transparent, theme-aware */
 :root {
-  --nav-bg: rgba(244, 244, 242, 0.90);
-  --shell-grad: linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.02) 40%, rgba(0,0,0,0) 100%);
+  --nav-bg: rgba(12, 12, 12, 0.85);
 }
-
-html[data-theme="dark"] {
-  --nav-bg: rgba(10, 10, 10, 0.75);
-  --shell-grad: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 40%, rgba(0,0,0,0) 100%);
-}
-
-/* ----- DARK THEME OVERRIDES ----- */
-html[data-theme="dark"] {
-  --color-text-ghost: rgba(255, 255, 255, 0.07);
-  --color-bg: #0a0a0a;
-  --color-bg-surface: #000000;
-  --color-bg-card: #18181b;
-  --color-bg-elevated: #1f1f23;
-  --color-bg-hover: #1c1c20;
-
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
-  --color-border-strong: rgba(255, 255, 255, 0.16);
-
-  --color-text: #e5e5e5;
-  --color-text-secondary: #a3a3a3;
-  --color-text-muted: #737373;
-
-  --color-accent: #10b981;
-  --color-accent-hover: #34d399;
-  --color-accent-soft: #34d399;
-  --color-accent-glow: #6ee7b7;
-  --color-accent-dim: rgba(16, 185, 129, 0.12);
-}
-
-/* ============================================================================
- * Base resets & body
- * ========================================================================= */
 
 html {
   scroll-behavior: smooth;
@@ -125,53 +87,79 @@ body {
   color: #ffffff;
 }
 
-/* ============================================================================
- * Architecture grid background — subtle bounded grid
- * ========================================================================= */
-.bg-architecture-grid {
-  background-image:
-    linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
-  background-size: 64px 64px;
+.font-display {
+  font-family: var(--font-display);
 }
 
-/* ============================================================================
- * Glass shell — gradient hairline border treatment
- * From spec: "linear-gradient(rgba(255,255,255,0.08), rgba(0,0,0,0))"
- * Wraps a card with 1px gradient padding for premium edge.
- * ========================================================================= */
-.glass-shell {
-  position: relative;
-  border-radius: var(--radius-xl);
-  padding: 1px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
+/* Section eyebrow — Velory // label */
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-html[data-theme="light"] .glass-shell {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.08) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+.section-eyebrow::before {
+  content: "// ";
+  color: var(--color-accent);
 }
 
-.glass-shell > .glass-inner {
-  border-radius: calc(var(--radius-xl) - 1px);
-  background: var(--color-bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 32px;
-  height: 100%;
-  width: 100%;
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* ============================================================================
- * Glass card — frosted surface with backdrop blur
- * ========================================================================= */
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow {
+  animation: marquee 55s linear infinite;
+}
+
+.animate-marquee-fast {
+  animation: marquee 28s linear infinite;
+}
+
+/* Grain overlay */
+.grain-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Orange glow */
+.accent-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 30% at 20% 30%, var(--color-accent-dim), transparent 60%),
+    radial-gradient(35% 25% at 80% 70%, rgba(241, 90, 41, 0.08), transparent 60%);
+  filter: blur(60px);
+  opacity: 0.8;
+}
+
+/* Cream section variant */
+.section-cream {
+  background-color: var(--color-bg-cream);
+  color: var(--color-text-dark);
+}
+
+.section-cream .section-eyebrow {
+  color: rgba(12, 12, 12, 0.45);
+}
+
+/* Glass utilities (kept for case study pages) */
 .glass-card {
   background: color-mix(in srgb, var(--color-bg-card) 70%, transparent);
   border: 1px solid var(--color-border);
@@ -180,62 +168,12 @@ html[data-theme="light"] .glass-shell {
   -webkit-backdrop-filter: blur(12px);
 }
 
-.glass-panel {
-  background: color-mix(in srgb, var(--color-bg-card) 80%, transparent);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* ============================================================================
- * Architecture shadow — multi-layer elevation per spec
- * ========================================================================= */
 .shadow-architecture {
   box-shadow:
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.06) 0px 1px 1px -0.5px,
-    rgba(0, 0, 0, 0.06) 0px 3px 3px -1.5px,
-    rgba(0, 0, 0, 0.06) 0px 6px 6px -3px,
-    rgba(0, 0, 0, 0.06) 0px 12px 12px -6px,
-    rgba(0, 0, 0, 0.06) 0px 24px 24px -12px;
-}
-
-html[data-theme="dark"] .shadow-architecture {
-  box-shadow:
     rgba(0, 0, 0, 0.4) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.4) 0px 1px 1px -0.5px,
-    rgba(0, 0, 0, 0.4) 0px 3px 3px -1.5px,
-    rgba(0, 0, 0, 0.4) 0px 6px 6px -3px,
-    rgba(0, 0, 0, 0.4) 0px 12px 12px -6px,
-    rgba(0, 0, 0, 0.4) 0px 24px 24px -12px;
+    rgba(0, 0, 0, 0.3) 0px 6px 24px -6px;
 }
 
-/* ============================================================================
- * Accent glow — emerald aurora used in heroes
- * ========================================================================= */
-.accent-glow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      40% 30% at 30% 20%,
-      var(--color-accent-dim),
-      transparent 60%
-    ),
-    radial-gradient(
-      35% 25% at 75% 70%,
-      var(--color-accent-dim),
-      transparent 60%
-    );
-  filter: blur(40px);
-  opacity: 0.7;
-}
-
-/* ============================================================================
- * Scrollbar
- * ========================================================================= */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -251,12 +189,8 @@ html[data-theme="dark"] .shadow-architecture {
   background: var(--color-text-muted);
 }
 
-/* ============================================================================
- * Motion utility — gentle pulse for status indicators
- * ========================================================================= */
 @keyframes architecture-pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
   }

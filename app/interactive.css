@@ -1,0 +1,1405 @@
+/* ============================================================
+   Zaman Bayezid — Interactive Portfolio
+   Ported from the Claude Design handoff (styles.css), scoped under
+   the .zb wrapper so it never leaks into the other routes that share
+   globals.css. Blob-character styles intentionally omitted.
+   Fonts (Space Grotesk + JetBrains Mono) are loaded in app/layout.tsx.
+   ============================================================ */
+
+.zb {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-hand: "Shantell Sans", "Comic Sans MS", cursive;
+
+  --maxw: 1180px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Midnight (default) */
+.zb[data-theme="midnight"] {
+  --bg: #0e0e12;
+  --bg-2: #16161d;
+  --panel: #1b1b24;
+  --fg: #f4f2ee;
+  --muted: #9b988f;
+  --faint: #6a6860;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-2: rgba(255, 255, 255, 0.16);
+  --a1: #c2f04a; /* acid lime */
+  --a2: #b08cff; /* violet */
+  --a3: #57e3ff; /* cyan glint */
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --char-shadow: rgba(0, 0, 0, 0.45);
+}
+
+/* Paper (bold light) */
+.zb[data-theme="paper"] {
+  --bg: #f4f1e9;
+  --bg-2: #ffffff;
+  --panel: #ffffff;
+  --fg: #16140f;
+  --muted: #6b675d;
+  --faint: #b4afa2;
+  --line: rgba(0, 0, 0, 0.12);
+  --line-2: rgba(0, 0, 0, 0.2);
+  --a1: #ff5a2b; /* electric orange */
+  --a2: #1f53ff; /* cobalt */
+  --a3: #00b070; /* green */
+  --shadow: 0 24px 60px rgba(40, 30, 10, 0.16);
+  --char-shadow: rgba(40, 30, 10, 0.18);
+}
+
+/* Acid (high-energy dark) */
+.zb[data-theme="acid"] {
+  --bg: #08100c;
+  --bg-2: #0d1813;
+  --panel: #11201a;
+  --fg: #e8fff4;
+  --muted: #74a78f;
+  --faint: #4c7361;
+  --line: rgba(120, 255, 200, 0.12);
+  --line-2: rgba(120, 255, 200, 0.22);
+  --a1: #2bff9b; /* mint */
+  --a2: #ff3d8b; /* magenta */
+  --a3: #ffe14d; /* yellow */
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --char-shadow: rgba(0, 0, 0, 0.5);
+}
+
+.zb * {
+  box-sizing: border-box;
+}
+
+.zb {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition:
+    background-color 0.5s var(--ease),
+    color 0.5s var(--ease);
+}
+
+/* The handoff shows the OS cursor + a decorative ring. Re-enable the cursor
+   inside .zb (globals.css hides it site-wide with !important). */
+@media (pointer: fine) {
+  .zb,
+  .zb * {
+    cursor: auto !important;
+  }
+  .zb a,
+  .zb button,
+  .zb [data-scroll],
+  .zb .brand {
+    cursor: pointer !important;
+  }
+  .zb .game-stage,
+  .zb .game-stage * {
+    cursor: none !important;
+  }
+}
+
+.zb ::selection {
+  background: var(--a1);
+  color: #0a0a0a;
+}
+
+/* During a theme switch, suppress all transitions for one frame so every
+   var()-driven property snaps to the new palette instead of getting stuck. */
+.zb.theme-switching * {
+  transition: none !important;
+}
+
+.zb a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- Type helpers ---- */
+.zb .mono-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.zb .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+/* ---- Human / handwritten touches ---- */
+.zb .scribble {
+  font-family: var(--font-hand);
+  font-weight: 500;
+}
+.zb .hero-hello {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: clamp(20px, 3.4vw, 34px);
+  color: var(--a1);
+  display: inline-block;
+  transform: rotate(-3.5deg);
+  margin: 0 0 2px 8px;
+}
+/* marker-pen highlight — reads handmade, not a CSS underline trope */
+.zb .mark {
+  color: var(--fg);
+  padding: 0 0.12em;
+  box-shadow: inset 0 -0.42em 0 color-mix(in oklab, var(--a1) 38%, transparent);
+}
+.zb .sign {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: clamp(30px, 5vw, 56px);
+  color: var(--a1);
+  transform: rotate(-4deg);
+  margin: 26px 0 0;
+  line-height: 1;
+}
+.zb .aside-note {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  color: var(--muted);
+  font-size: clamp(14px, 1.6vw, 17px);
+  transform: rotate(-1.2deg);
+  display: inline-block;
+}
+
+/* ============================================================
+   Layout scaffolding
+   ============================================================ */
+.zb .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.zb section {
+  position: relative;
+}
+
+.zb .section-pad {
+  padding: 130px 0;
+}
+
+/* scroll progress */
+.zb #scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  z-index: 60;
+  transition: width 0.1s linear;
+}
+
+/* ---- Top nav ---- */
+.zb header.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+.zb header.nav .brand {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.zb header.nav .brand .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.3s var(--ease-back);
+}
+.zb header.nav .brand:hover .dot {
+  transform: scale(1.5);
+}
+.zb header.nav nav {
+  display: flex;
+  gap: 26px;
+}
+.zb header.nav nav a {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: #fff;
+  opacity: 0.75;
+  position: relative;
+  padding: 4px 0;
+  transition: opacity 0.2s;
+}
+.zb header.nav nav a:hover {
+  opacity: 1;
+}
+.zb header.nav nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.zb header.nav nav a:hover::after {
+  transform: scaleX(1);
+}
+@media (max-width: 720px) {
+  .zb header.nav nav {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Content
+   ============================================================ */
+.zb main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Hero ---- */
+.zb #hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 90px;
+  position: relative;
+  overflow: hidden;
+}
+.zb .hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 40%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(120% 80% at 50% 40%, #000 30%, transparent 75%);
+  opacity: 0.4;
+}
+.zb .hero-glow {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 60vw;
+  height: 60vw;
+  max-width: 760px;
+  max-height: 760px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--a2), transparent 62%);
+  opacity: 0.1;
+  filter: blur(48px);
+  top: -10%;
+  right: -8%;
+}
+.zb .hero-inner {
+  position: relative;
+  z-index: 2;
+}
+.zb .hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line-2);
+  border-radius: 40px;
+  padding: 7px 14px;
+  margin-bottom: 30px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: color-mix(in oklab, var(--bg-2) 70%, transparent);
+  backdrop-filter: blur(6px);
+}
+.zb .hero-status .live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--a1);
+  box-shadow: 0 0 0 0 var(--a1);
+  animation: zb-pulse 2s infinite;
+}
+@keyframes zb-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--a1) 70%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.zb .hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(54px, 11vw, 168px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.zb .hero h1 .line {
+  display: block;
+  overflow: hidden;
+}
+.zb .hero h1 .line > span {
+  display: inline-block;
+}
+.zb .hero h1 .accent {
+  color: var(--a1);
+}
+.zb .hero .role {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(15px, 2vw, 22px);
+  color: var(--muted);
+  margin-top: 30px;
+  max-width: 620px;
+  line-height: 1.65;
+}
+.zb .hero .role b {
+  color: var(--fg);
+  font-weight: 700;
+}
+.zb .hero-cta {
+  display: flex;
+  gap: 14px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.zb .scroll-cue {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.zb .scroll-cue .bar {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(var(--muted), transparent);
+  animation: zb-cueDrop 1.8s var(--ease) infinite;
+}
+@keyframes zb-cueDrop {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* ---- Buttons ---- */
+.zb .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: 0.03em;
+  padding: 13px 20px;
+  border-radius: 40px;
+  border: 1px solid var(--line-2);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease-back),
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.zb .btn:hover {
+  transform: translateY(-2px);
+}
+.zb .btn .arrow {
+  transition: transform 0.25s var(--ease);
+}
+.zb .btn:hover .arrow {
+  transform: translate(3px, -3px);
+}
+.zb .btn.primary {
+  background: var(--a1);
+  color: #0c0c0c;
+  border-color: var(--a1);
+}
+.zb .btn.primary:hover {
+  box-shadow: 0 10px 30px color-mix(in oklab, var(--a1) 45%, transparent);
+}
+
+/* ---- Section header ---- */
+.zb .sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.zb .sec-head .idx {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--a1);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  display: block;
+}
+.zb .sec-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(34px, 5.5vw, 72px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0;
+}
+.zb .sec-head p {
+  color: var(--muted);
+  max-width: 380px;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================================
+   Projects
+   ============================================================ */
+.zb #work {
+  background: var(--bg);
+}
+.zb .project {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 60px 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.zb .project:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.zb .project:nth-child(even) .project-media {
+  order: 2;
+}
+@media (max-width: 860px) {
+  .zb .project {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .zb .project:nth-child(even) .project-media {
+    order: 0;
+  }
+}
+
+.zb .project-media {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 3;
+  background: var(--bg-2);
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+.zb .project:hover .project-media {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+.zb .project-media .image-slot {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.zb .project-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 6px 11px;
+  border-radius: 30px;
+  background: var(--a1);
+  color: #0c0c0c;
+  font-weight: 600;
+  transform: rotate(-2deg);
+}
+.zb .project-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+.zb .project h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  margin: 14px 0 16px;
+}
+.zb .project .summary {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+.zb .project-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.zb .project-meta .k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+.zb .project-meta .v {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 6px;
+}
+.zb .project-meta .v small {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11.5px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+.zb .project-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.zb .chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding: 7px 12px;
+  border-radius: 30px;
+  border: 1px solid var(--line-2);
+  color: var(--muted);
+  cursor: default;
+  transition:
+    transform 0.2s var(--ease-back),
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.zb .chip:hover {
+  transform: translateY(-2px);
+  color: var(--fg);
+  border-color: var(--a1);
+  background: color-mix(in oklab, var(--a1) 12%, transparent);
+}
+
+/* ============================================================
+   About + Skills
+   ============================================================ */
+.zb #about {
+  background: var(--bg-2);
+}
+.zb .about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+}
+@media (max-width: 860px) {
+  .zb .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.zb .about-lead {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.zb .about-lead .hl {
+  color: var(--a1);
+}
+.zb .about-body {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin-top: 24px;
+  max-width: 560px;
+}
+.zb .stat {
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+.zb .stat:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.zb .stat .num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.zb .stat .num .u {
+  color: var(--a1);
+}
+.zb .stat .lbl {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+/* domains marquee */
+.zb .domains {
+  margin-top: 70px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  padding: 22px 0;
+}
+.zb .domains-track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: zb-marquee 28s linear infinite;
+}
+.zb .domains:hover .domains-track {
+  animation-play-state: paused;
+}
+.zb .domains span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--faint);
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  white-space: nowrap;
+}
+.zb .domains span::after {
+  content: "✦";
+  color: var(--a1);
+  font-size: 16px;
+}
+@keyframes zb-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* skills */
+.zb #skills {
+  background: var(--bg);
+}
+.zb .skill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.zb .skill {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 11px 16px;
+  border-radius: 40px;
+  border: 1px solid var(--line-2);
+  cursor: default;
+  user-select: none;
+  transition:
+    transform 0.25s var(--ease-back),
+    background 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
+.zb .skill:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  background: var(--a2);
+  color: #0c0c0c;
+  border-color: var(--a2);
+}
+.zb .skill[data-cat="build"]:hover {
+  background: var(--a1);
+}
+.zb .skill[data-cat="research"]:hover {
+  background: var(--a3);
+}
+
+.zb .tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  margin-top: 60px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.zb .tool {
+  background: var(--bg);
+  padding: 26px 20px;
+  transition: background 0.3s var(--ease);
+}
+.zb .tool:hover {
+  background: var(--bg-2);
+}
+.zb .tool .t-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+}
+.zb .tool .t-lvl {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Resume
+   ============================================================ */
+.zb #resume {
+  background: var(--bg-2);
+}
+.zb .timeline {
+  margin-top: 20px;
+}
+.zb .role-row {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 30px;
+  align-items: baseline;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  transition: padding-left 0.35s var(--ease);
+  position: relative;
+}
+.zb .role-row::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 28px;
+  width: 0;
+  height: 2px;
+  background: var(--a1);
+  transition: width 0.35s var(--ease);
+}
+.zb .role-row:hover {
+  padding-left: 24px;
+}
+.zb .role-row:hover::before {
+  width: 14px;
+}
+.zb .role-row .yr {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--a1);
+  letter-spacing: 0.04em;
+}
+.zb .role-row .ttl {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.4vw, 28px);
+}
+.zb .role-row .org {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.zb .role-row .desc {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.7;
+  margin-top: 12px;
+  max-width: 540px;
+}
+.zb .role-row .place {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .zb .role-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .zb .role-row .place {
+    display: none;
+  }
+}
+
+.zb .resume-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   Playground / game
+   ============================================================ */
+.zb #play {
+  background: var(--bg);
+  overflow: hidden;
+}
+.zb .arcade {
+  margin-top: 30px;
+  border: 1px solid var(--line-2);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      120% 100% at 50% 0%,
+      color-mix(in oklab, var(--a2) 10%, transparent),
+      transparent 60%
+    ),
+    var(--bg-2);
+  position: relative;
+}
+.zb .arcade-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.zb .arcade-head .dots {
+  display: flex;
+  gap: 7px;
+}
+.zb .arcade-head .dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--line-2);
+}
+.zb .arcade-head .dots i:nth-child(1) {
+  background: var(--a2);
+}
+.zb .arcade-head .dots i:nth-child(2) {
+  background: var(--a3);
+}
+.zb .arcade-head .dots i:nth-child(3) {
+  background: var(--a1);
+}
+.zb .game-stage {
+  position: relative;
+  height: 460px;
+  cursor: none;
+}
+.zb .game-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.zb .game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  text-align: center;
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  backdrop-filter: blur(3px);
+  z-index: 4;
+  transition: opacity 0.3s;
+}
+.zb .game-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.zb .game-overlay h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 46px);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.zb .game-overlay p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+  max-width: 420px;
+}
+.zb .game-hud {
+  position: absolute;
+  top: 16px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  pointer-events: none;
+}
+.zb .game-hud .score {
+  color: var(--a1);
+  font-weight: 700;
+}
+.zb .game-hud .lives {
+  letter-spacing: 4px;
+}
+
+.zb .easter-note {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--faint);
+  letter-spacing: 0.03em;
+}
+.zb .easter-note b {
+  color: var(--a1);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.zb footer.foot {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  padding: 70px 0 50px;
+  position: relative;
+  z-index: 1;
+}
+.zb .foot-grid {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.zb .foot-big {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 8vw, 110px);
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.zb .foot-big a {
+  transition: color 0.3s;
+}
+.zb .foot-big a:hover {
+  color: var(--a1);
+}
+.zb .foot-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.zb .foot-links a {
+  color: var(--muted);
+  transition: color 0.2s;
+  display: inline-flex;
+  gap: 8px;
+}
+.zb .foot-links a:hover {
+  color: var(--fg);
+}
+.zb .foot-meta {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--faint);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   Scroll reveal — visible by default; JS "arms" (hides) only
+   elements below the fold, then reveals them on scroll.
+   ============================================================ */
+/* transition only transform — opacity snaps to visible so a reveal can
+   never get stuck hidden (only the slide-up animates). */
+.zb .reveal {
+  transition: transform 0.8s var(--ease);
+}
+.zb .reveal.armed {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.zb .reveal.armed.in-view {
+  opacity: 1;
+  transform: none;
+}
+.zb .reveal.d1 {
+  transition-delay: 0.08s;
+}
+.zb .reveal.d2 {
+  transition-delay: 0.16s;
+}
+.zb .reveal.d3 {
+  transition-delay: 0.24s;
+}
+.zb .reveal.d4 {
+  transition-delay: 0.32s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zb .reveal.armed {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .zb .domains-track,
+  .zb .scroll-cue .bar,
+  .zb .hero-status .live {
+    animation: none !important;
+  }
+}
+
+/* cursor companion ring (custom cursor accent) */
+.zb #cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--a1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition:
+    width 0.2s var(--ease),
+    height 0.2s var(--ease),
+    opacity 0.3s;
+  opacity: 0;
+}
+.zb #cursor-ring.show {
+  opacity: 0.8;
+}
+.zb #cursor-ring.big {
+  width: 60px;
+  height: 60px;
+}
+@media (hover: none) {
+  .zb #cursor-ring {
+    display: none;
+  }
+}
+
+@media (max-width: 720px), (pointer: coarse) {
+  .zb .hero-hello {
+    margin-left: 2px;
+  }
+}
+
+/* ============================================================
+   Image slot (drop-your-own-screenshot frame)
+   ============================================================ */
+.zb .image-slot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+.zb .image-slot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.zb .image-slot.dragover {
+  outline: 2px dashed var(--a1);
+  outline-offset: -8px;
+}
+.zb .image-slot .image-slot-hint {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  text-align: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.zb .image-slot .image-slot-clear {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--line-2);
+  background: color-mix(in oklab, var(--bg) 70%, transparent);
+  color: var(--fg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.zb .project-media:hover .image-slot-clear {
+  opacity: 1;
+}
+
+/* ============================================================
+   Tweaks panel (Theme + Sound) — glassy floating control
+   ============================================================ */
+.zb-tweaks-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483645;
+  appearance: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 9px 14px;
+  font:
+    600 12px/1 "JetBrains Mono",
+    ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(20, 20, 26, 0.7);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.zb-tweaks-btn:hover {
+  background: rgba(30, 30, 38, 0.82);
+}
+
+.zb-tweaks-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483646;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(250, 249, 247, 0.82);
+  color: #29261b;
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 12px 40px rgba(0, 0, 0, 0.18);
+  font: 11.5px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+.zb-tweaks-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px 10px 14px;
+  user-select: none;
+}
+.zb-tweaks-hd b {
+  font-size: 12px;
+  font-weight: 600;
+}
+.zb-tweaks-x {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(41, 38, 27, 0.55);
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.zb-tweaks-x:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #29261b;
+}
+.zb-tweaks-body {
+  padding: 2px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.zb-tweaks-sect {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(41, 38, 27, 0.45);
+  padding-top: 6px;
+}
+.zb-tweaks-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.zb-tweaks-row-h {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.zb-tweaks-lbl {
+  font-weight: 500;
+  color: rgba(41, 38, 27, 0.72);
+}
+.zb-tweaks-chips {
+  display: flex;
+  gap: 6px;
+}
+.zb-tweaks-chip {
+  position: relative;
+  appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.12s cubic-bezier(0.3, 0.7, 0.4, 1),
+    box-shadow 0.12s;
+}
+.zb-tweaks-chip:hover {
+  transform: translateY(-1px);
+}
+.zb-tweaks-chip[data-on="1"] {
+  box-shadow:
+    0 0 0 1.5px rgba(0, 0, 0, 0.85),
+    0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.zb-tweaks-chip > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 34%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+.zb-tweaks-chip > span > i {
+  flex: 1;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+.zb-tweaks-chip > span > i:first-child {
+  box-shadow: none;
+}
+.zb-tweaks-name {
+  margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: rgba(41, 38, 27, 0.5);
+}
+.zb-tweaks-toggle {
+  position: relative;
+  width: 32px;
+  height: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.15);
+  transition: background 0.15s;
+  cursor: pointer;
+  padding: 0;
+}
+.zb-tweaks-toggle[data-on="1"] {
+  background: #34c759;
+}
+.zb-tweaks-toggle i {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s;
+}
+.zb-tweaks-toggle[data-on="1"] i {
+  transform: translateX(14px);
+}

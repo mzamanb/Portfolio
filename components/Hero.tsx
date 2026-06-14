@@ -1,137 +1,116 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import type { HeroContent } from "@/lib/content";
+import { EASE } from "@/components/velory/FadeIn";
 
-const EASE: [number, number, number, number] = [0.4, 0, 0.2, 1];
-
-const TAGS = [
-  { label: "Design Systems",  style: { top: "28%",  left: "6%" } },
-  { label: "UX Research",     style: { top: "52%",  left: "4%" } },
-  { label: "AI Workflows",    style: { top: "34%",  right: "5%" } },
-  { label: "Dev-adjacent",    style: { top: "62%",  right: "7%" } },
-];
+const DEFAULT_SOCIAL: Record<string, string> = {
+  linkedin: "https://www.linkedin.com/in/zamanbayezid/",
+  github: "https://github.com/mzamanb",
+  behance: "https://www.behance.net/zamanbayezid",
+};
 
 export default function Hero({ data }: { data: HeroContent }) {
-  const headline = data.title.join(" ");
+  const portrait = data.portrait || "/images/mentor-hero.png";
+  const ctaLabel = data.ctaLabel || "Book a Quick Call";
+  const social = data.social || DEFAULT_SOCIAL;
 
   return (
     <section
       id="home"
-      className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-6"
+      className="relative min-h-screen overflow-hidden pt-16"
     >
-      {/* Ghost headline — fills the background */}
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, ease: EASE }}
-        className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center"
-        style={{ userSelect: "none" }}
-      >
-        <span
-          style={{
-            fontSize: "clamp(4rem, 13vw, 12rem)",
-            fontWeight: 800,
-            lineHeight: 0.92,
-            letterSpacing: "-0.045em",
-            color: "var(--color-text-ghost)",
-            display: "block",
-            maxWidth: "95vw",
-          }}
-        >
-          {data.title[0]}<br />
-          {data.title[1]}<br />
-          {data.title[2]}
-        </span>
-      </motion.div>
+      <div className="accent-glow" />
 
-      {/* Floating discipline tags */}
-      {TAGS.map((tag, i) => (
-        <motion.span
-          key={tag.label}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 + i * 0.1, ease: EASE }}
-          className="absolute hidden rounded-full border border-[var(--color-border-strong)] bg-[var(--color-bg-card)] px-3.5 py-1.5 text-[12px] text-text-secondary shadow-sm md:block"
-          style={tag.style}
-        >
-          {tag.label}
-        </motion.span>
-      ))}
+      <div className="relative mx-auto max-w-7xl px-6 pb-8 pt-16 md:pt-24">
+        <div className="grid items-end gap-12 lg:grid-cols-[1fr_auto]">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mb-6 text-[14px] text-text-secondary md:max-w-xl"
+            >
+              {data.subtitle}
+            </motion.p>
 
-      {/* Center content — readable overlay */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-        className="relative z-10 flex flex-col items-center gap-5 text-center"
-      >
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-bg-card)] px-4 py-1.5 text-[12px] text-text-secondary shadow-sm">
-          <span
-            className="h-1.5 w-1.5 animate-architecture-pulse rounded-full bg-accent"
-            style={{ boxShadow: "0 0 6px var(--color-accent)" }}
-          />
-          {data.badge}
-        </span>
+            <motion.h1
+              initial={{ opacity: 0, y: 32 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+              className="font-display text-text"
+              style={{
+                fontSize: "clamp(2.75rem, 8vw, 6.5rem)",
+                fontWeight: 700,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.95,
+              }}
+            >
+              {data.title[0]}
+              <br />
+              <span className="text-accent">{data.title[1]}</span>
+              <br />
+              {data.title[2]}
+            </motion.h1>
+          </div>
 
-        {/* Name */}
-        <h1
-          className="text-text"
-          style={{ fontSize: "clamp(1.5rem, 4vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.03em", lineHeight: 1.1 }}
-        >
-          {data.name}
-        </h1>
-
-        {/* Subtitle */}
-        <p className="max-w-[360px] text-[15px] leading-relaxed text-text-secondary">
-          Lead Product Designer · UAE, India, UK, Remote
-        </p>
-
-        {/* CTAs */}
-        <div className="flex items-center gap-3">
-          <a
-            href="#work"
-            className="inline-flex h-10 items-center rounded-full bg-text px-6 text-[13px] font-semibold text-bg transition-opacity hover:opacity-75"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
+            className="relative mx-auto w-full max-w-[280px] lg:mx-0"
           >
-            View work
-          </a>
-          <a
-            href="#contact"
-            className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-strong)] px-6 text-[13px] text-text-secondary transition-colors hover:text-text"
-          >
-            Get in touch
-          </a>
-        </div>
-      </motion.div>
-
-      {/* Stats row — bottom of section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
-        className="absolute bottom-0 inset-x-0 border-t border-[var(--color-border)]"
-      >
-        <div className="mx-auto grid max-w-7xl grid-cols-4 divide-x divide-[var(--color-border)]">
-          {[
-            { v: "10+", l: "Years" },
-            { v: "6+",  l: "Projects" },
-            { v: "5+",  l: "Clients" },
-            { v: "4",   l: "Markets" },
-          ].map((s) => (
-            <div key={s.l} className="flex flex-col items-center gap-0.5 py-6">
-              <span
-                className="text-text"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1 }}
-              >
-                {s.v}
-              </span>
-              <span className="text-[12px] text-text-muted">{s.l}</span>
+            <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-[var(--color-border-strong)]">
+              <Image
+                src={portrait}
+                alt={data.name}
+                fill
+                className="object-cover"
+                sizes="280px"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
-          ))}
+
+            <a
+              href="#contact"
+              className="absolute -bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-[var(--color-border-strong)] bg-bg-card px-5 py-3 shadow-architecture transition-transform hover:scale-[1.02]"
+            >
+              <span className="text-left">
+                <span className="block text-[11px] uppercase tracking-wider text-text-muted">
+                  {ctaLabel}
+                </span>
+                <span className="block text-[13px] font-semibold text-text">
+                  / with {data.name.split(" ")[0]}
+                </span>
+              </span>
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-white">
+                →
+              </span>
+            </a>
+          </motion.div>
         </div>
-      </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
+          className="mt-16 flex flex-wrap items-center gap-6 border-t border-[var(--color-border)] pt-8"
+        >
+          {Object.entries(social).map(([name, url]) => (
+            <a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] font-semibold uppercase tracking-[0.15em] text-text-muted transition-colors hover:text-accent"
+            >
+              {name}
+            </a>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
