@@ -19,7 +19,6 @@ import {
   type ToolItem,
   type WorkItem,
 } from "./sections";
-import Tweaks from "./Tweaks";
 import "@/app/interactive.css";
 
 interface InteractivePortfolioProps {
@@ -80,8 +79,6 @@ export default function InteractivePortfolio({
       </main>
 
       <Foot name={name} contact={contact} copyright={copyright} />
-
-      <Tweaks />
     </div>
   );
 }

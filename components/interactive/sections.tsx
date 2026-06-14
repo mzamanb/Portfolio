@@ -490,7 +490,7 @@ export function Foot({ name, contact, copyright }: FootProps) {
         </div>
         <div className="foot-meta">
           <span>© {copyright}</span>
-          <span>Designed &amp; built in the browser · open Tweaks to remix ↗</span>
+          <span>Designed &amp; built in the browser</span>
         </div>
       </div>
     </footer>
