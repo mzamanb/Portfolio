@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "@/components/ThemeProvider";
 import { initSound } from "@/lib/interactive/sound";
 import { initWiring } from "@/lib/interactive/wiring";
 import {
@@ -49,6 +50,7 @@ export default function InteractivePortfolio({
   copyright,
 }: InteractivePortfolioProps) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const root = rootRef.current;
@@ -58,8 +60,16 @@ export default function InteractivePortfolio({
     return cleanup;
   }, []);
 
+  // Bridge the global light/dark theme onto the homepage's scoped palette.
+  useEffect(() => {
+    rootRef.current?.setAttribute(
+      "data-theme",
+      theme === "dark" ? "midnight" : "paper",
+    );
+  }, [theme]);
+
   return (
-    <div className="zb" id="zb-root" data-theme="midnight" ref={rootRef}>
+    <div className="zb" id="zb-root" data-theme="paper" ref={rootRef}>
       <div id="scroll-progress" />
       <div id="cursor-ring" />
 

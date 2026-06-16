@@ -58,8 +58,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="velory">
+    <html lang="en" data-theme="light">
       <head>
+        <script
+          // Apply the saved theme before first paint to avoid a flash of the
+          // wrong palette. Defaults to light; honors a previous choice.
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t='light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

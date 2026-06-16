@@ -158,7 +158,7 @@ export default function MentorCaseStudy({ study }: { study: CaseStudy }) {
               Back to portfolio
             </Link>
             <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted sm:inline">
-              MENTOR — IDE Learning System
+              MENTOR — Open-source coding curriculum
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-muted">
               {study.label}
@@ -182,7 +182,7 @@ export default function MentorCaseStudy({ study }: { study: CaseStudy }) {
             style={{ fontSize: "clamp(2.25rem, 6vw, 4.5rem)", fontWeight: 800 }}
           >
             MENTOR{" "}
-            <span className="font-light text-text-muted">IDE Learning System</span>
+            <span className="font-light text-text-muted">{study.subtitle}</span>
           </h1>
           <p className="mb-6 max-w-3xl text-[17px] font-light leading-relaxed text-text-secondary">
             {c.intro}
@@ -293,12 +293,13 @@ export default function MentorCaseStudy({ study }: { study: CaseStudy }) {
             <p className="mb-8 max-w-2xl text-[14px] leading-relaxed text-text-muted">
               Every beginner platform takes a position on two axes: instructional coherence and
               environment realism. The valuable quadrant — coherent instruction inside a real
-              environment — is nearly empty. MENTOR occupies it at $15/month.
+              environment — is nearly empty. MENTOR is built to occupy it, free and open-source.
             </p>
             <ConvergenceMap />
             <p className="mt-4 text-center text-[12px] text-text-muted">
               Platforms positioned by environment realism (x) and instructional coherence (y).
-              Mentor is the only platform in the top-right quadrant built for absolute beginners at accessible cost.
+              Mentor sits in the top-right quadrant — coherent instruction inside the real environment,
+              free and open to absolute beginners.
             </p>
           </section>
         </FadeIn>
@@ -347,6 +348,27 @@ export default function MentorCaseStudy({ study }: { study: CaseStudy }) {
                   ))}
                 </ul>
               </div>
+
+              {/* Supporting screenshot from the live product (skip any that
+                  duplicate the hero cover shown above). */}
+              {(solution.showcaseImages ?? [])
+                .filter((img) => img.url !== study.image)
+                .slice(0, 1)
+                .map((img) => (
+                  <figure key={img.url} className="mt-5">
+                    <div className="relative aspect-video overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-elevated)] shadow-architecture">
+                      <Image
+                        src={img.url}
+                        alt={img.caption}
+                        fill
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <figcaption className="mt-3 text-[12px] leading-relaxed text-text-muted">
+                      {img.caption}
+                    </figcaption>
+                  </figure>
+                ))}
             </section>
           </FadeIn>
         ))}

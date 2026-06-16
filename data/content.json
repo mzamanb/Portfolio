@@ -139,122 +139,123 @@
       "id": "mentor",
       "label": "product",
       "title": "MENTOR",
-      "subtitle": "IDE Learning System",
+      "subtitle": "Open-source coding curriculum",
       "tags": [
-        "VS Code Extension",
-        "AI / TTS",
+        "Open-Source Curriculum",
+        "Developer Education",
         "Product Design"
       ],
-      "description": "An end-to-end guided learning system for absolute beginners — coherent, sequenced instruction delivered inside VS Code, not a browser sandbox. Web auth, deep-links, offline lessons, local AI narration, and progress sync. All shipped.",
+      "description": "A free, open-source curriculum that teaches absolute beginners to actually understand code — not just generate it. One real project, built across seven stages inside VS Code on your own machine, from the first HTML tag to a deployed full-stack app.",
       "image": "/images/mentor-hero.png",
       "slug": "mentor",
       "fullContent": {
-        "intro": "Most people who try to learn to code never finish. The median completion rate across 221 online courses is 12.6%. The failure isn't content — it's structure and environment. Beginners learn in browser sandboxes that don't transfer to real tools, and from fragmented resources that dissolve into tutorial hell. MENTOR is a product built to close that gap: coherent, sequenced instruction delivered inside VS Code — the editor they'll actually use — with local AI narration, offline lessons, and progress that persists across sessions.",
+        "intro": "AI can write code for you. It can't understand it for you. That's the gap MENTOR is built to close. Most beginners can now generate working code in seconds — and still can't read it, debug it, or build the next thing without the model. MENTOR teaches genuine comprehension the only way it sticks: one real project, built step by step in the tools professional developers actually use. No sandbox, no throwaway exercises — a journal app that grows across seven stages, from a single HTML file to a deployed full-stack application.",
         "impact": [
           {
-            "value": "12.6%",
-            "label": "MOOC completion rate",
-            "detail": "The problem MENTOR was built to solve"
+            "value": "150",
+            "label": "Guided lessons",
+            "detail": "One ordered path — no catalogue to assemble yourself"
           },
           {
-            "value": "$14k",
-            "label": "Avg bootcamp cost",
-            "detail": "vs MENTOR at $15/mo"
+            "value": "1,138",
+            "label": "Hands-on steps",
+            "detail": "Theory paired with typing, delivered just in time"
           },
           {
-            "value": "6",
-            "label": "Milestones shipped",
-            "detail": "End-to-end, from web auth to narrated lessons"
+            "value": "7",
+            "label": "Project stages",
+            "detail": "One journal app: static HTML to deployed full-stack"
           },
           {
-            "value": "100%",
-            "label": "Local TTS",
-            "detail": "No API cost, no latency, runs in worker threads"
+            "value": "Free",
+            "label": "Forever",
+            "detail": "Open-source, no paywall on the core curriculum"
           }
         ],
         "showcaseImage": {
           "url": "/images/mentor-hero.png",
-          "caption": "MENTOR IDE — learn to code where developers actually work. Real VS Code, real terminal, real files, with audio narration guiding every step."
+          "caption": "MENTOR — learn to code where developers actually work. Real VS Code, real terminal, real Git, one project carried from first line to deployment."
         },
-        "role": "Solo product designer and developer — designed the learning system architecture, the VS Code extension panel, and the web app onboarding. Shipped the full stack from Figma to production VSIX.",
-        "timeline": "Ongoing — web app and VS Code extension live as of June 2026. Lesson content expanding quarterly.",
-        "tools": "Next.js, Supabase, VS Code Extension API, Kokoro TTS, TypeScript, Figma",
-        "problem": "A beginner in 2026 can choose from hundreds of platforms and millions of hours of video, yet most never reach the point of building something real. Two failures explain it: the path dissolves — fragmented resources with no single voice carrying the learner forward — and the skills don't transfer — browser sandboxes that hide the real machine, so everything learned evaporates the moment the tab closes.",
+        "role": "Solo product designer and developer — defined the curriculum architecture, the lesson and glossary content model, the in-editor learning experience, and the web onboarding. Designed and built the full stack from Figma to a working product.",
+        "timeline": "Ongoing — curriculum and product live as of June 2026. Roughly 40–50 hours of content across six weeks at a relaxed pace, expanding over time.",
+        "tools": "Taught stack: HTML, CSS, JavaScript, Tailwind, VS Code, Git & GitHub, Fetch / HTTP / DevTools, Supabase, Vercel. Built with: Next.js, VS Code Extension API, TypeScript, Figma.",
+        "problem": "A beginner in 2026 has infinite resources and a model that writes code on demand — yet most still never reach the point of building something real on their own. Two failures explain it. Comprehension never forms: AI hands over the answer, so the learner never wrestles with the why. And skills don't transfer: browser sandboxes hide the real machine, so everything learned evaporates the moment the tab closes.",
         "challenges": [
-          "Delivering coherent, sequenced instruction inside a real development environment at the same time — something the market treats as an impossible trade-off",
-          "Building a local TTS narrator (Kokoro) that runs in VS Code worker threads without blocking the extension host, with chunking, caching, and stale-audio protection",
-          "Making the experience accessible to absolute beginners (zero prior setup) while keeping the environment genuine — real terminal, real editor, real version control from lesson one"
+          "Teaching genuine understanding in an era where AI can produce working code instantly — making the learner do the thinking the model would otherwise do for them",
+          "Sequencing 150 lessons across 1,138 steps into one coherent path, with a 612-term glossary, so a complete beginner is never lost and never assembling their own curriculum",
+          "Keeping the environment real — VS Code, Git, a terminal, deployment — from the first lesson, while staying approachable for someone who has never opened an editor"
         ],
         "solutions": [
           {
-            "title": "One path, not a catalogue",
-            "problem": "Most platforms hand beginners a catalogue and ask them to assemble their own curriculum — the hardest task you can give someone who came to acquire the expertise required to do it. MENTOR has a single, ordered journey from first variable to first deployed project.",
+            "title": "One project, seven stages — not a catalogue",
+            "problem": "Most platforms hand beginners a catalogue and ask them to assemble their own curriculum — the hardest possible task for someone who came to acquire that very expertise. MENTOR is a single ordered journey: one journal application that grows from a static HTML page into a deployed full-stack app across seven stages.",
             "process": [
-              "Designed a content model with typed step formats: intro, concept, analogy, exercise, and win — each with explicit progression rules",
-              "Shipped Course 01, Lesson 1 with 6 steps covering variables, types, and the terminal — tested with zero-experience beginners",
-              "Built ID-safe routing so progress persists across restarts using full IDs (c01-l01-s01) rather than fragile numeric indices",
-              "Bundled the full lesson JSON with the VSIX so lessons work offline from day one — no server round-trips required"
+              "Designed one continuous project so every concept lands in service of something the learner is actually building",
+              "Structured 150 lessons across 1,138 steps, each step a small, ordered move forward with no gaps to guess across",
+              "Used typed step formats — concept, analogy, exercise, win — with explicit progression rules so the path never stalls",
+              "Mapped the seven stages from first HTML tag through CSS, JavaScript, Git, APIs, and deployment on Supabase and Vercel"
             ],
             "showcaseImages": [
               {
                 "url": "/images/mentor-detail.png",
-                "caption": "Lesson walkthrough — step sidebar, narrator card, and terminal mockup. From zero to first command in five minutes."
+                "caption": "Lesson walkthrough — step sidebar and guidance alongside the learner's real editor. From zero to first real command in minutes."
               }
             ]
           },
           {
-            "title": "Real tools from day one, with guardrails",
-            "problem": "Sandbox platforms protect beginners from the real environment. MENTOR does the opposite: beginners work in VS Code — the editor professionals use — but the extension scaffolds the experience progressively so complexity reveals itself in order.",
+            "title": "Real tools from day one",
+            "problem": "Sandbox platforms protect beginners from the real environment — and that protection is exactly why nothing transfers. MENTOR does the opposite: beginners work in VS Code on their own machine, with a real terminal and real Git, guided so complexity reveals itself in order.",
             "process": [
-              "Built a VS Code extension that activates on startup, catches deep-links from the web app, and opens lesson panels in context",
-              "Designed the lesson panel as a webview inside VS Code — same editor, same terminal, guided by the panel alongside their real workspace",
-              "Implemented a doctor command (Mentor: Check setup) that diagnoses the environment without requiring the learner to understand it",
-              "Auth token stored in VS Code secret storage — no plaintext credentials, no manual configuration"
+              "Built the learning experience inside VS Code — the editor professionals use — rather than a browser emulator",
+              "Designed onboarding so a zero-setup beginner reaches their first real command quickly, without drowning in configuration",
+              "Added environment checks that diagnose a learner's setup without requiring them to understand it yet",
+              "Kept lessons available locally so the path keeps working without constant server round-trips"
             ],
             "showcaseImages": [
               {
                 "url": "/images/mentor-hero.png",
-                "caption": "MENTOR in VS Code — file explorer, code editor, terminal, and lesson panel side by side. No sandbox, no shortcuts."
+                "caption": "MENTOR in VS Code — file explorer, editor, terminal, and lesson guidance side by side. No sandbox, no shortcuts."
               }
             ]
           },
           {
-            "title": "A narrator, always on",
-            "problem": "Reading alone is slow and passive. Audio narration keeps beginners engaged and reduces cognitive load on dense concept steps — but cloud TTS adds latency, API cost, and a dependency that breaks offline.",
+            "title": "Just-in-time instruction",
+            "problem": "Theory-heavy courses front-load concepts the learner has no use for yet, and they slide right off. MENTOR pairs every idea with the moment it's needed — the explanation arrives attached to the keystroke that uses it.",
             "process": [
-              "Integrated Kokoro TTS (local, open-source) via kokoro-js — no API key, no external dependency, runs fully offline",
-              "Isolated ONNX inference in a worker_threads worker so the extension host never blocks during generation",
-              "Implemented sentence-level chunking at ~200-char boundaries, preventing token-limit cutoff and white-noise artifacts on long narrations",
-              "Built proactive pre-generation — the next step's audio generates while the learner reads the current one, so playback is instant"
+              "Designed lessons so concept and action interleave, minimising passive reading and maximising time typing",
+              "Tied each new term to a 612-entry glossary, so a definition is one step away the moment it appears",
+              "Built steps that advance only when the hands-on task is actually done — completion is verified, not assumed",
+              "Wrote for the absolute beginner's vocabulary, introducing jargon only once it has been earned"
             ],
             "showcaseImages": [
               {
                 "url": "/images/mentor-features.png",
-                "caption": "Four product principles — Real IDE, Audio narration, Instruction tied to action, One voice one project."
+                "caption": "The product principles — real IDE, one continuous project, instruction tied to action, understanding over completion."
               }
             ]
           },
           {
-            "title": "Built, not just finished",
-            "problem": "Progress measured by lessons marked complete produces a false sense of mastery. MENTOR tracks what learners can actually do — position is saved across restarts, resume shows exactly where they left off, and every stage ends in something real on their own machine.",
+            "title": "Understanding over completion — with Mentor AI on the way",
+            "problem": "Progress measured by lessons marked complete produces a false sense of mastery. MENTOR tracks what a learner can actually do, and is adding an AI layer designed to deepen understanding rather than shortcut it.",
             "process": [
-              "Saved step position to VS Code globalState on every navigation event using full course/lesson/step IDs",
-              "Resume prompt on activation shows chapter and lesson title with Resume / Start over options — no auth required",
-              "Exercise steps use a checkbox task list that auto-advances only when all tasks are checked — completion is verified, not assumed",
-              "Packaged the full system as a VSIX that installs and runs outside dev mode — 401MB including Kokoro and onnxruntime native binaries"
+              "Persisted progress so a learner resumes exactly where they left off, across sessions and restarts",
+              "Ended every stage in something real and running on the learner's own machine",
+              "Scoped Mentor AI (post-launch) to explain errors, review code, answer questions, and give strategic hints — never the direct solution",
+              "Kept the core curriculum free and open-source, so the gatekeeping that blocks beginners simply isn't there"
             ]
           }
         ],
         "outcomes": [
-          "End-to-end learning system live: web onboarding → deep-link → VS Code extension → lesson panel → narration → progress sync.",
-          "Local Kokoro TTS with chunking, caching, pre-generation, and stale-audio protection — zero API cost, works offline.",
-          "VSIX installs and runs outside F5 dev mode. TTS model cache persists across VS Code restarts; cold start paid once.",
-          "Lesson panel renders 5 step types with keyboard navigation, back/forward, replay, hint, and context-aware CTA labels."
+          "A complete, ordered curriculum: 150 lessons across 1,138 steps, building one journal app from the first HTML tag to a deployed full-stack application.",
+          "A 612-term glossary woven into the lessons, so beginners learn the language of development in context rather than as a separate chore.",
+          "A real-tooling experience in VS Code — Git, terminal, and deployment early on — with progress that persists across sessions.",
+          "Free and open-source forever, with Mentor AI scoped for launch: error explanation, code review, Q&A, and hints that never hand over the answer."
         ],
         "learnings": [
-          "The convergence gap is real and measurable: coherence and environment realism are jointly necessary, not interchangeable. Optimising one without the other produces the 12.6% completion rate.",
-          "Local inference (Kokoro in worker threads) is now a viable first-class choice — it removes a class of failure modes (latency, API keys, network dependency) that cloud TTS introduces.",
-          "Building solo across design and code collapses the handoff gap — design decisions get validated in minutes, not sprints."
+          "The bottleneck in 2026 isn't access to code — it's comprehension. When the model can always produce the answer, the product's job is to make the learner do the understanding anyway.",
+          "One real project beats a catalogue of exercises: coherence and a single carried-forward artifact do more for completion than any individual lesson's polish.",
+          "A real environment from day one is non-negotiable — skills learned in a sandbox don't survive contact with a real machine, and beginners can handle real tools when the path is sequenced well.",
+          "Building solo across curriculum, design, and code collapses the handoff gap — decisions get validated in days, not sprints."
         ]
       }
     },

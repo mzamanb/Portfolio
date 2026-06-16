@@ -1,3 +1,6 @@
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+
 export interface InteractiveContact {
   email: string;
   linkedin?: string;
@@ -52,29 +55,40 @@ interface NavProps {
 }
 
 export function Nav({ name }: NavProps) {
+  const { theme, toggleTheme } = useTheme();
   return (
     <header className="nav">
       <div className="brand" id="brand">
         <span className="dot" />
         <span>{name.toUpperCase()}</span>
       </div>
-      <nav>
-        <a href="#work" data-scroll>
-          Work
-        </a>
-        <a href="#about" data-scroll>
-          About
-        </a>
-        <a href="#skills" data-scroll>
-          Skills
-        </a>
-        <a href="#resume" data-scroll>
-          Résumé
-        </a>
-        <a href="#play" data-scroll>
-          Play
-        </a>
-      </nav>
+      <div className="nav-right">
+        <nav>
+          <a href="#work" data-scroll>
+            Work
+          </a>
+          <a href="#about" data-scroll>
+            About
+          </a>
+          <a href="#skills" data-scroll>
+            Skills
+          </a>
+          <a href="#resume" data-scroll>
+            Résumé
+          </a>
+          <a href="#play" data-scroll>
+            Play
+          </a>
+        </nav>
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label="Toggle light and dark theme"
+          className="nav-theme-toggle"
+        >
+          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
+      </div>
     </header>
   );
 }

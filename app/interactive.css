@@ -43,9 +43,9 @@
   --faint: #b4afa2;
   --line: rgba(0, 0, 0, 0.12);
   --line-2: rgba(0, 0, 0, 0.2);
-  --a1: #ff5a2b; /* electric orange */
+  --a1: #10b981; /* emerald */
   --a2: #1f53ff; /* cobalt */
-  --a3: #00b070; /* green */
+  --a3: #e0488b; /* rose (kept distinct from emerald --a1) */
   --shadow: 0 24px 60px rgba(40, 30, 10, 0.16);
   --char-shadow: rgba(40, 30, 10, 0.18);
 }
@@ -241,9 +241,33 @@
 .zb header.nav .brand:hover .dot {
   transform: scale(1.5);
 }
+.zb header.nav .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 .zb header.nav nav {
   display: flex;
   gap: 26px;
+}
+.zb header.nav .nav-theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  color: #fff;
+  opacity: 0.75;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    transform 0.3s var(--ease-back);
+}
+.zb header.nav .nav-theme-toggle:hover {
+  opacity: 1;
+  transform: rotate(-15deg);
 }
 .zb header.nav nav a {
   font-family: var(--font-mono);
